@@ -1,0 +1,199 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane fx:id="mainMenuLogin" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.mycasinofx.controllers.mainMenu.MainMenuLoginController">
+   <children>
+      <HBox layoutX="-1.0" prefHeight="400.0" prefWidth="600.0">
+         <children>
+            <AnchorPane prefHeight="400.0" prefWidth="406.0" style="-fx-background-color: purple;">
+               <children>
+                  <VBox layoutY="-2.0" prefHeight="400.0" prefWidth="302.0">
+                     <children>
+                        <Label alignment="CENTER" prefHeight="31.0" prefWidth="302.0" textAlignment="CENTER" textFill="#0ca65e">
+                           <font>
+                              <Font name="System Bold" size="11.0" />
+                           </font>
+                        </Label>
+                        <Label alignment="CENTER" prefHeight="37.0" prefWidth="302.0" text="Welcome" textAlignment="CENTER" textFill="WHITE">
+                           <font>
+                              <Font name="System Bold" size="32.0" />
+                           </font>
+                        </Label>
+                        <Label alignment="CENTER" prefHeight="31.0" prefWidth="302.0" textAlignment="CENTER" textFill="#0ca65e">
+                           <font>
+                              <Font name="System Bold" size="11.0" />
+                           </font>
+                        </Label>
+                        <VBox alignment="CENTER" prefHeight="385.0" prefWidth="302.0">
+                           <children>
+                              <HBox alignment="CENTER" prefHeight="64.0" prefWidth="302.0">
+                                 <children>
+                                    <Button alignment="CENTER" mnemonicParsing="false" onAction="#goRoulette" prefHeight="40.0" prefWidth="174.0" style="-fx-background-radius: 50; -fx-border-radius: 50; -fx-background-color: white; -fx-border-color: #3A003A;" styleClass="onPurple" text="Play Roullete" textFill="PURPLE">
+                                       <font>
+                                          <Font name="System Bold Italic" size="12.0" />
+                                       </font>
+                                    </Button>
+                                 </children>
+                              </HBox>
+                              <HBox alignment="CENTER" prefHeight="61.0" prefWidth="302.0">
+                                 <children>
+                                    <Button alignment="CENTER" mnemonicParsing="false" onAction="#goSlots" prefHeight="40.0" prefWidth="174.0" style="-fx-background-radius: 50; -fx-border-radius: 50; -fx-background-color: white; -fx-border-color: #3A003A;" styleClass="onPurple" text="Slots" textFill="PURPLE">
+                                       <font>
+                                          <Font name="System Bold Italic" size="12.0" />
+                                       </font>
+                                    </Button>
+                                 </children>
+                              </HBox>
+                              <HBox alignment="CENTER" prefHeight="65.0" prefWidth="302.0">
+                                 <children>
+                                    <Button alignment="CENTER" mnemonicParsing="false" prefHeight="40.0" prefWidth="174.0" style="-fx-background-radius: 50; -fx-border-radius: 50; -fx-background-color: white; -fx-border-color: #3A003A;" styleClass="onPurple" text="Play Twenty One" textFill="PURPLE">
+                                       <font>
+                                          <Font name="System Bold Italic" size="12.0" />
+                                       </font>
+                                    </Button>
+                                 </children>
+                              </HBox>
+                              <HBox alignment="CENTER" prefHeight="57.0" prefWidth="302.0">
+                                 <children>
+                                    <Button alignment="CENTER" mnemonicParsing="false" onAction="#goFullList" prefHeight="40.0" prefWidth="174.0" style="-fx-background-radius: 50; -fx-border-radius: 50; -fx-background-color: white; -fx-border-color: #3A003A;" styleClass="onPurple" text="Full List of Games" textFill="PURPLE">
+                                       <font>
+                                          <Font name="System Bold Italic" size="12.0" />
+                                       </font>
+                                    </Button>
+                                 </children>
+                              </HBox>
+                              <HBox alignment="CENTER" prefHeight="66.0" prefWidth="302.0">
+                                 <children>
+                                    <Button alignment="CENTER" mnemonicParsing="false" onAction="#goVoting" prefHeight="40.0" prefWidth="174.0" style="-fx-background-radius: 50; -fx-border-radius: 50; -fx-background-color: white; -fx-border-color: #3A003A;" styleClass="onPurple" text="Active Voiting" textFill="PURPLE">
+                                       <font>
+                                          <Font name="System Bold Italic" size="12.0" />
+                                       </font>
+                                    </Button>
+                                 </children>
+                              </HBox>
+                              <HBox alignment="CENTER_LEFT" prefHeight="66.0" prefWidth="302.0">
+                                 <children>
+                                    <Label alignment="CENTER" prefHeight="57.0" prefWidth="24.0" textAlignment="CENTER" textFill="#0ca65e">
+                                       <font>
+                                          <Font name="System Bold Italic" size="14.0" />
+                                       </font>
+                                    </Label>
+                                    <Button fx:id="exitButton" alignment="CENTER" mnemonicParsing="false" prefHeight="28.0" prefWidth="101.0" style="-fx-background-radius: 50; -fx-border-radius: 50; -fx-background-color: white; -fx-border-color: #3A003A;" styleClass="onPurple" text="Exit" textFill="PURPLE">
+                                       <font>
+                                          <Font name="System Bold Italic" size="12.0" />
+                                       </font>
+                                    </Button>
+                                 </children>
+                              </HBox>
+                           </children>
+                        </VBox>
+                     </children>
+                  </VBox>
+               </children>
+            </AnchorPane>
+            <AnchorPane prefHeight="400.0" prefWidth="402.0">
+               <children>
+                  <VBox layoutY="-2.0" prefHeight="400.0" prefWidth="298.0">
+                     <children>
+                        <VBox alignment="CENTER" prefHeight="119.0" prefWidth="298.0">
+                           <children>
+                              <Label alignment="CENTER" prefHeight="21.0" prefWidth="298.0" textAlignment="CENTER" textFill="#0ca65e">
+                                 <font>
+                                    <Font name="System Bold" size="15.0" />
+                                 </font>
+                              </Label>
+                              <Label alignment="CENTER" prefHeight="99.0" prefWidth="309.0" text="Casino" textAlignment="CENTER" textFill="#0ca65e">
+                                 <font>
+                                    <Font name="System Bold" size="32.0" />
+                                 </font>
+                              </Label>
+                              <Label alignment="TOP_CENTER" prefHeight="103.0" prefWidth="309.0" text="Simulation" textFill="#0ca65e">
+                                 <font>
+                                    <Font name="System Bold" size="32.0" />
+                                 </font>
+                              </Label>
+                           </children>
+                        </VBox>
+                        <VBox alignment="CENTER" prefHeight="87.0" prefWidth="298.0">
+                           <children>
+                              <ImageView fitHeight="82.0" fitWidth="95.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../Picture/profile_icon.png" />
+                                 </image>
+                              </ImageView>
+                           </children>
+                        </VBox>
+                        <VBox alignment="BOTTOM_LEFT" prefHeight="73.0" prefWidth="298.0">
+                           <children>
+                              <HBox prefHeight="57.0" prefWidth="298.0">
+                                 <children>
+                                    <Label fx:id="setBalanceViewLabel11" prefHeight="37.0" prefWidth="59.0" />
+                                    <Label fx:id="setBalanceViewLabel" prefHeight="53.0" prefWidth="242.0" text="Balance:  12345" textFill="#0ca65e">
+                                       <font>
+                                          <Font name="Arial Narrow Bold" size="18.0" />
+                                       </font>
+                                    </Label>
+                                 </children>
+                              </HBox>
+                              <HBox prefHeight="57.0" prefWidth="298.0">
+                                 <children>
+                                    <Label fx:id="setBalanceViewLabel111" prefHeight="51.0" prefWidth="113.0" />
+                                    <Label fx:id="stakeLabelView" prefHeight="53.0" prefWidth="298.0" text="Current Stake: 12345" textFill="#0ca65e">
+                                       <font>
+                                          <Font name="Arial Narrow Bold" size="18.0" />
+                                       </font>
+                                    </Label>
+                                 </children>
+                              </HBox>
+                              <HBox prefHeight="57.0" prefWidth="298.0">
+                                 <children>
+                                    <Label fx:id="setBalanceViewLabel1111" prefHeight="51.0" prefWidth="113.0" />
+                                    <Label fx:id="stakeErrorSuccess" prefHeight="53.0" prefWidth="298.0" textFill="#0ca65e">
+                                       <font>
+                                          <Font name="Arial Narrow Bold" size="18.0" />
+                                       </font>
+                                    </Label>
+                                 </children>
+                              </HBox>
+                           </children>
+                        </VBox>
+                        <VBox alignment="CENTER" prefHeight="99.0" prefWidth="298.0">
+                           <children>
+                              <Label fx:id="stakeLabelView11" prefHeight="2.0" prefWidth="298.0" textFill="#0ca65e">
+                                 <font>
+                                    <Font name="Arial Narrow Bold" size="9.0" />
+                                 </font>
+                              </Label>
+                              <Button alignment="CENTER" contentDisplay="BOTTOM" mnemonicParsing="false" onAction="#setStakeDialog" prefHeight="25.0" prefWidth="104.0" style="-fx-background-radius: 50; -fx-border-radius: 50; -fx-background-color: #00BD93;" text="Change Stake" textFill="WHITE">
+                                 <font>
+                                    <Font name="System Bold Italic" size="12.0" />
+                                 </font>
+                              </Button>
+                              <Label fx:id="stakeLabelView1" prefHeight="53.0" prefWidth="298.0" textFill="#0ca65e">
+                                 <font>
+                                    <Font name="Arial Narrow Bold" size="18.0" />
+                                 </font>
+                              </Label>
+                              <Button mnemonicParsing="false" prefHeight="69.0" prefWidth="151.0" style="-fx-background-radius: 50; -fx-border-radius: 50; -fx-background-color: #00E1BC;" text="Show More" textFill="WHITE">
+                                 <font>
+                                    <Font name="System Bold Italic" size="12.0" />
+                                 </font>
+                              </Button>
+                           </children>
+                        </VBox>
+                     </children>
+                  </VBox>
+               </children>
+            </AnchorPane>
+         </children>
+      </HBox>
+   </children>
+</AnchorPane>
