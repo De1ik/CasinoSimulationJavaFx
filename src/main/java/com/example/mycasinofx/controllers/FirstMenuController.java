@@ -2,6 +2,7 @@ package com.example.mycasinofx.controllers;
 
 import com.example.mycasinofx.Model.FxModels.SceneSwitch;
 import com.example.mycasinofx.Model.player.Player;
+import com.example.mycasinofx.controllers.switchPage.SwitchPage;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 
@@ -21,15 +22,11 @@ public class FirstMenuController {
     @FXML
     private AnchorPane firstAnchor, mainPaneNotChange, greenPain;
     private final Player player = Player.getPlayer();
+    private final SwitchPage switchPage = new SwitchPage();
 
     @FXML
     public void goListGames() throws IOException {
-        if (player.getUsername() == null) {
-            new SceneSwitch(firstAnchor, "view/main_menu_not_login.fxml");
-        }
-        else{
-            new SceneSwitch(firstAnchor, "view/main_menu_login.fxml.fxml");
-        }
+        switchPage.goMainMenu(firstAnchor);
     }
 
     @FXML

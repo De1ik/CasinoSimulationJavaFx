@@ -10,7 +10,7 @@
 <?import javafx.scene.shape.Polygon?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane fx:id="rouletteAnchor" cacheShape="false" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="417.0" prefWidth="616.0" stylesheets="@../styles.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.mycasinofx.controllers.games.roulette.RouletteController">
+<AnchorPane fx:id="rouletteAnchor" cacheShape="false" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="417.0" prefWidth="616.0" stylesheets="@../styles/styles.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.mycasinofx.controllers.games.roulette.RouletteController">
    <children>
       <Button fx:id="goMainMenuButton" layoutX="507.0" layoutY="376.0" mnemonicParsing="false" onAction="#goMainMenu" text="Main Menu" />
       <Label layoutX="276.0" layoutY="30.0" text="Roulete page" />

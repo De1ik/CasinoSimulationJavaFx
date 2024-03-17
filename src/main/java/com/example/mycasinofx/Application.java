@@ -29,7 +29,7 @@ public class Application extends javafx.application.Application {
             mainController.getMainAnchor().getTransforms().add(lastTransformation);
 
             Scene scene = new Scene(root);
-            scene.getStylesheets().add(getClass().getResource("view/styles.css").toExternalForm());
+            scene.getStylesheets().add(getClass().getResource("view/styles/styles.css").toExternalForm());
 
             Component.resize(mainController.getGreenPain(), Screen.getPrimary().getBounds().getWidth(),  Screen.getPrimary().getBounds().getHeight());
 
