@@ -126,7 +126,7 @@
                            <children>
                               <ImageView fitHeight="82.0" fitWidth="95.0" pickOnBounds="true" preserveRatio="true">
                                  <image>
-                                    <Image url="@../Picture/profile_icon.png" />
+                                    <Image url="@../../Picture/profile_icon.png" />
                                  </image>
                               </ImageView>
                            </children>

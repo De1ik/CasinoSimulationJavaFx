@@ -17,10 +17,10 @@ public class SwitchPage implements PageSwitchInterface{
     public void goMainMenu(AnchorPane anchorPane) throws IOException {
         Player player = Player.getPlayer();
         if (player.getUsername() == null) {
-            new SceneSwitch(anchorPane, "view/main_menu_not_login.fxml");
+            new SceneSwitch(anchorPane, "view/main_menu/main_menu_not_login.fxml");
         }
         else{
-            new SceneSwitch(anchorPane, "view/main_menu_login.fxml");
+            new SceneSwitch(anchorPane, "view/main_menu/main_menu_login.fxml");
         }
     }
     @Override
