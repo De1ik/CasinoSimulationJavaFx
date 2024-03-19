@@ -16,13 +16,13 @@ import java.sql.SQLException;
 
 public class LoginPageController {
     @FXML
-    AnchorPane loginPane;
+    private AnchorPane loginPane;
     @FXML
-    TextField emailField;
+    private TextField emailField;
     @FXML
-    TextField passwordField;
+    private TextField passwordField;
     @FXML
-    Label errorMessage;
+    private Label errorMessage;
 
     private DatabaseManager databaseManager;
     private RegistrationWarningsInterface registrationWarningsInterface;
