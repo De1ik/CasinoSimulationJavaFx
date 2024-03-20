@@ -1,6 +1,7 @@
 package com.example.mycasinofx.controllers.voting.votingProcces;
 
 import com.example.mycasinofx.Model.FxModels.SceneSwitch;
+import com.example.mycasinofx.Model.database.DAOPattern;
 import com.example.mycasinofx.Model.database.DatabaseManager;
 import com.example.mycasinofx.Model.database.constants.ConstBestGameVotingTable;
 import com.example.mycasinofx.Model.player.Player;
@@ -49,16 +50,16 @@ public class BestGameVotingController {
         }
         else{
             try{
-                if (databaseManager.voteCheckNewUser(player.getUserId(),
+                if (DAOPattern.voteCheckNewUser(player.getUserId(),
                         ConstBestGameVotingTable.BEST_GAME_TABLE,
                         ConstBestGameVotingTable.USERS_ID
                 )){
-                    databaseManager.updateVoteUser(resultVoting.getId(),
+                    DAOPattern.updateVoteUser(resultVoting.getId(),
                             ConstBestGameVotingTable.BEST_GAME_TABLE,
-                            ConstBestGameVotingTable.NAME);
+                            ConstBestGameVotingTable.NAME, player.getUserId());
                 }
                 else{
-                    databaseManager.voteNewUser(player.getUserId(),
+                    DAOPattern.voteNewUser(player.getUserId(),
                             resultVoting.getId(),
                             ConstBestGameVotingTable.BEST_GAME_TABLE,
                             ConstBestGameVotingTable.USERS_ID,
@@ -73,7 +74,7 @@ public class BestGameVotingController {
     }
 
 
-    public void goVoting() throws IOException {
+    public void goVoting() throws IOException, SQLException, ClassNotFoundException {
         switchPage.goVotingPageChange(bestGameVoting);
     }
 }

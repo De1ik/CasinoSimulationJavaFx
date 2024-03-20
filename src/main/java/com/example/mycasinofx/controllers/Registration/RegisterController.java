@@ -2,6 +2,7 @@ package com.example.mycasinofx.controllers.Registration;
 
 import com.example.mycasinofx.Model.FxModels.SceneSwitch;
 import com.example.mycasinofx.Model.Hashing.PasswordHash;
+import com.example.mycasinofx.Model.database.DAOPattern;
 import com.example.mycasinofx.Model.database.DatabaseManager;
 import com.example.mycasinofx.Model.exceptions.AgeFailAccess;
 import com.example.mycasinofx.controllers.switchPage.PageSwitchInterface;
@@ -114,7 +115,7 @@ public class RegisterController {
         else if(!CheckValidData.isValidEmail(loginEmail)){
             registrationWarningsInterface.emailFormatError(errorMessage);
         }
-        else if (databaseManager.checkValidEmail(loginEmail) != 0 && databaseManager.checkValidEmail(loginEmail) != -1){
+        else if (DAOPattern.checkValidEmail(loginEmail) != 0 && DAOPattern.checkValidEmail(loginEmail) != -1){
             registrationWarningsInterface.emailAlreadyExist(errorMessage);
         }
         else if (!CheckValidData.isValidPasswordLength(loginPassword)){
@@ -133,15 +134,15 @@ public class RegisterController {
                 loginPassword = PasswordHash.hashPassword(loginPassword);
                 registerUser(loginName, loginPassword, loginEmail, loginAge);
                 goLogin();
-            } catch (AgeFailAccess | SQLException | ClassNotFoundException e) {
+            } catch (AgeFailAccess e) {
                 System.out.println(e.getMessage());
                 registrationWarningsInterface.showAgeWarning(errorMessage);
             }
         }
     }
 
-    public void registerUser(String loginName, String loginPassword, String loginEmail, int loginAge) throws SQLException, ClassNotFoundException {
-        databaseManager.registerUser(loginName, loginPassword, loginEmail, loginAge);
+    public void registerUser(String loginName, String loginPassword, String loginEmail, int loginAge){
+        DAOPattern.registerUser(loginName, loginPassword, loginEmail, loginAge);
     }
     @FXML
     public void resetWarning(){

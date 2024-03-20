@@ -1,5 +1,6 @@
 package com.example.mycasinofx.controllers.voting.resultVoting;
 
+import com.example.mycasinofx.Model.database.DAOPattern;
 import com.example.mycasinofx.Model.database.DatabaseManager;
 import com.example.mycasinofx.Model.database.constants.ConstBestGameVotingTable;
 import com.example.mycasinofx.controllers.switchPage.SwitchPage;
@@ -35,9 +36,9 @@ public class ResultBestGameController implements Initializable {
     }
 
     private void setBarChart() throws SQLException, ClassNotFoundException {
-        int amountRouletteVotes = databaseManager.selectNumberVotes("radioRoulette", ConstBestGameVotingTable.BEST_GAME_TABLE, ConstBestGameVotingTable.NAME);
-        int amountSlotVotes = databaseManager.selectNumberVotes("radioSlot", ConstBestGameVotingTable.BEST_GAME_TABLE, ConstBestGameVotingTable.NAME);
-        int amountTwentyOneVotes = databaseManager.selectNumberVotes("radioTwentyOne", ConstBestGameVotingTable.BEST_GAME_TABLE, ConstBestGameVotingTable.NAME);
+        int amountRouletteVotes = DAOPattern.selectNumberVotes("radioRoulette", ConstBestGameVotingTable.BEST_GAME_TABLE, ConstBestGameVotingTable.NAME);
+        int amountSlotVotes = DAOPattern.selectNumberVotes("radioSlot", ConstBestGameVotingTable.BEST_GAME_TABLE, ConstBestGameVotingTable.NAME);
+        int amountTwentyOneVotes = DAOPattern.selectNumberVotes("radioTwentyOne", ConstBestGameVotingTable.BEST_GAME_TABLE, ConstBestGameVotingTable.NAME);
 
         addSeries("roulette", amountRouletteVotes);
         addSeries("slots", amountSlotVotes);
@@ -50,11 +51,11 @@ public class ResultBestGameController implements Initializable {
         barChart.getData().add(series);
     }
 
-    public void mainMenu() throws IOException {
+    public void mainMenu() throws IOException, SQLException, ClassNotFoundException {
         switchPage.goMainMenu(resultBestGame);
     }
 
-    public void reVote() throws IOException {
+    public void reVote() throws IOException, SQLException, ClassNotFoundException {
         switchPage.goVotingBestGamePageChange(resultBestGame);
     }
 }

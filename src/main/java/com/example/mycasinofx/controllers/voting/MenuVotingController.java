@@ -1,6 +1,7 @@
 package com.example.mycasinofx.controllers.voting;
 
 import com.example.mycasinofx.Model.FxModels.SceneSwitch;
+import com.example.mycasinofx.Model.database.DAOPattern;
 import com.example.mycasinofx.Model.database.DatabaseManager;
 import com.example.mycasinofx.Model.database.constants.ConstBestGameVotingTable;
 import com.example.mycasinofx.Model.database.constants.ConstNewGameVotingTable;
@@ -26,7 +27,7 @@ public class MenuVotingController {
             switchPage.goLogin(menuVoting);
         }
         else{
-            if (databaseManager.voteCheckNewUser(player.getUserId(),
+            if (DAOPattern.voteCheckNewUser(player.getUserId(),
                     ConstNewGameVotingTable.NEW_GAME_TABLE,
                     ConstNewGameVotingTable.USERS_ID
             )){
@@ -43,7 +44,7 @@ public class MenuVotingController {
             switchPage.goLogin(menuVoting);
         }
         else{
-            if (databaseManager.voteCheckNewUser(player.getUserId(),
+            if (DAOPattern.voteCheckNewUser(player.getUserId(),
                     ConstBestGameVotingTable.BEST_GAME_TABLE,
                     ConstBestGameVotingTable.USERS_ID
                     )){

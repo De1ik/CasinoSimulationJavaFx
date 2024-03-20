@@ -2,6 +2,7 @@ package com.example.mycasinofx.controllers.Registration;
 
 import com.example.mycasinofx.Model.FxModels.SceneSwitch;
 import com.example.mycasinofx.Model.Hashing.PasswordHash;
+import com.example.mycasinofx.Model.database.DAOPattern;
 import com.example.mycasinofx.Model.database.DatabaseManager;
 import com.example.mycasinofx.controllers.switchPage.PageSwitchInterface;
 import com.example.mycasinofx.controllers.switchPage.SwitchPage;
@@ -74,10 +75,10 @@ public class LoginPageController {
         else if (!CheckValidData.isValidPasswordLength(loginPassword)) {
             registrationWarningsInterface.passwordLength(errorMessage);
         }
-        else if (databaseManager.checkValidEmail(loginEmail) != 1 && databaseManager.checkValidEmail(loginEmail) != -1) {
+        else if (DAOPattern.checkValidEmail(loginEmail) != 1 && DAOPattern.checkValidEmail(loginEmail) != -1) {
             registrationWarningsInterface.emailDoesNotExist(errorMessage);
         }
-        else if (databaseManager.checkValidPassword(loginPassword) != 1 && databaseManager.checkValidPassword(loginPassword) != -1){
+        else if (DAOPattern.checkValidPassword(loginPassword) != 1 && DAOPattern.checkValidPassword(loginPassword) != -1){
             registrationWarningsInterface.passwordDoesNotExist(errorMessage);
         }
         else{
@@ -87,8 +88,8 @@ public class LoginPageController {
     }
 
     @FXML
-    private void loginUser(String loginEmail, String loginPassword) throws IOException, SQLException, ClassNotFoundException {
-        databaseManager.loginUserDB(loginEmail, loginPassword);
+    private void loginUser(String loginEmail, String loginPassword){
+        DAOPattern.loginUserDB(loginEmail, loginPassword);
     }
 
     @FXML

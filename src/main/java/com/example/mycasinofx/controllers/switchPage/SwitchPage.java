@@ -9,6 +9,7 @@ import javafx.scene.layout.AnchorPane;
 import javafx.stage.Modality;
 
 import java.io.IOException;
+import java.sql.SQLException;
 
 public class SwitchPage implements PageSwitchInterface{
 
@@ -41,6 +42,11 @@ public class SwitchPage implements PageSwitchInterface{
     @Override
     public void goRoulette(AnchorPane anchorPane) throws IOException {
         checkLoginUser(anchorPane, "view/Games/roulette.fxml");
+    }
+
+    @Override
+    public void goRouletteResult(AnchorPane anchorPane) throws IOException {
+        checkLoginUser(anchorPane, "view/Games/rouletteResult.fxml");
     }
 
     @Override

@@ -9,6 +9,7 @@ import javafx.fxml.FXML;
 import javafx.scene.layout.AnchorPane;
 
 import java.io.IOException;
+import java.sql.SQLException;
 
 public class SlotsController {
 
@@ -25,8 +26,9 @@ public class SlotsController {
     }
 
 
-    public void playGame(){
+    public void playGame() throws SQLException, ClassNotFoundException {
         player.setBalance(player.getBalance() - player.getCurrentStake());
         System.out.println("CUR BAL: " + player.getBalance());
+        player.updateDBBalance();
     }
 }

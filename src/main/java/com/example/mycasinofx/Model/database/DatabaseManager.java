@@ -1,6 +1,5 @@
 package com.example.mycasinofx.Model.database;
 
-import com.example.mycasinofx.Model.database.constants.ConstBestGameVotingTable;
 import com.example.mycasinofx.Model.database.constants.ConstUserTable;
 import com.example.mycasinofx.Model.player.Player;
 
@@ -9,12 +8,13 @@ import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import java.sql.ResultSet;
-import java.util.Objects;
+import java.util.function.Consumer;
 
 public class DatabaseManager extends Config implements Data {
     Connection dbConnection;
 
-    public Connection getDbConnection() throws ClassNotFoundException, SQLException{
+
+    public Connection getDbConnection() throws ClassNotFoundException, SQLException {
         String connectionString = "jdbc:mysql://" + dbHost + ":" + dbPort + "/" + dbName;
 
         Class.forName("com.mysql.cj.jdbc.Driver");
@@ -23,24 +23,41 @@ public class DatabaseManager extends Config implements Data {
         return dbConnection;
     }
 
-    public void registerUser(String name, String password, String email, int age) throws SQLException, ClassNotFoundException {
-        String insert = "INSERT INTO " + ConstUserTable.USER_TABLE +
-                "(" + ConstUserTable.NAME + "," +
-                ConstUserTable.PASSWORD + "," +
-                ConstUserTable.EMAIL + "," +
-                ConstUserTable.AGE  + ")" +
-                "VALUES(?, ?, ?, ?)";
+    @Override
+    public void registerUserAsync(String name, String password, String email, int age, final Runnable onSuccess, final Consumer<Exception> onError) {
+        Thread thread = new Thread(new Runnable() {
+            public void run() {
+                String insert = "INSERT INTO " + ConstUserTable.USER_TABLE +
+                        "(" + ConstUserTable.NAME + "," +
+                        ConstUserTable.PASSWORD + "," +
+                        ConstUserTable.EMAIL + "," +
+                        ConstUserTable.AGE + ")" +
+                        "VALUES(?, ?, ?, ?)";
 
-        PreparedStatement query = getDbConnection().prepareStatement(insert);
-        query.setString(1, name);
-        query.setString(2, password);
-        query.setString(3, email);
-        query.setString(4, String.valueOf(age));
-
-        query.executeUpdate();
+                PreparedStatement query = null;
+                try {
+                    query = getDbConnection().prepareStatement(insert);
+                    onSuccess.run();
+                } catch (SQLException | ClassNotFoundException e) {
+                    onError.accept(e);
+                }
+                try {
+                    query.setString(1, name);
+                    query.setString(2, password);
+                    query.setString(3, email);
+                    query.setString(4, String.valueOf(age));
+                    query.executeUpdate();
+                    onSuccess.run();
+                } catch (SQLException e) {
+                    onError.accept(e);
+                }
+            }
+        });
+        thread.start();
     }
 
-    public void loginUserDB(String email, String password) throws SQLException, ClassNotFoundException {
+    @Override
+    public void loginUserDB(String email, String password, final Runnable onSuccess, final Consumer<Exception> onError) {
         String query = "SELECT * FROM " + ConstUserTable.USER_TABLE +
                 " WHERE " + ConstUserTable.EMAIL + " = ? AND " + ConstUserTable.PASSWORD + " = ?";
 
@@ -61,11 +78,15 @@ public class DatabaseManager extends Config implements Data {
 
                     Player player = Player.getPlayer();
                     player.setAllData(userId, userName, userPassword, userEmail, playerAge, balance);
+                    onSuccess.run();
                 }
             }
+        } catch (SQLException | ClassNotFoundException e) {
+            onError.accept(e);
         }
     }
 
+    @Override
     public int checkValidEmail(String email) throws SQLException, ClassNotFoundException {
         String checkEmail = "SELECT COUNT(*) AS email_count FROM " + ConstUserTable.USER_TABLE +
                 " WHERE " + ConstUserTable.EMAIL + " = '" + email + "'";
@@ -85,6 +106,7 @@ public class DatabaseManager extends Config implements Data {
         return -1;
     }
 
+    @Override
     public int checkValidPassword(String password) throws SQLException, ClassNotFoundException {
         String checkPassword = "SELECT COUNT(*) AS password_count FROM " + ConstUserTable.USER_TABLE +
                 " WHERE " + ConstUserTable.PASSWORD + " = '" + password + "'";
@@ -104,21 +126,40 @@ public class DatabaseManager extends Config implements Data {
         return -1;
     }
 
-    public void voteNewUser(int setPlayerId, String setCategory, String tableName, String usersId, String category) throws SQLException, ClassNotFoundException {
-        String insert = "INSERT INTO " + tableName +
-                "(" + usersId + "," +
-                category + ")" +
-                "VALUES(?, ?)";
+    @Override
+    public void voteNewUser(int setPlayerId, String setCategory, String tableName, String usersId, String category, final Runnable onSuccess, final Consumer<Exception> onError) {
+        Thread thread = new Thread(new Runnable() {
+            @Override
+            public void run() {
+                String insert = "INSERT INTO " + tableName +
+                        "(" + usersId + "," +
+                        category + ")" +
+                        "VALUES(?, ?)";
 
-        PreparedStatement query = getDbConnection().prepareStatement(insert);
-        query.setInt(1, setPlayerId);
-        query.setString(2, setCategory);
+                PreparedStatement query = null;
+                try {
+                    query = getDbConnection().prepareStatement(insert);
+                } catch (SQLException | ClassNotFoundException e) {
+                    throw new RuntimeException(e);
+                }
 
 
-        query.executeUpdate();
+                try {
+                    query.setInt(1, setPlayerId);
+                    query.setString(2, setCategory);
+                    query.executeUpdate();
+                    onSuccess.run();
+                } catch (SQLException e) {
+                    onError.accept(e); // Обработка ошибки
+                }
+
+            }
+        });
+        thread.start();
     }
 
 
+    @Override
     public boolean voteCheckNewUser(int setPlayerId, String tableName, String usersId) throws SQLException, ClassNotFoundException {
         String query = "SELECT * FROM " + tableName +
                 " WHERE " + usersId + " = ?";
@@ -137,22 +178,32 @@ public class DatabaseManager extends Config implements Data {
         }
     }
 
-    public void updateVoteUser(String setCategory, String tableName, String category) throws SQLException, ClassNotFoundException {
-        String insert = "UPDATE " + tableName +" SET " + category + " = ?";
 
-        PreparedStatement query = getDbConnection().prepareStatement(insert);
 
-        query.setString(1, setCategory);
+    //ПО СУТИ МОЖНО ЗАЮЗАТЬ КАКОЙ ТО ПАТЕРН, ЧТОБ ЗНАТЬ КАКАЯ ТАБЛИЦА ПРИШЛА
+    @Override
+    public void updateVoteUser(String setCategory, String tableName, String category, int userId, final Runnable onSuccess, final Consumer<Exception> onError) {
+        String insert = "UPDATE " + tableName + " SET " + category + " = ?" + " WHERE " + " idusers " + " = ?";
 
-        query.executeUpdate();
+        try (Connection connection = getDbConnection();
+             PreparedStatement query = connection.prepareStatement(insert)) {
+
+            query.setString(1, setCategory);
+            query.setInt(2, userId);
+            query.executeUpdate();
+            onSuccess.run();
+        } catch (SQLException | ClassNotFoundException e) {
+            onError.accept(e);
+        }
     }
 
+
+    @Override
     public int selectNumberVotes(String setCategory, String tableName, String category) throws SQLException, ClassNotFoundException {
         String query;
-        if (setCategory.isEmpty()){
+        if (setCategory.isEmpty()) {
             query = "SELECT COUNT(*) FROM " + tableName;
-        }
-        else {
+        } else {
             query = "SELECT COUNT(*) FROM " + tableName +
                     " WHERE " + category + " = ?";
         }
@@ -173,58 +224,28 @@ public class DatabaseManager extends Config implements Data {
     }
 
 
-
-
-
-
-
-
-
-
     @Override
-    public void connect() {
-        System.out.println("Hello World");
+    public void updateBalanceAsync(int id, double newBalance, final Runnable onSuccess, final Consumer<Exception> onError) {
+        Thread thread = new Thread(new Runnable() {
+            @Override
+            public void run() {
+                try (Connection connection = getDbConnection()) {
+                    String updateQuery = "UPDATE " + ConstUserTable.USER_TABLE +
+                            " SET " + ConstUserTable.BALANCE + " = ?" +
+                            " WHERE " + ConstUserTable.USERS_ID + " = ?";
+                    try (PreparedStatement statement = connection.prepareStatement(updateQuery)) {
+                        statement.setDouble(1, newBalance);
+                        statement.setInt(2, id);
+                        statement.executeUpdate();
+                        onSuccess.run(); // Выполнение действий при успешном обновлении
+                    }
+                } catch (SQLException | ClassNotFoundException e) {
+                    onError.accept(e); // Обработка ошибки
+                }
+            }
+        });
+        thread.start();
     }
 
-    @Override
-    public void executeQuery(String query) {
-        System.out.println("Hello World");
-    }
 
-    @Override
-    public void close() {
-        System.out.println("Hello World");
-    }
-
-    @Override
-    public String getData() {
-        return null;
-    }
-//    private Connection connection;
-//
-//    public DatabaseManager(String url, String username, String password) throws SQLException {
-//        // Установка соединения с базой данных
-//        connection = DriverManager.getConnection(url, username, password);
-//    }
-//
-//    public void executeUpdate(String sql) throws SQLException {
-//        // Выполнение SQL-запроса обновления (INSERT, UPDATE, DELETE)
-//        Statement statement = connection.createStatement();
-//        statement.executeUpdate(sql);
-//        statement.close();
-//    }
-//
-//    // Другие методы для выполнения запросов, получения данных и т.д.
-//
-//    public void close() throws SQLException {
-//        // Закрытие соединения с базой данных
-//        connection.close();
-//    }
-//
-//    public void saveUser(Player player) {
-//    }
-//
-//    public Player getUserByUsernameAndPassword(String username, String password) {
-//        return Player.getPlayer();
-//    }
 }

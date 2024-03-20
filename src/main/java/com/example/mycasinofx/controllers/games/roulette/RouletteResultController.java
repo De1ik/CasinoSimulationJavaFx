@@ -19,6 +19,7 @@ import javafx.scene.text.TextFlow;
 import javafx.util.Duration;
 
 import java.io.IOException;
+import java.sql.SQLException;
 
 public class RouletteResultController {
     @FXML
@@ -32,8 +33,6 @@ public class RouletteResultController {
     private Polygon zeroPolygon;
     @FXML
     private TextFlow textFlow;
-
-    private double profit;
 
     public Roulette roulette;
     
@@ -51,21 +50,10 @@ public class RouletteResultController {
     //-------------------Generate The Result Add All Components-----------------------
     public void generateGameResult() {
         updateLabels();
-        double playerBalanceBefore = player.getBalance();
-
-
-        roulette.setGamed(true);
-        roulette.generateResult();
         //convert to int because the type of my result is Object
         int curGeneration = roulette.getResult();
         System.out.println("RES: " + curGeneration);
-
-        roulette.checkWinner();
-        double playerBalanceAfter = player.getBalance();
-        this.profit = playerBalanceAfter - playerBalanceBefore;
-        System.out.println("PROFIT: "+this.profit);
-
-
+        System.out.println("PROFIT: "+player.getProfit());
         effectResult(gridPaneRoulette, curGeneration);
 
 
@@ -77,11 +65,11 @@ public class RouletteResultController {
 
     public void setMessageLabel(){
 
-        if (this.profit > 0){
-            messageLabel.setText("You won: " + this.profit);
+        if (player.getProfit() > 0){
+            messageLabel.setText("You won: " + player.getProfit());
         }
-        else if (this.profit < 0){
-            messageLabel.setText("You lose: " + (this.profit*-1));
+        else if (player.getProfit() < 0){
+            messageLabel.setText("You lose: " + (player.getProfit()*(-1)));
         }
         else{
             messageLabel.setText("You're left with the same balance");

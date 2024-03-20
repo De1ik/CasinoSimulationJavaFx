@@ -6,6 +6,7 @@ import com.example.mycasinofx.Model.player.Player;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Arrays;
 
@@ -49,7 +50,7 @@ public class Roulette extends Games {
 
 
     @Override
-    public Object checkWinner() {
+    public Object checkWinner()  {
         int curGeneration = getResult();
         //check the colours
         String color = RouletteSetUp.getColours(curGeneration);
@@ -80,9 +81,14 @@ public class Roulette extends Games {
 
     @Override
     public Object generateResult() {
-        resultNumber = (int) (Math.random() * 37);
+        this.setGamed(true);
+        this.resultNumber = (int) (Math.random() * 37);
         return null;
     }
+
+//    public int getCurrentResult(){
+//        return this.resultNumber;
+//    }
 
     //------------------------------Array cur Stakes------------------------------------
     public String getCurStakes(int index) {
