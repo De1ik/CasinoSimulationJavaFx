@@ -11,6 +11,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.layout.AnchorPane;
 
 import java.io.IOException;
+import java.sql.SQLException;
 
 public class SceneSwitch {
     public SceneSwitch(AnchorPane currentAnchorPane, String fxml) throws IOException {
@@ -28,6 +29,7 @@ public class SceneSwitch {
             RouletteController rouletteController = loader.getController();
             if (rouletteController != null) {
                 rouletteController.reset();
+                rouletteController.setProfit();
                 rouletteController.setPlayButtonDisable();
             }
         }

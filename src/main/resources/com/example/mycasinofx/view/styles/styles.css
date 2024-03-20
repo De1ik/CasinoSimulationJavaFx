@@ -117,3 +117,253 @@
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.red-roulette-stake-button {
+    -fx-font-family: "Arial", sans-serif;
+    -fx-background-color: #FF0900;
+    -fx-text-fill: white;
+    -fx-border-color: white;
+    -fx-content-display: center;
+
+    -fx-padding: 5px 5px;
+    -fx-border-radius: 5px;
+    -fx-background-radius: 5px;
+    -fx-border-width: 1px;
+    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.5), 10, 0, 0, 0);
+    -fx-text-alignment: center;
+
+    -fx-font-size: 12px;
+    -fx-cursor: hand;
+    -fx-background-insets: 0;
+    -fx-focus-traversable: false;
+    -fx-transition: all 0.3s;
+
+    /* Добавляем выравнивание по центру */
+    -fx-alignment: center;
+}
+
+.red-roulette-stake-button:hover {
+    -fx-background-color: #651b18;
+    -fx-transition: background-color 0.3s;
+}
+
+.red-roulette-stake-button-active {
+    -fx-font-family: "Arial", sans-serif;
+    -fx-background-color: rgba(255, 9, 0, 0.18);
+    -fx-text-fill: white;
+    -fx-border-color: rgba(171, 167, 167, 0.47);
+    -fx-content-display: center;
+    -fx-padding: 5px 5px;
+    -fx-border-width: 1px;
+    -fx-border-radius: 5px;
+    -fx-background-radius: 5px;
+    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.5), 10, 0, 0, 0);
+    -fx-text-alignment: center;
+    -fx-font-size: 12px;
+    -fx-cursor: hand;
+    -fx-background-insets: 0;
+    -fx-focus-traversable: false;
+    -fx-transition: all 0.3s;
+
+    /* Добавляем выравнивание по центру */
+    -fx-alignment: center;
+}
+
+.red-roulette-stake-button-active:hover {
+    -fx-background-color: rgba(0, 255, 107, 0.16);
+    -fx-transition: background-color 0.3s;
+}
+
+
+
+
+
+.black-roulette-stake-button {
+    -fx-font-family: "Arial", sans-serif;
+    -fx-background-color: black;
+    -fx-text-fill: white;
+    -fx-border-color: white;
+    -fx-content-display: center;
+
+    -fx-padding: 5px 5px;
+    -fx-border-radius: 5px;
+    -fx-background-radius: 5px;
+    -fx-border-width: 1px;
+    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.5), 10, 0, 0, 0);
+    -fx-text-alignment: center;
+
+    -fx-font-size: 12px;
+    -fx-cursor: hand;
+    -fx-background-insets: 0;
+    -fx-focus-traversable: false;
+    -fx-transition: all 0.3s;
+
+    /* Добавляем выравнивание по центру */
+    -fx-alignment: center;
+}
+
+.black-roulette-stake-button:hover {
+    -fx-background-color: rgba(0, 0, 0, 0.27);
+    -fx-transition: background-color 0.3s;
+}
+
+.black-roulette-stake-button-active {
+    -fx-font-family: "Arial", sans-serif;
+    -fx-background-color: rgba(0, 0, 0, 0.13);
+    -fx-text-fill: white;
+    -fx-border-color: rgba(171, 167, 167, 0.47);
+    -fx-content-display: center;
+    -fx-padding: 5px 5px;
+    -fx-border-width: 1px;
+    -fx-border-radius: 5px;
+    -fx-background-radius: 5px;
+    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.5), 10, 0, 0, 0);
+    -fx-text-alignment: center;
+    -fx-font-size: 12px;
+    -fx-cursor: hand;
+    -fx-background-insets: 0;
+    -fx-focus-traversable: false;
+    -fx-transition: all 0.3s;
+
+    /* Добавляем выравнивание по центру */
+    -fx-alignment: center;
+}
+
+.black-roulette-stake-button-active:hover {
+    -fx-background-color: rgba(0, 0, 0, 0.22);
+    -fx-transition: background-color 0.3s;
+}
+
+
+
+.green-roulette-stake-button {
+    -fx-font-family: "Arial", sans-serif;
+    -fx-background-color:  #1A7F49;
+    -fx-text-fill: white;
+    -fx-border-color: white;
+    -fx-content-display: center;
+
+    -fx-padding: 5px 5px;
+    -fx-border-radius: 5px;
+    -fx-background-radius: 5px;
+    -fx-border-width: 1px;
+    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.5), 10, 0, 0, 0);
+    -fx-text-alignment: center;
+
+    -fx-font-size: 12px;
+    -fx-cursor: hand;
+    -fx-background-insets: 0;
+    -fx-focus-traversable: false;
+    -fx-transition: all 0.3s;
+
+    /* Добавляем выравнивание по центру */
+    -fx-alignment: center;
+}
+
+.green-roulette-stake-button:hover {
+    -fx-background-color: rgba(26, 127, 73, 0.37);
+    -fx-transition: background-color 0.3s;
+}
+
+.green-roulette-stake-button-active {
+    -fx-font-family: "Arial", sans-serif;
+    -fx-background-color: rgba(26, 127, 73, 0.32);
+    -fx-text-fill: white;
+    -fx-border-color: rgba(171, 167, 167, 0.47);
+    -fx-content-display: center;
+    -fx-padding: 5px 5px;
+    -fx-border-width: 1px;
+    -fx-border-radius: 5px;
+    -fx-background-radius: 5px;
+    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.5), 10, 0, 0, 0);
+    -fx-text-alignment: center;
+    -fx-font-size: 12px;
+    -fx-cursor: hand;
+    -fx-background-insets: 0;
+    -fx-focus-traversable: false;
+    -fx-transition: all 0.3s;
+
+    /* Добавляем выравнивание по центру */
+    -fx-alignment: center;
+}
+
+.green-roulette-stake-button-active:hover {
+    -fx-background-color: rgba(0, 255, 107, 0.09);
+    -fx-transition: background-color 0.3s;
+}
+
+
+
+.pair-roulette-stake-button {
+    -fx-font-family: "Arial", sans-serif;
+    -fx-background-color:  #BE6B1E;
+    -fx-text-fill: white;
+    -fx-border-color: white;
+    -fx-content-display: center;
+
+    -fx-padding: 5px 5px;
+    -fx-border-radius: 5px;
+    -fx-background-radius: 5px;
+    -fx-border-width: 1px;
+    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.5), 10, 0, 0, 0);
+    -fx-text-alignment: center;
+
+    -fx-font-size: 12px;
+    -fx-cursor: hand;
+    -fx-background-insets: 0;
+    -fx-focus-traversable: false;
+    -fx-transition: all 0.3s;
+
+    /* Добавляем выравнивание по центру */
+    -fx-alignment: center;
+}
+
+.pair-roulette-stake-button:hover {
+    -fx-background-color: rgba(190, 107, 30, 0.37);
+    -fx-transition: background-color 0.3s;
+}
+
+.pair-roulette-stake-button-active {
+    -fx-font-family: "Arial", sans-serif;
+    -fx-background-color: rgba(190, 107, 30, 0.45);
+    -fx-text-fill: white;
+    -fx-border-color: rgba(171, 167, 167, 0.47);
+    -fx-content-display: center;
+    -fx-padding: 5px 5px;
+    -fx-border-width: 1px;
+    -fx-border-radius: 5px;
+    -fx-background-radius: 5px;
+    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.5), 10, 0, 0, 0);
+    -fx-text-alignment: center;
+    -fx-font-size: 12px;
+    -fx-cursor: hand;
+    -fx-background-insets: 0;
+    -fx-focus-traversable: false;
+    -fx-transition: all 0.3s;
+
+    /* Добавляем выравнивание по центру */
+    -fx-alignment: center;
+}
+
+
+.pair-roulette-stake-button-active:hover {
+    -fx-background-color: rgba(190, 107, 30, 0.63);
+    -fx-transition: background-color 0.3s;
+}
+
+
+

@@ -1,5 +1,6 @@
 package com.example.mycasinofx.controllers.voting.resultVoting;
 
+import com.example.mycasinofx.Model.database.DAOPattern;
 import com.example.mycasinofx.Model.database.DatabaseManager;
 import com.example.mycasinofx.Model.database.constants.ConstBestGameVotingTable;
 import com.example.mycasinofx.Model.database.constants.ConstNewGameVotingTable;
@@ -36,11 +37,15 @@ public class ResultNewGameController implements Initializable {
     }
 
     private void setBarChart() throws SQLException, ClassNotFoundException {
-        int amountBackarat = databaseManager.selectNumberVotes("radioBackarat", ConstNewGameVotingTable.NEW_GAME_TABLE, ConstNewGameVotingTable.NAME);
-        int amountPoker = databaseManager.selectNumberVotes("radioPoker", ConstNewGameVotingTable.NEW_GAME_TABLE, ConstNewGameVotingTable.NAME);
-        int amountDurak = databaseManager.selectNumberVotes("radioDurak", ConstNewGameVotingTable.NEW_GAME_TABLE, ConstNewGameVotingTable.NAME);
-        int amountOthers = databaseManager.selectNumberVotes("", ConstNewGameVotingTable.NEW_GAME_TABLE, ConstNewGameVotingTable.NAME);
+        int amountBackarat = DAOPattern.selectNumberVotes("radioBackarat", ConstNewGameVotingTable.NEW_GAME_TABLE, ConstNewGameVotingTable.NAME);
+        System.out.println("amountBackarat" + amountBackarat);
+        int amountPoker = DAOPattern.selectNumberVotes("radioPoker", ConstNewGameVotingTable.NEW_GAME_TABLE, ConstNewGameVotingTable.NAME);
+        System.out.println("amountPoker" + amountPoker);
+        int amountDurak = DAOPattern.selectNumberVotes("radioDurak", ConstNewGameVotingTable.NEW_GAME_TABLE, ConstNewGameVotingTable.NAME);
+        System.out.println("amountOthers" + amountDurak);
+        int amountOthers = DAOPattern.selectNumberVotes("", ConstNewGameVotingTable.NEW_GAME_TABLE, ConstNewGameVotingTable.NAME);
         amountOthers -= (amountBackarat + amountPoker + amountDurak);
+        System.out.println("amountOthers" + amountOthers);
 
 
         addSeries("Backarat", amountBackarat);

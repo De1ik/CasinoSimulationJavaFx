@@ -3,6 +3,7 @@ package com.example.mycasinofx.controllers.switchPage;
 import javafx.scene.layout.AnchorPane;
 
 import java.io.IOException;
+import java.sql.SQLException;
 
 public interface PageSwitchInterface {
     public void goMainMenu(AnchorPane anchorPane) throws IOException;
@@ -10,6 +11,7 @@ public interface PageSwitchInterface {
     public void goRegister(AnchorPane anchorPane) throws IOException;
     public void goSlots(AnchorPane anchorPane) throws IOException;
     public void goRoulette(AnchorPane anchorPane) throws IOException;
+    public void goRouletteResult(AnchorPane anchorPane) throws IOException;
     public void goFullList(AnchorPane anchorPane) throws IOException;
     public void confirmExit();
     public void checkLoginUser(AnchorPane anchorPane, String path) throws IOException;

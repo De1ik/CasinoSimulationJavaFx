@@ -1,13 +1,16 @@
 package com.example.mycasinofx.controllers.games.roulette;
 
 
+import com.example.mycasinofx.Model.FxModels.NumericInputDialog;
 import com.example.mycasinofx.Model.FxModels.SceneSwitch;
 
+import com.example.mycasinofx.Model.games.Games;
 import com.example.mycasinofx.Model.games.Roulette.RouletteSetUp;
 import com.example.mycasinofx.Model.player.Player;
 import com.example.mycasinofx.Model.games.Roulette.Roulette;
 import com.example.mycasinofx.controllers.switchPage.PageSwitchInterface;
 import com.example.mycasinofx.controllers.switchPage.SwitchPage;
+import javafx.application.Platform;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
@@ -22,6 +25,7 @@ import javafx.scene.paint.Color;
 import javafx.scene.shape.Polygon;
 
 import java.io.IOException;
+import java.sql.SQLException;
 
 
 public class RouletteController {
@@ -30,7 +34,7 @@ public class RouletteController {
     @FXML
     private Label balanceLabel, currentStakeLabel, exactNumberLabel;
     @FXML
-    private Button evenButton, oddButton, redButton, blackButton, greenButton, playRouletteButton, goMainMenuButton;
+    private Button evenButton, oddButton, redButton, blackButton, greenButton, playRouletteButton;
     @FXML
     private GridPane gridPaneRoulette;
     @FXML
@@ -40,23 +44,22 @@ public class RouletteController {
     private final Roulette roulette;
     private PageSwitchInterface pageSwitch;
 
+    private double profit;
+
     public RouletteController() {
         roulette = Roulette.getRoulette();
         player = Player.getPlayer();
+    }
+
+    public void setProfit(){
+        profit = player.getBalance();
     }
 
 
     @FXML
     public void initialize() {
         pageSwitch = new SwitchPage();
-        evenButton.getStyleClass().add("custom-button");
-        oddButton.getStyleClass().add("custom-button");
-        redButton.getStyleClass().add("custom-button");
-        blackButton.getStyleClass().add("custom-button");
-        greenButton.getStyleClass().add("custom-button");
-        playRouletteButton.getStyleClass().add("custom-button-management");
-        goMainMenuButton.getStyleClass().add("custom-button-management");
-
+//        redButton.getStyleClass().add("red-roulette-stake-button-active");
 
         EventHandler<MouseEvent> rouletteClickHandler = event -> {
             Background background;
@@ -109,6 +112,7 @@ public class RouletteController {
                 roulette.setCurStakes(" Exact Number ", 5);
                 playRouletteButton.setDisable(false);
             }
+            updateLabels();
         };
 
 
@@ -133,12 +137,57 @@ public class RouletteController {
     //-----------------------------------------------------------------------------------------------------------------
 
     //--------------------------update the components after clicking on the button-------------------------------------
+
+    public void setNonActiveButton(String string, Button button) {
+        switch (string){
+            case " Red ":
+                button.getStyleClass().clear();
+                button.getStyleClass().add("red-roulette-stake-button");
+                break;
+            case " Black ":
+                button.getStyleClass().clear();
+                button.getStyleClass().add("black-roulette-stake-button");
+                break;
+            case " Green ":
+                button.getStyleClass().clear();
+                button.getStyleClass().add("green-roulette-stake-button");
+                break;
+            default:
+                button.getStyleClass().clear();
+                button.getStyleClass().add("pair-roulette-stake-button");
+                break;
+        }
+    }
+
+    public void setActiveButton(String string, Button button) {
+        switch (string){
+            case " Red ":
+                button.getStyleClass().clear();
+                button.getStyleClass().add("red-roulette-stake-button-active");
+                break;
+            case " Black ":
+                button.getStyleClass().clear();
+                button.getStyleClass().add("black-roulette-stake-button-active");
+                break;
+            case " Green ":
+                button.getStyleClass().clear();
+                button.getStyleClass().add("green-roulette-stake-button-active");
+                break;
+            default:
+                button.getStyleClass().clear();
+                button.getStyleClass().add("pair-roulette-stake-button-active");
+                break;
+        }
+    }
+
+
+
     @FXML
     public boolean clickButtonStake(boolean flag, Button button, int index, String string) {
         if (flag) {
             //change the color due css
-            button.getStyleClass().clear();
-            button.getStyleClass().add("custom-button");
+            setNonActiveButton(string, button);
+
             //------------------------------------------
 
             flag = false;
@@ -149,8 +198,7 @@ public class RouletteController {
             playRouletteButton.setDisable(false);
 
             //change the color due css
-            button.getStyleClass().clear();
-            button.getStyleClass().add("custom-button-active");
+            setActiveButton(string, button);
             //------------------------------------------
             roulette.setCurStakes(string, index);
             player.setBalance(player.getBalance() - player.getCurrentStake());
@@ -191,7 +239,7 @@ public class RouletteController {
 
     @FXML
     public void green() {
-        roulette.setBlackStakeSet(clickButtonStake(roulette.isGreenStakeSet(), greenButton, 4, " Green "));
+        roulette.setGreenStakeSet(clickButtonStake(roulette.isGreenStakeSet(), greenButton, 4, " Green "));
         updateLabels();
         setPlayButtonDisable();
     }
@@ -205,7 +253,7 @@ public class RouletteController {
         if (res.equals("")) {
             exactNumberLabel.setText("You Did Not Select Exact Number");
         } else {
-            exactNumberLabel.setText("Exact Number Which you Select: " + res);
+            exactNumberLabel.setText(res);
         }
     }
 
@@ -220,7 +268,7 @@ public class RouletteController {
         for (int i = 0; i < 6; i++) {
             if (roulette.getCurStakes(i) != null) res += roulette.getCurStakes(i);
         }
-        currentStakeLabel.setText("Current stake is: " + res);
+        currentStakeLabel.setText(res);
     }
     //-----------------------------------------------------------------------------------------------------------------
 
@@ -252,10 +300,21 @@ public class RouletteController {
 
 
     @FXML
-    public void playRoulette() throws IOException {
+    public void playRoulette() throws IOException, SQLException, ClassNotFoundException {
 
         if (roulette.checkStartGame()) {
-            new SceneSwitch(rouletteAnchor, "view/Games/rouletteResult.fxml");
+            player.updateDBBalance();
+
+
+            roulette.generateResult();
+            roulette.checkWinner();
+
+            player.updateDBBalance();
+            profit = -1*(profit - player.getBalance());
+
+            player.setProfit(profit);
+
+            pageSwitch.goRouletteResult(rouletteAnchor);
 
         } else {
             //if we can not start game show a warning that we need to do a stake
@@ -268,10 +327,55 @@ public class RouletteController {
     }
 
     @FXML
-    public void goMainMenu() throws IOException {
+    public void goMainMenu() throws IOException, SQLException, ClassNotFoundException {
         reset();
+        player.updateDBBalance();
         pageSwitch.goMainMenu(rouletteAnchor);
     }
+
+
+
+
+
+
+
+//
+//    @FXML
+//    public void setBalanceViewLabel(){
+//        Platform.runLater(() -> setBalanceViewLabel.setText("Balance: " + player.getBalance()));
+//    }
+//    @FXML
+//    public void setStakeViewLabel(){
+//        Platform.runLater(() -> stakeLabelView.setText("Stake: " + player.getCurrentStake()));
+//    }
+//    @FXML
+//    public void setStakeErrorSuccess(String result, boolean success){
+//        Platform.runLater(() -> {
+//            stakeErrorSuccess.setText(result);
+//            if (success)stakeErrorSuccess.setTextFill(Color.GREEN);
+//            else stakeErrorSuccess.setTextFill(Color.RED);
+//        });
+//
+//    }
+//
+//
+//    @FXML
+//    private void setStakeDialog() {
+//        NumericInputDialog dialog = new NumericInputDialog("Set The Current Stake", "Enter the number:", "Stake is:");
+//        dialog.showNumericInputDialog().ifPresent(value -> {
+//            value = Math.round(value * 100.0) / 100.0;
+//            if ((player.getBalance() >= value) && (value > Games.getMinimumStake()) && (value < Games.getMaximumStake())) {
+//                player.setCurrentStake(value);
+//                setStakeErrorSuccess("The Stake Was Changed", true);
+//                setStakeViewLabel();
+//            }
+//            else {
+//                if (value < Games.getMinimumStake()) setStakeErrorSuccess("The minimum Stake is " + Games.getMinimumStake(), false);
+//                else if (value > Games.getMaximumStake()) setStakeErrorSuccess("The maximum Stake is " + Games.getMaximumStake(), false);
+//                else setStakeErrorSuccess("You Do Not Have Money!", false);
+//            }
+//        });
+//    }
 }
 
 

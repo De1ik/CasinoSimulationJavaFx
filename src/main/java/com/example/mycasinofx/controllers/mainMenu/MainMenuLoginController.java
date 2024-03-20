@@ -48,13 +48,15 @@ public class MainMenuLoginController {
     }
 
 
-
+    @FXML
     public void setBalanceViewLabel(){
         Platform.runLater(() -> setBalanceViewLabel.setText("Balance: " + player.getBalance()));
     }
+    @FXML
     public void setStakeViewLabel(){
         Platform.runLater(() -> stakeLabelView.setText("Stake: " + player.getCurrentStake()));
     }
+    @FXML
     public void setStakeErrorSuccess(String result, boolean success){
         Platform.runLater(() -> {
             stakeErrorSuccess.setText(result);

@@ -1,6 +1,10 @@
 package com.example.mycasinofx.Model.player;
 
+import com.example.mycasinofx.Model.database.DAOPattern;
+import com.example.mycasinofx.Model.database.Data;
 import com.example.mycasinofx.Model.database.DatabaseManager;
+
+import java.sql.SQLException;
 
 public class Player {
     private String username;
@@ -8,7 +12,19 @@ public class Player {
     private String email;
     private int age;
     private int user_id;
+    private double profit;
+    private final DatabaseManager databaseManager = new DatabaseManager();
 
+    private final DAOPattern data = new DAOPattern();
+
+
+    public double getProfit() {
+        return profit;
+    }
+
+    public void setProfit(double profit) {
+        this.profit = profit;
+    }
 
     public String getUsername() {
         return username;
@@ -54,8 +70,12 @@ public class Player {
         return balance;
     }
 
-    public void setBalance(double balance) {
+    public void setBalance(double balance){
         this.balance = balance;
+    }
+
+    public void updateDBBalance(){
+        DAOPattern.updateBalance(this.user_id, this.balance);
     }
 
     public void setAllData(int user_id, String name, String password, String email, int age, double balance){
@@ -64,18 +84,17 @@ public class Player {
         setPasswordHash(password);
         setEmail(email);
         setAge(age);
-        setBalance(balance);
+        this.balance = balance;
     }
 
 
     private double balance;
     private double currentStake;
-    private DatabaseManager databaseManager;
 
     private static Player playerInstance = null;
 
     private Player(){
-        setBalance(50000);
+//        setBalance(50000);
         setCurrentStake(5);
     }
 

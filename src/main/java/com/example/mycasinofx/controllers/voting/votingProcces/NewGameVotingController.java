@@ -1,5 +1,6 @@
 package com.example.mycasinofx.controllers.voting.votingProcces;
 
+import com.example.mycasinofx.Model.database.DAOPattern;
 import com.example.mycasinofx.Model.database.DatabaseManager;
 import com.example.mycasinofx.Model.database.constants.ConstBestGameVotingTable;
 import com.example.mycasinofx.Model.database.constants.ConstNewGameVotingTable;
@@ -70,16 +71,16 @@ public class NewGameVotingController {
                     resultToDb = resultVoting.getId();
                 }
 
-                if (databaseManager.voteCheckNewUser(player.getUserId(),
+                if (DAOPattern.voteCheckNewUser(player.getUserId(),
                         ConstNewGameVotingTable.NEW_GAME_TABLE,
                         ConstNewGameVotingTable.USERS_ID
                 )){
-                    databaseManager.updateVoteUser(resultToDb,
+                    DAOPattern.updateVoteUser(resultToDb,
                             ConstNewGameVotingTable.NEW_GAME_TABLE,
-                            ConstNewGameVotingTable.NAME);
+                            ConstNewGameVotingTable.NAME, player.getUserId());
                 }
                 else{
-                    databaseManager.voteNewUser(player.getUserId(),
+                    DAOPattern.voteNewUser(player.getUserId(),
                             resultVoting.getId(),
                             ConstNewGameVotingTable.NEW_GAME_TABLE,
                             ConstNewGameVotingTable.USERS_ID,
