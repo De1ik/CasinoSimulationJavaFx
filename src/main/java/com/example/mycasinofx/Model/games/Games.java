@@ -4,6 +4,8 @@ public abstract class Games implements GameInterface{
     final private static double MINIMUM_STAKE = 5;
     final private static double MAXIMUM_STAKE = 50000;
     final private static int MULTIPLIER2x = 2;
+    final private static int MULTIPLIER3x = 3;
+    final private static int MULTIPLIER5x = 5;
     final private static int MULTIPLIER36x = 36;
 
 

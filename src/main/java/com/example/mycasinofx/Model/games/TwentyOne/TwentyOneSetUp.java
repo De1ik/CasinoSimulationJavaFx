@@ -7,7 +7,7 @@ public class TwentyOneSetUp implements GameSetUpInterface {
 
 
     @Override
-    public void gameSetUp() {
-
+    public Object gameSetUp() {
+        return null;
     }
 }

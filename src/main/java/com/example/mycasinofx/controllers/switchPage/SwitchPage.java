@@ -36,17 +36,17 @@ public class SwitchPage implements PageSwitchInterface{
 
     @Override
     public void goSlots(AnchorPane anchorPane) throws IOException {
-        checkLoginUser(anchorPane, "view/Games/slots.fxml");
+        checkLoginUser(anchorPane, "view/Games/slot/slots.fxml");
     }
 
     @Override
     public void goRoulette(AnchorPane anchorPane) throws IOException {
-        checkLoginUser(anchorPane, "view/Games/roulette.fxml");
+        checkLoginUser(anchorPane, "view/Games/roulette/roulette.fxml");
     }
 
     @Override
     public void goRouletteResult(AnchorPane anchorPane) throws IOException {
-        checkLoginUser(anchorPane, "view/Games/rouletteResult.fxml");
+        checkLoginUser(anchorPane, "view/Games/roulette/rouletteResult.fxml");
     }
 
     @Override

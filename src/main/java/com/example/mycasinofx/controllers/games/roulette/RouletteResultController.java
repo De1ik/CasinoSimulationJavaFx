@@ -1,6 +1,5 @@
 package com.example.mycasinofx.controllers.games.roulette;
 
-import com.example.mycasinofx.Model.FxModels.SceneSwitch;
 import com.example.mycasinofx.Model.games.Roulette.RouletteSetUp;
 import com.example.mycasinofx.Model.player.Player;
 import com.example.mycasinofx.Model.games.Roulette.Roulette;
@@ -8,6 +7,7 @@ import com.example.mycasinofx.controllers.switchPage.PageSwitchInterface;
 import com.example.mycasinofx.controllers.switchPage.SwitchPage;
 import javafx.animation.PauseTransition;
 import javafx.fxml.FXML;
+import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.Background;
@@ -19,31 +19,64 @@ import javafx.scene.text.TextFlow;
 import javafx.util.Duration;
 
 import java.io.IOException;
-import java.sql.SQLException;
 
 public class RouletteResultController {
     @FXML
     private AnchorPane rouletteResultAnchor;
 
     @FXML
-    private Label balanceLabel, exactNumberLabel, messageLabel;
+    private Label balanceLabel, exactNumberLabel, messageLabel, amountStake, balanceDefaultLabel;
     @FXML
     private GridPane gridPaneRoulette;
     @FXML
     private Polygon zeroPolygon;
     @FXML
     private TextFlow textFlow;
+    @FXML
+    private Button redButton, blackButton, greenButton, evenButton, oddButton;
 
     public Roulette roulette;
-    
+
     private final Player player = Player.getPlayer();
     private PageSwitchInterface pageSwitch;
 
-    public RouletteResultController(){
+    public void initialize(){
+        redButton.setMouseTransparent(true);
+        blackButton.setMouseTransparent(true);
+        greenButton.setMouseTransparent(true);
+        evenButton.setMouseTransparent(true);
+        oddButton.setMouseTransparent(true);
+    }
+
+
+    public RouletteResultController() {
         roulette = Roulette.getRoulette();
         pageSwitch = new SwitchPage();
     }
 
+
+    public void setStakeButtons() {
+        if (roulette.isGreenStakeSet()) {
+            greenButton.getStyleClass().clear();
+            greenButton.getStyleClass().add("green-roulette-stake-button-active");
+        }
+        if (roulette.isRedStakeSet()) {
+            redButton.getStyleClass().clear();
+            redButton.getStyleClass().add("red-roulette-stake-button-active");
+        }
+        if (roulette.isBlackStakeSet()) {
+            blackButton.getStyleClass().clear();
+            blackButton.getStyleClass().add("black-roulette-stake-button-active");
+        }
+        if (roulette.isEvenStakeSet()) {
+            evenButton.getStyleClass().clear();
+            evenButton.getStyleClass().add("pair-roulette-stake-button-active");
+        }
+        if (roulette.isOddStakeSet()) {
+            oddButton.getStyleClass().clear();
+            oddButton.getStyleClass().add("pair-roulette-stake-button-active");
+        }
+    }
 
 
     ////profit before and profit after will be the same
@@ -53,7 +86,7 @@ public class RouletteResultController {
         //convert to int because the type of my result is Object
         int curGeneration = roulette.getResult();
         System.out.println("RES: " + curGeneration);
-        System.out.println("PROFIT: "+player.getProfit());
+        System.out.println("PROFIT: " + player.getProfit());
         effectResult(gridPaneRoulette, curGeneration);
 
 
@@ -61,18 +94,22 @@ public class RouletteResultController {
     //--------------------------------------------------------------------------------
 
 
+    public void setMessageLabel() {
 
-
-    public void setMessageLabel(){
-
-        if (player.getProfit() > 0){
+        balanceDefaultLabel.setText("Current balance is: ");
+        balanceLabel.setText("" + player.getBalance());
+        if (player.getProfit() > 0) {
             messageLabel.setText("You won: " + player.getProfit());
-        }
-        else if (player.getProfit() < 0){
-            messageLabel.setText("You lose: " + (player.getProfit()*(-1)));
-        }
-        else{
+            messageLabel.setStyle("-fx-border-color: #1a5709; -fx-text-fill: #1a5709");
+            balanceLabel.setStyle("-fx-border-color: #1a5709; -fx-text-fill: #1a5709");
+        } else if (player.getProfit() < 0) {
+            messageLabel.setText("You lose: " + (player.getProfit() * (-1)));
+            messageLabel.setStyle("-fx-border-color: #750808;  -fx-text-fill: #750808");
+            balanceLabel.setStyle("-fx-border-color: #750808;  -fx-text-fill: #750808");
+        } else {
             messageLabel.setText("You're left with the same balance");
+            messageLabel.setStyle("-fx-border-color: #ffffff; -fx-text-fill: white");
+            balanceLabel.setStyle("-fx-border-color: #ffffff; -fx-text-fill: white");
         }
     }
 
@@ -101,6 +138,7 @@ public class RouletteResultController {
         }
 
     }
+
     @FXML
     public void setExactNumberText() {
         String res = roulette.getStringExactNumber();
@@ -108,28 +146,30 @@ public class RouletteResultController {
         if (res.equals("")) {
             exactNumberLabel.setText("You Did Not Select Exact Number");
         } else {
-            exactNumberLabel.setText("Exact Number Which you Select: " + res);
+            exactNumberLabel.setText("" + res);
         }
     }
+
+
     @FXML
-    public void setBalanceLabel() {
-        balanceLabel.setText("Current balance is: " + player.getBalance());
+    public void setAmountStake() {
+        amountStake.setText("Amount of Stake: " + player.getCurrentStake());
     }
 
-    public void updateLabels(){
+    public void updateLabels() {
         setCurrentStakeText();
         setExactNumberText();
-        setBalanceLabel();
+        setAmountStake();
+//        setBalanceLabel();
     }
     //--------------------------------------------------------------------------------
-
-
 
 
     //-------------------Start Animation----------------------------------------------
     public void effectResult(GridPane gridPane, int curGeneration) {
         changeColor(gridPane, 0, 10, curGeneration);
     }
+
     private void changeColor(GridPane gridPane, int index, int delay, int curGeneration) {
         if (index < 55) {
             int number = ((curGeneration + 19) + index) % 37;
@@ -144,9 +184,7 @@ public class RouletteResultController {
                         changeColor(gridPane, index + 1, newDelay, curGeneration);
                     });
                     pause.play();
-                }
-                else{
-                    setBalanceLabel();
+                } else {
                     setMessageLabel();
                 }
             } else if (gridPane.getChildren().get(number) instanceof Label) {
@@ -182,21 +220,17 @@ public class RouletteResultController {
                         changeColor(gridPane, index + 1, newDelay, curGeneration);
                     });
                     pause.play();
-                }
-                else {
-                    setBalanceLabel();
+                } else {
                     setMessageLabel();
                 }
             } else {
                 changeColor(gridPane, index + 1, delay, curGeneration); // Пропускаем элементы, которые не являются Label
             }
         } else {
-            System.out.println("END OF ANIMATION");
-            setBalanceLabel();
+            //end animation
         }
     }
     //--------------------------------------------------------------------------------
-
 
 
     //-----------------------------Change Page----------------------------------------
@@ -208,4 +242,5 @@ public class RouletteResultController {
         pageSwitch.goMainMenu(rouletteResultAnchor);
     }
     //---------------------------------------------------------------------------------
+
 }

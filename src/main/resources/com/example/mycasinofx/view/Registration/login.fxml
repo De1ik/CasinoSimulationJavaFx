@@ -38,12 +38,12 @@
                         </VBox>
                         <HBox alignment="CENTER" prefHeight="46.0" prefWidth="306.0">
                            <children>
-                              <TextField fx:id="emailField" prefHeight="31.0" prefWidth="193.0" promptText="Email" style="-fx-background-radius: 50; -fx-border-radius: 50;" />
+                              <TextField fx:id="emailField" prefHeight="31.0" prefWidth="193.0" promptText="Email" style="-fx-background-radius: 50; -fx-border-radius: 50;" text="ole@gmail.com" />
                            </children>
                         </HBox>
                         <HBox alignment="CENTER" prefHeight="46.0" prefWidth="306.0">
                            <children>
-                              <TextField fx:id="passwordField" prefHeight="31.0" prefWidth="193.0" promptText="Password" style="-fx-background-radius: 50; -fx-border-radius: 50;" />
+                              <TextField fx:id="passwordField" prefHeight="31.0" prefWidth="193.0" promptText="Password" style="-fx-background-radius: 50; -fx-border-radius: 50;" text="123456" />
                            </children>
                         </HBox>
                         <HBox alignment="BOTTOM_CENTER" prefHeight="29.0" prefWidth="309.0">

@@ -13,9 +13,9 @@
 <?import javafx.scene.shape.Polygon?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane fx:id="rouletteAnchor" cacheShape="false" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="417.0" prefWidth="616.0" stylesheets="@../styles/styles.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.mycasinofx.controllers.games.roulette.RouletteController">
+<AnchorPane fx:id="rouletteAnchor" cacheShape="false" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="417.0" prefWidth="616.0" stylesheets="@../../styles/styles.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.mycasinofx.controllers.games.roulette.RouletteController">
    <children>
-      <BorderPane prefHeight="417.0" prefWidth="616.0">
+      <BorderPane fx:id="borderPane" prefHeight="417.0" prefWidth="616.0">
          <center>
             <AnchorPane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
                <children>
@@ -186,7 +186,7 @@
                   <HBox prefHeight="19.0" prefWidth="225.0">
                      <children>
                         <Label prefHeight="34.0" prefWidth="24.0" />
-                        <Label prefHeight="17.0" prefWidth="161.0" text="Amount of Stake: " textFill="WHITE">
+                        <Label fx:id="amountStake" prefHeight="17.0" prefWidth="161.0" text="Amount of Stake: " textFill="WHITE">
                            <font>
                               <Font name="System Bold" size="12.0" />
                            </font>
@@ -204,7 +204,7 @@
                   </HBox>
                   <HBox alignment="TOP_CENTER" prefHeight="29.0" prefWidth="225.0">
                      <children>
-                        <Button alignment="CENTER" contentDisplay="BOTTOM" mnemonicParsing="false" prefHeight="23.0" prefWidth="106.0" style="-fx-background-radius: 50; -fx-border-radius: 50; -fx-background-color: White; -fx-border-color: #367b53; -fx-text-fill: #367b53; -fx-border-width: 1.3; -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.5), 10, 0, 0, 0);" text="Change The Stake" textFill="#367b53">
+                        <Button alignment="CENTER" contentDisplay="BOTTOM" mnemonicParsing="false" onAction="#doStake" prefHeight="23.0" prefWidth="106.0" style="-fx-background-radius: 50; -fx-border-radius: 50; -fx-background-color: White; -fx-border-color: #367b53; -fx-text-fill: #367b53; -fx-border-width: 1.3; -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.5), 10, 0, 0, 0);" text="Change The Stake" textFill="#367b53">
                            <font>
                               <Font name="System Bold Italic" size="12.0" />
                            </font>
@@ -213,7 +213,7 @@
                   </HBox>
                   <HBox prefHeight="23.0" prefWidth="225.0">
                      <children>
-                        <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="27.0" prefWidth="247.0" text="Warnings" textFill="WHITE">
+                        <Label fx:id="warningsLabel" alignment="CENTER" contentDisplay="CENTER" prefHeight="27.0" prefWidth="247.0" text="Warnings" textFill="WHITE">
                            <font>
                               <Font name="System Bold" size="12.0" />
                            </font>
@@ -374,5 +374,6 @@
             </VBox>
          </right>
       </BorderPane>
+      <AnchorPane fx:id="dialog_window" layoutX="160.0" layoutY="66.0" prefHeight="260.0" prefWidth="326.0" />
    </children>
 </AnchorPane>
