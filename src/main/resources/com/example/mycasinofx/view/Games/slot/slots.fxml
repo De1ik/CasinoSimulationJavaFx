@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane fx:id="slotsAnchor" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.mycasinofx.controllers.games.slots.SlotsController">
+   <children>
+      <Button layoutX="34.0" layoutY="347.0" mnemonicParsing="false" onMouseClicked="#goMainMenu" text="Main Menu" />
+      <Label layoutX="317.0" layoutY="14.0" text="Slots Game">
+         <font>
+            <Font size="20.0" />
+         </font>
+      </Label>
+      <Button fx:id="playGameButton" layoutX="280.0" layoutY="345.0" mnemonicParsing="false" onAction="#playGame" prefHeight="30.0" prefWidth="78.0" text="Play Game" />
+      <Label fx:id="resultMessage" layoutX="27.0" layoutY="57.0" prefHeight="50.0" prefWidth="168.0" text="Winner">
+         <font>
+            <Font size="34.0" />
+         </font>
+      </Label>
+      <Label fx:id="balanceLabel" layoutX="14.0" layoutY="178.0" prefHeight="43.0" prefWidth="145.0" text="Balance:" />
+      <Label fx:id="curStakeLabel" layoutX="14.0" layoutY="221.0" prefHeight="43.0" prefWidth="145.0" text="Current Stake: " />
+      <Button fx:id="skip" layoutX="395.0" layoutY="347.0" mnemonicParsing="false" onAction="#skipAnimation" prefHeight="25.0" prefWidth="109.0" text="skip animation" />
+      <AnchorPane layoutX="205.0" layoutY="57.0" prefHeight="270.0" prefWidth="88.0" style="-fx-border-color: black;">
+         <children>
+            <GridPane alignment="CENTER" layoutY="-3.0" prefHeight="270.0" prefWidth="317.0">
+              <columnConstraints>
+                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                  <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+              </columnConstraints>
+              <rowConstraints>
+                <RowConstraints maxHeight="158.66668446858722" minHeight="10.0" prefHeight="61.33334859212239" vgrow="SOMETIMES" />
+                <RowConstraints maxHeight="191.99998092651367" minHeight="8.000003814697266" prefHeight="134.3333282470703" vgrow="SOMETIMES" />
+                <RowConstraints maxHeight="77.66667175292969" minHeight="0.0" prefHeight="55.66667175292969" vgrow="SOMETIMES" />
+              </rowConstraints>
+               <children>
+                  <AnchorPane prefHeight="200.0" prefWidth="200.0">
+                     <children>
+                        <ImageView fx:id="numb1upImg" fitHeight="53.0" fitWidth="55.0" layoutX="29.0" layoutY="11.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../../picture/slot_element_7.png" />
+                           </image>
+                        </ImageView>
+                     </children>
+                  </AnchorPane>
+                  <AnchorPane GridPane.columnIndex="2">
+                     <children>
+                        <ImageView fx:id="numb3upImg" fitHeight="53.0" fitWidth="61.0" layoutX="27.0" layoutY="7.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../../picture/slot_element_7.png" />
+                           </image>
+                        </ImageView>
+                     </children>
+                  </AnchorPane>
+                  <AnchorPane GridPane.columnIndex="2" GridPane.rowIndex="2">
+                     <children>
+                        <ImageView fx:id="numb3downImg" fitHeight="53.0" fitWidth="61.0" layoutX="27.0" layoutY="4.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../../picture/slot_element_7.png" />
+                           </image>
+                        </ImageView>
+                     </children>
+                  </AnchorPane>
+                  <AnchorPane GridPane.rowIndex="2">
+                     <children>
+                        <ImageView fx:id="numb1downImg" fitHeight="53.0" fitWidth="61.0" layoutX="27.0" layoutY="4.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../../picture/slot_element_7.png" />
+                           </image>
+                        </ImageView>
+                     </children>
+                  </AnchorPane>
+                  <AnchorPane GridPane.columnIndex="1">
+                     <children>
+                        <ImageView fx:id="numb2upImg" fitHeight="53.0" fitWidth="61.0" layoutX="27.0" layoutY="7.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../../picture/slot_element_7.png" />
+                           </image>
+                        </ImageView>
+                     </children>
+                  </AnchorPane>
+                  <AnchorPane GridPane.columnIndex="1" GridPane.rowIndex="2">
+                     <children>
+                        <ImageView fx:id="numb2downImg" fitHeight="59.0" fitWidth="53.0" layoutX="27.0" layoutY="4.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../../picture/slot_element_7.png" />
+                           </image>
+                        </ImageView>
+                     </children>
+                  </AnchorPane>
+                  <AnchorPane GridPane.rowIndex="1">
+                     <children>
+                        <ImageView fx:id="numb1Img" fitHeight="78.0" fitWidth="137.0" layoutX="14.0" layoutY="31.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../../picture/slot_element_7.png" />
+                           </image>
+                        </ImageView>
+                     </children>
+                  </AnchorPane>
+                  <AnchorPane prefHeight="140.0" prefWidth="149.0" style="-fx-background-color: gold;" GridPane.columnIndex="1" GridPane.rowIndex="1">
+                     <children>
+                        <ImageView fx:id="numb2Img" fitHeight="78.0" fitWidth="137.0" layoutX="15.0" layoutY="31.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../../picture/slot_element_7.png" />
+                           </image>
+                        </ImageView>
+                     </children>
+                  </AnchorPane>
+                  <AnchorPane prefHeight="140.0" prefWidth="170.0" style="-fx-background-color: gold;" GridPane.columnIndex="2" GridPane.rowIndex="1">
+                     <children>
+                        <ImageView fx:id="numb3Img" fitHeight="78.0" fitWidth="137.0" layoutX="15.0" layoutY="31.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../../picture/slot_element_7.png" />
+                           </image>
+                        </ImageView>
+                     </children>
+                  </AnchorPane>
+               </children>
+            </GridPane>
+         </children>
+      </AnchorPane>
+      <Button fx:id="but1" layoutX="85.0" layoutY="31.0" mnemonicParsing="false" text="Button" />
+   </children>
+</AnchorPane>

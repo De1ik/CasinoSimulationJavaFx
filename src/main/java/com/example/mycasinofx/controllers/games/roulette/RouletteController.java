@@ -1,26 +1,19 @@
 package com.example.mycasinofx.controllers.games.roulette;
 
 
-import com.example.mycasinofx.Model.FxModels.NumericInputDialog;
-import com.example.mycasinofx.Model.FxModels.SceneSwitch;
-
-import com.example.mycasinofx.Model.games.Games;
 import com.example.mycasinofx.Model.games.Roulette.RouletteSetUp;
 import com.example.mycasinofx.Model.player.Player;
 import com.example.mycasinofx.Model.games.Roulette.Roulette;
+import com.example.mycasinofx.controllers.custom_dialog_stake.SetStakeCustomDialog;
 import com.example.mycasinofx.controllers.switchPage.PageSwitchInterface;
 import com.example.mycasinofx.controllers.switchPage.SwitchPage;
-import javafx.application.Platform;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.input.MouseEvent;
-import javafx.scene.layout.AnchorPane;
-import javafx.scene.layout.Background;
-import javafx.scene.layout.BackgroundFill;
-import javafx.scene.layout.GridPane;
+import javafx.scene.layout.*;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Polygon;
 
@@ -30,15 +23,17 @@ import java.sql.SQLException;
 
 public class RouletteController {
     @FXML
-    private AnchorPane rouletteAnchor;
+    private AnchorPane rouletteAnchor, dialog_window;
     @FXML
-    private Label balanceLabel, currentStakeLabel, exactNumberLabel;
+    private Label balanceLabel, currentStakeLabel, exactNumberLabel, warningsLabel, zeroLabel, amountStake;
     @FXML
     private Button evenButton, oddButton, redButton, blackButton, greenButton, playRouletteButton;
     @FXML
     private GridPane gridPaneRoulette;
     @FXML
     private Polygon zeroPolygon;
+    @FXML
+    private BorderPane borderPane;
 
     private final Player player;
     private final Roulette roulette;
@@ -58,7 +53,10 @@ public class RouletteController {
 
     @FXML
     public void initialize() {
+        setAmountStake();
         pageSwitch = new SwitchPage();
+        dialog_window.setMouseTransparent(true);
+        zeroLabel.setMouseTransparent(true);
 //        redButton.getStyleClass().add("red-roulette-stake-button-active");
 
         EventHandler<MouseEvent> rouletteClickHandler = event -> {
@@ -263,6 +261,11 @@ public class RouletteController {
     }
 
     @FXML
+    public void setAmountStake() {
+        amountStake.setText("Amount of Stake: " + player.getCurrentStake());
+    }
+
+    @FXML
     public void setCurrentStakeLabel() {
         String res = "";
         for (int i = 0; i < 6; i++) {
@@ -280,6 +283,20 @@ public class RouletteController {
     }
 
 
+    @FXML
+    public void resetButtons(){
+        redButton.getStyleClass().clear();
+        redButton.getStyleClass().add("red-roulette-stake-button");
+        blackButton.getStyleClass().clear();
+        blackButton.getStyleClass().add("black-roulette-stake-button");
+        greenButton.getStyleClass().clear();
+        greenButton.getStyleClass().add("green-roulette-stake-button");
+        evenButton.getStyleClass().clear();
+        evenButton.getStyleClass().add("pair-roulette-stake-button");
+        oddButton.getStyleClass().clear();
+        oddButton.getStyleClass().add("pair-roulette-stake-button");
+    }
+
 
     //----------------------------------------------Reset All Components-----------------------------------------------
     //It used before calling this scene or before going to main menu from this scene
@@ -291,6 +308,7 @@ public class RouletteController {
         roulette.clearExactNumberArray();
         roulette.resetBooleanStake();
         roulette.resetCurStakes();
+        resetButtons();
         //update the labels
         updateLabels();
         setPlayButtonDisable();
@@ -335,47 +353,11 @@ public class RouletteController {
 
 
 
-
-
-
-
-//
-//    @FXML
-//    public void setBalanceViewLabel(){
-//        Platform.runLater(() -> setBalanceViewLabel.setText("Balance: " + player.getBalance()));
-//    }
-//    @FXML
-//    public void setStakeViewLabel(){
-//        Platform.runLater(() -> stakeLabelView.setText("Stake: " + player.getCurrentStake()));
-//    }
-//    @FXML
-//    public void setStakeErrorSuccess(String result, boolean success){
-//        Platform.runLater(() -> {
-//            stakeErrorSuccess.setText(result);
-//            if (success)stakeErrorSuccess.setTextFill(Color.GREEN);
-//            else stakeErrorSuccess.setTextFill(Color.RED);
-//        });
-//
-//    }
-//
-//
-//    @FXML
-//    private void setStakeDialog() {
-//        NumericInputDialog dialog = new NumericInputDialog("Set The Current Stake", "Enter the number:", "Stake is:");
-//        dialog.showNumericInputDialog().ifPresent(value -> {
-//            value = Math.round(value * 100.0) / 100.0;
-//            if ((player.getBalance() >= value) && (value > Games.getMinimumStake()) && (value < Games.getMaximumStake())) {
-//                player.setCurrentStake(value);
-//                setStakeErrorSuccess("The Stake Was Changed", true);
-//                setStakeViewLabel();
-//            }
-//            else {
-//                if (value < Games.getMinimumStake()) setStakeErrorSuccess("The minimum Stake is " + Games.getMinimumStake(), false);
-//                else if (value > Games.getMaximumStake()) setStakeErrorSuccess("The maximum Stake is " + Games.getMaximumStake(), false);
-//                else setStakeErrorSuccess("You Do Not Have Money!", false);
-//            }
-//        });
-//    }
+    @FXML
+    public void doStake() throws IOException {
+        reset();
+        SetStakeCustomDialog.doStake(borderPane, dialog_window, warningsLabel, amountStake);
+    }
 }
 
 

@@ -23,4 +23,6 @@ module com.example.mycasinofx {
     opens com.example.mycasinofx.controllers.voting.votingProcces to javafx.fxml;
     exports com.example.mycasinofx.controllers.voting.resultVoting;
     opens com.example.mycasinofx.controllers.voting.resultVoting to javafx.fxml;
+    exports com.example.mycasinofx.controllers.custom_dialog_stake;
+    opens com.example.mycasinofx.controllers.custom_dialog_stake to javafx.fxml;
 }

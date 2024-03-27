@@ -61,7 +61,8 @@ public class RouletteSetUp implements GameSetUpInterface {
     }
 
     @Override
-    public void gameSetUp() {
+    public Object gameSetUp() {
         setColours();
+        return null;
     }
 }
