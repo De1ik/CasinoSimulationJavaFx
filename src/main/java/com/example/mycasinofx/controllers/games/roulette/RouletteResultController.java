@@ -3,6 +3,7 @@ package com.example.mycasinofx.controllers.games.roulette;
 import com.example.mycasinofx.Model.games.Roulette.RouletteSetUp;
 import com.example.mycasinofx.Model.player.Player;
 import com.example.mycasinofx.Model.games.Roulette.Roulette;
+import com.example.mycasinofx.controllers.games.usefulComponent.ResultMessage;
 import com.example.mycasinofx.controllers.switchPage.PageSwitchInterface;
 import com.example.mycasinofx.controllers.switchPage.SwitchPage;
 import javafx.animation.PauseTransition;
@@ -82,6 +83,7 @@ public class RouletteResultController {
     ////profit before and profit after will be the same
     //-------------------Generate The Result Add All Components-----------------------
     public void generateGameResult() {
+//        setStakeButtons();
         updateLabels();
         //convert to int because the type of my result is Object
         int curGeneration = roulette.getResult();
@@ -97,20 +99,7 @@ public class RouletteResultController {
     public void setMessageLabel() {
 
         balanceDefaultLabel.setText("Current balance is: ");
-        balanceLabel.setText("" + player.getBalance());
-        if (player.getProfit() > 0) {
-            messageLabel.setText("You won: " + player.getProfit());
-            messageLabel.setStyle("-fx-border-color: #1a5709; -fx-text-fill: #1a5709");
-            balanceLabel.setStyle("-fx-border-color: #1a5709; -fx-text-fill: #1a5709");
-        } else if (player.getProfit() < 0) {
-            messageLabel.setText("You lose: " + (player.getProfit() * (-1)));
-            messageLabel.setStyle("-fx-border-color: #750808;  -fx-text-fill: #750808");
-            balanceLabel.setStyle("-fx-border-color: #750808;  -fx-text-fill: #750808");
-        } else {
-            messageLabel.setText("You're left with the same balance");
-            messageLabel.setStyle("-fx-border-color: #ffffff; -fx-text-fill: white");
-            balanceLabel.setStyle("-fx-border-color: #ffffff; -fx-text-fill: white");
-        }
+        ResultMessage.updateMessageLabel(messageLabel, balanceLabel, player);
     }
 
 
@@ -160,6 +149,7 @@ public class RouletteResultController {
         setCurrentStakeText();
         setExactNumberText();
         setAmountStake();
+        setStakeButtons();
 //        setBalanceLabel();
     }
     //--------------------------------------------------------------------------------

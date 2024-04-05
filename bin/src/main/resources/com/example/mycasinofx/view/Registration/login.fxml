@@ -1,0 +1,232 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane fx:id="loginPane" prefHeight="390.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.mycasinofx.controllers.Registration.LoginPageController">
+   <children>
+      <HBox layoutY="-2.0" prefHeight="400.0" prefWidth="600.0">
+         <children>
+            <AnchorPane prefHeight="475.0" prefWidth="291.0" style="-fx-background-color: purple;" />
+            <AnchorPane prefHeight="400.0" prefWidth="309.0">
+               <children>
+                  <VBox layoutX="-2.0" prefHeight="400.0" prefWidth="309.0">
+                     <children>
+                        <VBox alignment="CENTER" prefHeight="135.0" prefWidth="309.0">
+                           <children>
+                              <Label alignment="CENTER" prefHeight="24.0" prefWidth="309.0" textAlignment="CENTER" textFill="#0ca65e">
+                                 <font>
+                                    <Font name="System Bold" size="19.0" />
+                                 </font>
+                              </Label>
+                              <Label alignment="CENTER" prefHeight="99.0" prefWidth="309.0" text="Casino" textAlignment="CENTER" textFill="#0ca65e">
+                                 <font>
+                                    <Font name="System Bold" size="32.0" />
+                                 </font>
+                              </Label>
+                              <Label alignment="TOP_CENTER" prefHeight="103.0" prefWidth="309.0" text="Simulation" textFill="#0ca65e">
+                                 <font>
+                                    <Font name="System Bold" size="32.0" />
+                                 </font>
+                              </Label>
+                           </children>
+                        </VBox>
+                        <HBox alignment="CENTER" prefHeight="46.0" prefWidth="306.0">
+                           <children>
+                              <TextField fx:id="emailField" prefHeight="31.0" prefWidth="193.0" promptText="Email" style="-fx-background-radius: 50; -fx-border-radius: 50;" text="ole@gmail.com" />
+                           </children>
+                        </HBox>
+                        <HBox alignment="CENTER" prefHeight="46.0" prefWidth="306.0">
+                           <children>
+                              <TextField fx:id="passwordField" prefHeight="31.0" prefWidth="193.0" promptText="Password" style="-fx-background-radius: 50; -fx-border-radius: 50;" text="123456" />
+                           </children>
+                        </HBox>
+                        <HBox alignment="BOTTOM_CENTER" prefHeight="29.0" prefWidth="309.0">
+                           <children>
+                              <Label fx:id="errorMessage" alignment="BOTTOM_CENTER" prefHeight="25.0" prefWidth="183.0" text="Label" textAlignment="CENTER">
+                                 <font>
+                                    <Font size="16.0" />
+                                 </font>
+                              </Label>
+                           </children>
+                        </HBox>
+                        <HBox alignment="CENTER" prefHeight="58.0" prefWidth="309.0">
+                           <children>
+                              <Button mnemonicParsing="false" onAction="#goLogin" prefHeight="40.0" prefWidth="139.0" style="-fx-background-radius: 50; -fx-border-radius: 50; -fx-background-color: #00BD93;" text="Login" textFill="WHITE">
+                                 <font>
+                                    <Font name="System Bold Italic" size="12.0" />
+                                 </font>
+                              </Button>
+                           </children>
+                        </HBox>
+                        <Label alignment="CENTER" prefHeight="9.0" prefWidth="309.0" textFill="#0ca65e">
+                           <font>
+                              <Font name="System Bold" size="12.0" />
+                           </font>
+                        </Label>
+                        <HBox alignment="BASELINE_CENTER" prefHeight="40.0" prefWidth="317.0">
+                           <children>
+                              <HBox alignment="TOP_RIGHT" prefHeight="44.0" prefWidth="309.0">
+                                 <children>
+                                    <Button mnemonicParsing="false" onAction="#goMainMenu" prefHeight="25.0" prefWidth="107.0" style="-fx-background-radius: 50; -fx-border-radius: 50; -fx-background-color: #00E1BC;" text="Main Menu" textFill="WHITE">
+                                       <font>
+                                          <Font name="System Bold Italic" size="10.0" />
+                                       </font>
+                                    </Button>
+                                    <Label alignment="TOP_LEFT" prefHeight="35.0" prefWidth="29.0" textAlignment="CENTER" textFill="WHITE">
+                                       <font>
+                                          <Font name="System Bold Italic" size="14.0" />
+                                       </font>
+                                    </Label>
+                                 </children>
+                              </HBox>
+                           </children>
+                        </HBox>
+                     </children>
+                  </VBox>
+               </children>
+            </AnchorPane>
+         </children>
+      </HBox>
+      <HBox alignment="CENTER" layoutY="-1.0" prefHeight="139.0" prefWidth="291.0">
+         <children>
+            <VBox alignment="CENTER" prefHeight="182.0" prefWidth="291.0">
+               <children>
+                  <Label alignment="CENTER" prefHeight="23.0" prefWidth="291.0" textAlignment="CENTER" textFill="#0ca65e">
+                     <font>
+                        <Font name="System Bold" size="17.0" />
+                     </font>
+                  </Label>
+                  <HBox prefHeight="0.0" prefWidth="291.0">
+                     <children>
+                        <Label alignment="TOP_LEFT" prefHeight="47.0" prefWidth="42.0" textAlignment="CENTER" textFill="#0ca65e">
+                           <font>
+                              <Font name="System Bold" size="32.0" />
+                           </font>
+                        </Label>
+                        <Label alignment="TOP_LEFT" prefHeight="47.0" prefWidth="236.0" text="Login" textAlignment="CENTER" textFill="WHITE">
+                           <font>
+                              <Font name="System Bold" size="29.0" />
+                           </font>
+                        </Label>
+                     </children>
+                  </HBox>
+                  <HBox prefHeight="0.0" prefWidth="291.0">
+                     <children>
+                        <Label alignment="TOP_LEFT" prefHeight="47.0" prefWidth="76.0" textAlignment="CENTER" textFill="#0ca65e">
+                           <font>
+                              <Font name="System Bold" size="32.0" />
+                           </font>
+                        </Label>
+                        <Label alignment="TOP_LEFT" prefHeight="47.0" prefWidth="236.0" text="Before" textAlignment="CENTER" textFill="WHITE">
+                           <font>
+                              <Font name="System Bold" size="29.0" />
+                           </font>
+                        </Label>
+                     </children>
+                  </HBox>
+                  <HBox prefHeight="0.0" prefWidth="291.0">
+                     <children>
+                        <Label alignment="TOP_LEFT" prefHeight="47.0" prefWidth="157.0" textAlignment="CENTER" textFill="#0ca65e">
+                           <font>
+                              <Font name="System Bold" size="32.0" />
+                           </font>
+                        </Label>
+                        <Label alignment="TOP_LEFT" prefHeight="47.0" prefWidth="263.0" text="Start" textAlignment="CENTER" textFill="WHITE">
+                           <font>
+                              <Font name="System Bold" size="29.0" />
+                           </font>
+                        </Label>
+                     </children>
+                  </HBox>
+                  <HBox prefHeight="0.0" prefWidth="291.0">
+                     <children>
+                        <Label alignment="TOP_LEFT" prefHeight="47.0" prefWidth="144.0" textAlignment="CENTER" textFill="#0ca65e">
+                           <font>
+                              <Font name="System Bold" size="32.0" />
+                           </font>
+                        </Label>
+                        <Label alignment="TOP_LEFT" prefHeight="47.0" prefWidth="204.0" text="Your" textAlignment="CENTER" textFill="WHITE">
+                           <font>
+                              <Font name="System Bold" size="29.0" />
+                           </font>
+                        </Label>
+                        <Label alignment="TOP_LEFT" prefHeight="47.0" prefWidth="48.0" textAlignment="CENTER" textFill="#0ca65e">
+                           <font>
+                              <Font name="System Bold" size="32.0" />
+                           </font>
+                        </Label>
+                     </children>
+                  </HBox>
+                  <HBox prefHeight="0.0" prefWidth="291.0">
+                     <children>
+                        <Label alignment="TOP_LEFT" prefHeight="47.0" prefWidth="127.0" textAlignment="CENTER" textFill="#0ca65e">
+                           <font>
+                              <Font name="System Bold" size="32.0" />
+                           </font>
+                        </Label>
+                        <Label alignment="TOP_LEFT" prefHeight="47.0" prefWidth="125.0" text="Journey" textAlignment="CENTER" textFill="WHITE">
+                           <font>
+                              <Font name="System Bold" size="29.0" />
+                           </font>
+                        </Label>
+                     </children>
+                  </HBox>
+                  <HBox prefHeight="0.0" prefWidth="291.0">
+                     <children>
+                        <Label alignment="TOP_LEFT" prefHeight="47.0" prefWidth="204.0" textAlignment="CENTER" textFill="WHITE">
+                           <font>
+                              <Font name="System Bold" size="15.0" />
+                           </font>
+                        </Label>
+                     </children>
+                  </HBox>
+                  <HBox prefHeight="0.0" prefWidth="291.0">
+                     <children>
+                        <Label alignment="TOP_LEFT" prefHeight="47.0" prefWidth="263.0" textAlignment="CENTER" textFill="WHITE">
+                           <font>
+                              <Font name="System Bold" size="14.0" />
+                           </font>
+                        </Label>
+                        <Label alignment="TOP_LEFT" prefHeight="20.0" prefWidth="440.0" text="Do You Have an Account?" textAlignment="CENTER" textFill="WHITE">
+                           <font>
+                              <Font name="System Bold Italic" size="14.0" />
+                           </font>
+                        </Label>
+                     </children>
+                  </HBox>
+                  <HBox prefHeight="25.0" prefWidth="291.0" />
+                  <HBox prefHeight="0.0" prefWidth="291.0">
+                     <children>
+                        <Label alignment="TOP_LEFT" prefHeight="47.0" prefWidth="28.0" textAlignment="CENTER" textFill="#0ca65e">
+                           <font>
+                              <Font name="System Bold" size="32.0" />
+                           </font>
+                        </Label>
+                        <HBox alignment="CENTER" prefHeight="47.0" prefWidth="235.0">
+                           <children>
+                              <Button alignment="CENTER" mnemonicParsing="false" onAction="#goRegistrationPage" prefHeight="37.0" prefWidth="115.0" style="-fx-background-radius: 50; -fx-border-radius: 50; -fx-background-color: white; -fx-border-color: #3A003A;" styleClass="onPurple" text="Go Registrate" textFill="PURPLE">
+                                 <font>
+                                    <Font name="System Bold Italic" size="12.0" />
+                                 </font>
+                              </Button>
+                           </children>
+                        </HBox>
+                        <Label alignment="TOP_LEFT" prefHeight="47.0" prefWidth="40.0" textAlignment="CENTER" textFill="#0ca65e">
+                           <font>
+                              <Font name="System Bold" size="32.0" />
+                           </font>
+                        </Label>
+                     </children>
+                  </HBox>
+               </children>
+            </VBox>
+         </children>
+      </HBox>
+   </children>
+</AnchorPane>

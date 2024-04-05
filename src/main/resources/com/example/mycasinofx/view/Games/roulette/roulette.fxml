@@ -97,7 +97,7 @@
             </AnchorPane>
          </center>
          <left>
-            <VBox prefHeight="417.0" prefWidth="225.0" style="-fx-background-color: linear-gradient(to bottom, #31ED89, #187443);" BorderPane.alignment="CENTER">
+            <VBox prefHeight="401.0" prefWidth="233.0" style="-fx-background-color: linear-gradient(to bottom, #31ED89, #187443);" BorderPane.alignment="CENTER">
                <children>
                   <VBox prefHeight="243.0" prefWidth="225.0">
                      <children>
@@ -213,7 +213,7 @@
                   </HBox>
                   <HBox prefHeight="23.0" prefWidth="225.0">
                      <children>
-                        <Label fx:id="warningsLabel" alignment="CENTER" contentDisplay="CENTER" prefHeight="27.0" prefWidth="247.0" text="Warnings" textFill="WHITE">
+                        <Label fx:id="warningsLabel" alignment="CENTER" contentDisplay="CENTER" prefHeight="27.0" prefWidth="247.0" textFill="WHITE">
                            <font>
                               <Font name="System Bold" size="12.0" />
                            </font>
@@ -229,7 +229,7 @@
                         </Label>
                      </children>
                   </HBox>
-                  <HBox alignment="CENTER_LEFT" prefHeight="42.0" prefWidth="225.0">
+                  <HBox alignment="CENTER_LEFT" prefHeight="42.0" prefWidth="233.0">
                      <children>
                         <Label prefHeight="34.0" prefWidth="17.0" />
                         <Button fx:id="goMainMenuButton" alignment="CENTER" contentDisplay="BOTTOM" mnemonicParsing="false" onAction="#goMainMenu" prefHeight="32.0" prefWidth="80.0" style="-fx-background-radius: 50; -fx-border-radius: 50; -fx-background-color: #00BD93; -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.5), 10, 0, 0, 0);" text="Main Menu" textFill="WHITE">

@@ -2,7 +2,7 @@ module com.example.mycasinofx {
     requires javafx.controls;
     requires javafx.fxml;
     requires java.sql;
-    requires mysql.connector.j;
+    requires mysql.connector.java;
 
 
     opens com.example.mycasinofx to javafx.fxml;
@@ -25,4 +25,6 @@ module com.example.mycasinofx {
     opens com.example.mycasinofx.controllers.voting.resultVoting to javafx.fxml;
     exports com.example.mycasinofx.controllers.custom_dialog_stake;
     opens com.example.mycasinofx.controllers.custom_dialog_stake to javafx.fxml;
+    exports com.example.mycasinofx.controllers.games.twentyOne;
+    opens com.example.mycasinofx.controllers.games.twentyOne to javafx.fxml;
 }

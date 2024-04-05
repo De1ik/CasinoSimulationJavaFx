@@ -40,12 +40,10 @@ public class SceneSwitch {
                 slotsController.updateLabels();
             }
         }
-        else if (nextAnchorPane != null && nextAnchorPane.getId().equals("rouletteAnchor")) {
-            RouletteController rouletteController = loader.getController();
-            if (rouletteController != null) {
-                rouletteController.reset();
-                rouletteController.setProfit();
-                rouletteController.setPlayButtonDisable();
+        else if (nextAnchorPane != null && nextAnchorPane.getId().equals("rouletteResultAnchor")) {
+            RouletteResultController rouletteResultController = loader.getController();
+            if (rouletteResultController != null) {
+                rouletteResultController.generateGameResult();
             }
         }
         else if (nextAnchorPane != null && nextAnchorPane.getId().equals("loginPane")) {

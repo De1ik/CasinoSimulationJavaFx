@@ -10,6 +10,7 @@ public interface PageSwitchInterface {
     public void goLogin(AnchorPane anchorPane) throws IOException;
     public void goRegister(AnchorPane anchorPane) throws IOException;
     public void goSlots(AnchorPane anchorPane) throws IOException;
+    public void go21(AnchorPane anchorPane) throws IOException;
     public void goRoulette(AnchorPane anchorPane) throws IOException;
     public void goRouletteResult(AnchorPane anchorPane) throws IOException;
     public void goFullList(AnchorPane anchorPane) throws IOException;
