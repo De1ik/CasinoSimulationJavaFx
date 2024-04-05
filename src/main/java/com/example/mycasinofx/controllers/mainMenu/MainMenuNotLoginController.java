@@ -37,6 +37,11 @@ public class MainMenuNotLoginController {
     }
 
     @FXML
+    public void go21() throws IOException{
+        pageSwitch.go21(mainMenuNotLogin);
+    }
+
+    @FXML
     public void goVoting() throws IOException {
         pageSwitch.goVotingPageChange(mainMenuNotLogin);
     }

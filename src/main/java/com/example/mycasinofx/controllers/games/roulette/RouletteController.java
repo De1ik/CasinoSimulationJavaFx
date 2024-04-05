@@ -91,14 +91,19 @@ public class RouletteController {
                         roulette.setExactNumber(false);
                     }
                 } else {
-                    roulette.setExactNumber(true);
-                    if (label != null) {
-                        label.setBackground(Background.fill(Color.YELLOW));
-                    } else {
-                        zero.setFill(Color.YELLOW);
+                    if (player.tryDoStake()) {
+                        roulette.setExactNumber(true);
+                        if (label != null) {
+                            label.setBackground(Background.fill(Color.YELLOW));
+                        } else {
+                            zero.setFill(Color.YELLOW);
+                        }
+                        roulette.addExactNumberArray(number);
+                        player.setBalance(player.getBalance() - player.getCurrentStake());
                     }
-                    roulette.addExactNumberArray(number);
-                    player.setBalance(player.getBalance() - player.getCurrentStake());
+                    else{
+                        warningsLabel.setText("Insufficient Balance");
+                    }
                 }
             }
             if (roulette.isEmptyExactNumberArray()) {
@@ -192,14 +197,19 @@ public class RouletteController {
             roulette.setCurStakes(null, index);
             player.setBalance(player.getBalance() + player.getCurrentStake());
         } else {
-            flag = true;
-            playRouletteButton.setDisable(false);
+            if (player.tryDoStake()) {
+                flag = true;
+                playRouletteButton.setDisable(false);
 
-            //change the color due css
-            setActiveButton(string, button);
-            //------------------------------------------
-            roulette.setCurStakes(string, index);
-            player.setBalance(player.getBalance() - player.getCurrentStake());
+                //change the color due css
+                setActiveButton(string, button);
+                //------------------------------------------
+                roulette.setCurStakes(string, index);
+                player.setBalance(player.getBalance() - player.getCurrentStake());
+            }
+            else{
+                warningsLabel.setText("Insufficient Balance");
+            }
         }
         return flag;
     }
@@ -318,7 +328,7 @@ public class RouletteController {
 
 
     @FXML
-    public void playRoulette() throws IOException, SQLException, ClassNotFoundException {
+    public void playRoulette() throws IOException{
 
         if (roulette.checkStartGame()) {
             player.updateDBBalance();

@@ -43,6 +43,11 @@ public class MainMenuLoginController {
         pageSwitch.goSlots(mainMenuLogin);
     }
 
+    @FXML
+    public void go21() throws IOException{
+        pageSwitch.go21(mainMenuLogin);
+    }
+
     public void goVoting() throws IOException {
         pageSwitch.goVotingPageChange(mainMenuLogin);
     }

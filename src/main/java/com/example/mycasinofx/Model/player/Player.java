@@ -113,6 +113,10 @@ public class Player {
         this.currentStake = currentStake;
     }
 
+    public boolean tryDoStake(){
+        return balance - currentStake >= 0;
+    }
+
 
 
 //    public void UserManager(DatabaseManager databaseManager) {

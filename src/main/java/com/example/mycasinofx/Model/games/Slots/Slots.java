@@ -78,7 +78,7 @@ public class Slots extends Games {
         if (curIndex != (array.get(col).size()-1)){
             return array.get(col).get(curIndex + 1);
         }
-        return array.get(col).getFirst();
+        return array.get(col).get(0);
     }
 
 

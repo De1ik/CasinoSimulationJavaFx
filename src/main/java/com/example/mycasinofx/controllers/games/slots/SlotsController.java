@@ -4,9 +4,13 @@ import com.example.mycasinofx.Application;
 import com.example.mycasinofx.Model.games.Slots.Slots;
 import com.example.mycasinofx.Model.player.Player;
 
+import com.example.mycasinofx.controllers.custom_dialog_stake.SetStakeCustomDialog;
+import com.example.mycasinofx.controllers.games.usefulComponent.ResultMessage;
 import com.example.mycasinofx.controllers.switchPage.PageSwitchInterface;
 import com.example.mycasinofx.controllers.switchPage.SwitchPage;
+import javafx.animation.KeyFrame;
 import javafx.animation.RotateTransition;
+import javafx.animation.Timeline;
 import javafx.animation.TranslateTransition;
 import javafx.application.Platform;
 import javafx.fxml.FXML;
@@ -16,6 +20,8 @@ import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.BorderPane;
+import javafx.scene.layout.GridPane;
 import javafx.util.Duration;
 
 import java.io.IOException;
@@ -29,13 +35,19 @@ public class SlotsController implements Initializable {
     private Player player;
 
     @FXML
-    private AnchorPane slotsAnchor;
+    private AnchorPane slotsAnchor, dialog_window;
     @FXML
-    private Label numb1, numb2, numb3, numb1up, numb1down, numb2up, numb2down, numb3up, numb3down, resultMessage, balanceLabel, curStakeLabel;
+    private Label balanceLabel, amountStake, warningsLabel, resultLabel;
+    @FXML
+    BorderPane borderPane;
     @FXML
     ImageView numb1upImg, numb1Img, numb1downImg, numb2upImg, numb2Img, numb2downImg, numb3upImg, numb3Img, numb3downImg;
     @FXML
-    private Button playGameButton, but1;
+    private Button playGameButton, skipButton;
+    @FXML
+    private GridPane slotGridPane;
+
+    private double profit;
 
     Image slotSevenImage, slotCherryImage, slotPumpkinImage, slotDiamantImage, slotGrapesImage;
 
@@ -48,6 +60,7 @@ public class SlotsController implements Initializable {
 
 
     public void initialize(URL url, ResourceBundle resourceBundle) {
+        skipButton.setVisible(false);
         player = Player.getPlayer();
         slotSevenImage = new Image(Objects.requireNonNull(Application.class.getResourceAsStream("view/picture/slot_element_7.png")));
         slotCherryImage = new Image(Objects.requireNonNull(Application.class.getResourceAsStream("view/picture/slot_element_cherry.png")));
@@ -69,9 +82,13 @@ public class SlotsController implements Initializable {
         balanceLabel.setText("Balance: " + player.getBalance());
     }
 
+    public void setMessageLabel() {
+        ResultMessage.updateMessageLabel(resultLabel, balanceLabel, player);
+    }
+
     @FXML
     public void setCurStakeLabel() {
-        curStakeLabel.setText("Current Stake is: " + player.getCurrentStake());
+        amountStake.setText("Current Stake is: " + player.getCurrentStake());
     }
 
     public void updateLabels() {
@@ -102,23 +119,27 @@ public class SlotsController implements Initializable {
 
 
     public void playGame() {
+        if (player.tryDoStake()) {
+            profit = player.getBalance();
+            slots.generateResult();
 
-        slots.generateResult();
+            int stake = (int) slots.checkWinner();
 
-        animation();
+            player.setBalance(player.getBalance() - player.getCurrentStake());
+            if (stake != -1) {
+                player.setBalance(player.getBalance() + player.getCurrentStake() * stake);
+            }
 
+            profit = -1*(profit - player.getBalance());
+            player.setProfit(profit);
+            player.updateDBBalance();
 
-        int stake = (int) slots.checkWinner();
-
-//        resultMessage.setText("" + stake);
-
-
-        player.setBalance(player.getBalance() - player.getCurrentStake());
-        if (stake != -1) {
-            player.setBalance(player.getBalance() + player.getCurrentStake() * stake);
+            animation();
+            slots.reset();
         }
-        player.updateDBBalance();
-        slots.reset();
+        else{
+            warningsLabel.setText("Insufficient Balance");
+        }
     }
 
 
@@ -133,30 +154,31 @@ public class SlotsController implements Initializable {
             generalArrayCopy.add(new ArrayList<>(innerList));
         }
 
-        int sizeArray1 = generalArray.getFirst().size();
+        int sizeArray1 = generalArray.get(0).size();
 
-        int startIndex1 = slots.getStartIndex().getFirst();
+        int startIndex1 = slots.getStartIndex().get(0);
         int startIndex2 = slots.getStartIndex().get(1);
         int startIndex3 = slots.getStartIndex().get(2);
 
-        int finishIndex1 = slots.getFinishIndex().getFirst();
+        int finishIndex1 = slots.getFinishIndex().get(0);
         int finishIndex2 = slots.getFinishIndex().get(1);
         int finishIndex3 = slots.getFinishIndex().get(2);
 
         new Thread(() -> {
-            playGameButton.setDisable(true);
+            skipButton.setVisible(true);
+            playGameButton.setVisible(false);
             for (int i = 0; i < 50 && !skipAnimation; i++) {
                 double duration = (i * 2 * 2) + (i * 2 * 2);
                 int curCounter = i;
                 Platform.runLater(() -> {
 
-//                    setSlotImage(numb1outImg, generalArrayCopy.getFirst().get(((curCounter + startIndex1) % sizeArray1)));
+//                    setSlotImage(numb1outImg, generalArrayCopy.get(0).get(((curCounter + startIndex1) % sizeArray1)));
 //                    checkAnimation(numb1upImg, 2);
-                    setSlotImage(numb1upImg, generalArrayCopy.getFirst().get(((curCounter + startIndex1 + 2) % sizeArray1)));
+                    setSlotImage(numb1upImg, generalArrayCopy.get(0).get(((curCounter + startIndex1 + 2) % sizeArray1)));
 //                    checkAnimation(numb1upImg, 2);
-                    setSlotImage(numb1Img, generalArrayCopy.getFirst().get(((curCounter + startIndex1 + 1) % sizeArray1)));
+                    setSlotImage(numb1Img, generalArrayCopy.get(0).get(((curCounter + startIndex1 + 1) % sizeArray1)));
 //                    checkAnimation(numb1Img, 2);
-                    setSlotImage(numb1downImg, generalArrayCopy.getFirst().get(((curCounter + startIndex1) % sizeArray1)));
+                    setSlotImage(numb1downImg, generalArrayCopy.get(0).get(((curCounter + startIndex1) % sizeArray1)));
 //                    checkAnimation(numb1downImg, 2);
 
 
@@ -184,11 +206,48 @@ public class SlotsController implements Initializable {
         }).start();
     }
 
+//    @FXML
+//    public void testAnimation() {
+//        double startY = numb1upImg.localToScene(numb1upImg.getBoundsInLocal()).getCenterY();
+//        double finishY = numb1downImg.localToScene(numb1downImg.getBoundsInLocal()).getCenterY();
+//
+//
+//        Timeline timeline = new Timeline(
+//                new KeyFrame(Duration.millis(1000 / 60), event -> {
+////                    moveImageViewDown(numb1upImg, startY, finishY);
+//                    moveImageViewDown(numb1Img, startY, finishY);
+////                    moveImageViewDown(numb1downImg, startY, finishY);
+//                })
+//        );
+//        timeline.setCycleCount(Timeline.INDEFINITE); // Бесконечный цикл
+//        timeline.play();
+//
+//
+//    }
+
+//    public static void moveImageViewDown(ImageView imageView, double startY, double finishY) {
+//        double currentY = imageView.localToScene(imageView.getBoundsInLocal()).getCenterY();
+//
+//        if (currentY > finishY) {
+//            imageView.setLayoutY(startY);
+//            System.out.println("New Y: " + imageView.getLayoutY());
+//            System.out.println("CHANGED PLACE!");
+//        }
+//        else {
+//            TranslateTransition transition = new TranslateTransition(Duration.millis(1000 / 60), imageView);
+//            transition.setByY(1);
+//            transition.play();
+//        }
+//    }
+
+
     @FXML
     public void actionAfterAnimation() {
-        playGameButton.setDisable(false);
+        skipButton.setVisible(false);
+        playGameButton.setVisible(true);
         updateLabels();
         skipAnimation = false;
+        setMessageLabel();
     }
 
     @FXML
@@ -218,25 +277,29 @@ public class SlotsController implements Initializable {
 
     }
 
-    public void checkAnimation(ImageView imageView, double duration) {
+//    public void checkAnimation(ImageView imageView, double duration) {
+//
+//        double startX = imageView.getX();
+//        double startY = imageView.getY();
+//
+//        TranslateTransition transition = new TranslateTransition();
+//        transition.setDuration(Duration.seconds(duration));
+//        transition.setNode(imageView);
+//        transition.setToY(imageView.getY() + 100);
+//
+//        transition.setOnFinished(event -> {
+//            // Уменьшаем счетчик, когда анимация завершена
+//            imageView.setX(startX);
+//            imageView.setY(startY);
+//        });
+//
+////        transition.setAutoReverse(true);
+////        transition.setCycleCount(TranslateTransition.INDEFINITE);
+//        // Запуск анимации
+//        transition.play();
+//    }
 
-        double startX = imageView.getX();
-        double startY = imageView.getY();
-
-        TranslateTransition transition = new TranslateTransition();
-        transition.setDuration(Duration.seconds(duration));
-        transition.setNode(imageView);
-        transition.setToY(imageView.getY()+100);
-
-        transition.setOnFinished(event -> {
-            // Уменьшаем счетчик, когда анимация завершена
-            imageView.setX(startX);
-            imageView.setY(startY);
-        });
-
-//        transition.setAutoReverse(true);
-//        transition.setCycleCount(TranslateTransition.INDEFINITE);
-        // Запуск анимации
-        transition.play();
+    public void doStake() throws IOException {
+        SetStakeCustomDialog.doStake(borderPane, dialog_window, warningsLabel, amountStake);
     }
 }

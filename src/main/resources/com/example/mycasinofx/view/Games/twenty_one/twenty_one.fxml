@@ -1,0 +1,230 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane fx:id="newAnchor" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.mycasinofx.controllers.games.twentyOne.TwentyOneController">
+   <children>
+      <BorderPane layoutY="-6.0" prefHeight="407.0" prefWidth="600.0" style="-fx-background-color: linear-gradient(to bottom, #31ED89, #187443);">
+         <center>
+            <AnchorPane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+               <children>
+                  <ImageView fx:id="imageView7" fitHeight="107.0" fitWidth="82.0" layoutX="18.0" layoutY="275.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../picture/cards/card_shirt.png" />
+                     </image>
+                  </ImageView>
+                  <ImageView fx:id="imageView5" fitHeight="107.0" fitWidth="82.0" layoutX="72.0" layoutY="275.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../picture/cards/card_shirt.png" />
+                     </image>
+                  </ImageView>
+                  <ImageView fx:id="imageView3" fitHeight="107.0" fitWidth="82.0" layoutX="124.0" layoutY="275.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../picture/cards/card_shirt.png" />
+                     </image>
+                  </ImageView>
+                  <ImageView fx:id="imageView1" fitHeight="107.0" fitWidth="82.0" layoutX="173.0" layoutY="275.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../picture/cards/card_shirt.png" />
+                     </image>
+                  </ImageView>
+                  <ImageView fx:id="imageView2" fitHeight="107.0" fitWidth="82.0" layoutX="223.0" layoutY="275.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../picture/cards/card_shirt.png" />
+                     </image>
+                  </ImageView>
+                  <ImageView fx:id="imageView4" fitHeight="107.0" fitWidth="82.0" layoutX="274.0" layoutY="275.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../picture/cards/card_shirt.png" />
+                     </image>
+                  </ImageView>
+                  <ImageView fx:id="imageView6" fitHeight="107.0" fitWidth="82.0" layoutX="322.0" layoutY="275.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../picture/cards/card_shirt.png" />
+                     </image>
+                  </ImageView>
+                  <ImageView fx:id="imageViewBot1" fitHeight="107.0" fitWidth="82.0" layoutX="106.0" layoutY="26.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../picture/cards/card_shirt.png" />
+                     </image>
+                  </ImageView>
+                  <ImageView fx:id="imageViewBot2" fitHeight="107.0" fitWidth="82.0" layoutX="147.0" layoutY="26.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../picture/cards/card_shirt.png" />
+                     </image>
+                  </ImageView>
+                  <ImageView fx:id="imageViewBot3" fitHeight="107.0" fitWidth="82.0" layoutX="193.0" layoutY="26.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../picture/cards/card_shirt.png" />
+                     </image>
+                  </ImageView>
+                  <ImageView fx:id="imageViewBot4" fitHeight="107.0" fitWidth="82.0" layoutX="234.0" layoutY="26.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../picture/cards/card_shirt.png" />
+                     </image>
+                  </ImageView>
+                  <ImageView fx:id="imageViewBot41" fitHeight="85.0" fitWidth="64.0" layoutX="333.0" layoutY="147.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../picture/cards/card_shirt.png" />
+                     </image>
+                  </ImageView>
+                  <ImageView fx:id="imageViewBot411" fitHeight="85.0" fitWidth="64.0" layoutX="331.0" layoutY="152.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../picture/cards/card_shirt.png" />
+                     </image>
+                  </ImageView>
+                  <ImageView fx:id="imageViewBot412" fitHeight="85.0" fitWidth="64.0" layoutX="337.0" layoutY="151.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../picture/cards/card_shirt.png" />
+                     </image>
+                  </ImageView>
+                  <ImageView fx:id="imageViewBot413" fitHeight="85.0" fitWidth="64.0" layoutX="337.0" layoutY="153.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../picture/cards/card_shirt.png" />
+                     </image>
+                  </ImageView>
+                  <Label fx:id="result" alignment="CENTER" layoutX="17.0" layoutY="164.0" prefHeight="80.0" prefWidth="261.0" textAlignment="CENTER" textFill="WHITE">
+                     <font>
+                        <Font name="System Bold" size="18.0" />
+                     </font>
+                  </Label>
+               </children>
+            </AnchorPane>
+         </center>
+         <left>
+            <VBox prefHeight="407.0" prefWidth="189.0" style="-fx-effect: dropshadow(gaussian, rgba(0,0,0,0.5), 10, 0, 0, 0); -fx-background-color: #013800;" BorderPane.alignment="CENTER">
+               <children>
+                  <HBox prefHeight="39.0" prefWidth="189.0" />
+                  <HBox prefHeight="39.0" prefWidth="189.0">
+                     <children>
+                        <HBox prefHeight="40.0" prefWidth="225.0">
+                           <children>
+                              <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="61.0" prefWidth="189.0" text="Milly 21" textFill="WHITE">
+                                 <font>
+                                    <Font name="System Bold" size="24.0" />
+                                 </font>
+                              </Label>
+                           </children>
+                        </HBox>
+                     </children>
+                  </HBox>
+                  <HBox prefHeight="5.0" prefWidth="189.0" />
+                  <HBox prefHeight="19.0" prefWidth="225.0">
+                     <children>
+                        <Label prefHeight="25.0" prefWidth="24.0" />
+                        <Label fx:id="balanceLabel" prefHeight="24.0" prefWidth="154.0" text="Balance: " textFill="WHITE">
+                           <font>
+                              <Font name="System Bold" size="12.0" />
+                           </font>
+                        </Label>
+                     </children>
+                  </HBox>
+                  <HBox prefHeight="1.0" prefWidth="189.0">
+                     <children>
+                        <Label prefHeight="6.0" prefWidth="24.0">
+                           <font>
+                              <Font size="7.0" />
+                           </font>
+                        </Label>
+                     </children>
+                  </HBox>
+                  <HBox prefHeight="19.0" prefWidth="225.0">
+                     <children>
+                        <Label prefHeight="25.0" prefWidth="24.0" />
+                        <Label fx:id="amountStake" prefHeight="24.0" prefWidth="154.0" text="Amount of Stake: " textFill="WHITE">
+                           <font>
+                              <Font name="System Bold" size="12.0" />
+                           </font>
+                        </Label>
+                     </children>
+                  </HBox>
+                  <HBox prefHeight="1.0" prefWidth="189.0">
+                     <children>
+                        <Label prefHeight="6.0" prefWidth="24.0">
+                           <font>
+                              <Font size="7.0" />
+                           </font>
+                        </Label>
+                     </children>
+                  </HBox>
+                  <VBox prefHeight="77.0" prefWidth="189.0">
+                     <children>
+                        <Label prefHeight="37.0" prefWidth="80.0" textFill="WHITE" />
+                        <HBox prefHeight="26.0" prefWidth="189.0">
+                           <children>
+                              <Label prefHeight="25.0" prefWidth="14.0" />
+                              <Label prefHeight="27.0" prefWidth="131.0" text="Diller Value:" textFill="WHITE">
+                                 <font>
+                                    <Font name="System Bold" size="18.0" />
+                                 </font>
+                              </Label>
+                              <Label fx:id="dillerValue" alignment="CENTER" prefHeight="37.0" prefWidth="40.0" text="11" textFill="WHITE">
+                                 <font>
+                                    <Font size="19.0" />
+                                 </font>
+                              </Label>
+                           </children>
+                        </HBox>
+                     </children>
+                  </VBox>
+                  <HBox prefHeight="19.0" prefWidth="225.0">
+                     <children>
+                        <Label prefHeight="25.0" prefWidth="14.0" />
+                        <Label fx:id="balanceLabel111" prefHeight="27.0" prefWidth="131.0" text="Your Value:" textFill="WHITE">
+                           <font>
+                              <Font name="System Bold" size="18.0" />
+                           </font>
+                        </Label>
+                        <Label fx:id="playerValue" alignment="CENTER" prefHeight="37.0" prefWidth="40.0" text="11" textFill="WHITE">
+                           <font>
+                              <Font size="19.0" />
+                           </font>
+                        </Label>
+                     </children>
+                  </HBox>
+                  <Label prefHeight="1.0" prefWidth="187.0">
+                     <font>
+                        <Font size="8.0" />
+                     </font>
+                  </Label>
+                  <HBox alignment="CENTER" prefHeight="44.0" prefWidth="189.0">
+                     <children>
+                        <Button fx:id="getCard" alignment="CENTER" contentDisplay="BOTTOM" mnemonicParsing="false" onAction="#getCard" prefHeight="27.0" prefWidth="102.0" style="-fx-background-radius: 50; -fx-border-radius: 50; -fx-background-color: #00BD93; -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.5), 10, 0, 0, 0);" text="Get Card" textFill="WHITE">
+                           <font>
+                              <Font name="System Bold Italic" size="12.0" />
+                           </font>
+                        </Button>
+                     </children>
+                  </HBox>
+                  <HBox alignment="CENTER" prefHeight="44.0" prefWidth="189.0">
+                     <children>
+                        <Button fx:id="showRes" alignment="CENTER" contentDisplay="BOTTOM" mnemonicParsing="false" onAction="#compareWinner" prefHeight="27.0" prefWidth="102.0" style="-fx-background-radius: 50; -fx-border-radius: 50; -fx-background-color: #00BD93; -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.5), 10, 0, 0, 0);" text="Show Result" textFill="WHITE">
+                           <font>
+                              <Font name="System Bold Italic" size="12.0" />
+                           </font>
+                        </Button>
+                     </children>
+                  </HBox>
+                  <HBox alignment="CENTER" prefHeight="44.0" prefWidth="189.0">
+                     <children>
+                        <Button fx:id="showRes1" alignment="CENTER" contentDisplay="BOTTOM" mnemonicParsing="false" onAction="#startGame" prefHeight="27.0" prefWidth="102.0" style="-fx-background-radius: 50; -fx-border-radius: 50; -fx-background-color: #00BD93; -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.5), 10, 0, 0, 0);" text="start Game" textFill="WHITE">
+                           <font>
+                              <Font name="System Bold Italic" size="12.0" />
+                           </font>
+                        </Button>
+                     </children>
+                  </HBox>
+               </children>
+            </VBox>
+         </left>
+      </BorderPane>
+   </children>
+</AnchorPane>
