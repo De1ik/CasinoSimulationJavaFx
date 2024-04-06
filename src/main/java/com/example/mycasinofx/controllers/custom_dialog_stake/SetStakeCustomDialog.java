@@ -12,6 +12,7 @@ import javafx.scene.layout.BorderPane;
 import java.io.IOException;
 
 public class SetStakeCustomDialog {
+
     @FXML
     public static void doStake(BorderPane borderPane, AnchorPane dialog_window, Label warningsLabel, Label amountStake) throws IOException {
 

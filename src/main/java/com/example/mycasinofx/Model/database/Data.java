@@ -13,7 +13,7 @@ public interface Data {
     boolean voteCheckNewUser(int setPlayerId, String tableName, String usersId) throws SQLException, ClassNotFoundException;
     void voteNewUser(int setPlayerId, String setCategory, String tableName, String usersId, String category, final Runnable onSuccess, final Consumer<Exception> onError);
 
-    int checkValidPassword(String password) throws SQLException, ClassNotFoundException;
+    int checkValidPassword(String password, String email) throws SQLException, ClassNotFoundException;
     int checkValidEmail(String email) throws SQLException, ClassNotFoundException;
     void loginUserDB(String email, String password, final Runnable onSuccess, final Consumer<Exception> onError);
 

@@ -107,9 +107,10 @@ public class DatabaseManager extends Config implements Data {
     }
 
     @Override
-    public int checkValidPassword(String password) throws SQLException, ClassNotFoundException {
+    public int checkValidPassword(String password, String email) throws SQLException, ClassNotFoundException {
         String checkPassword = "SELECT COUNT(*) AS password_count FROM " + ConstUserTable.USER_TABLE +
-                " WHERE " + ConstUserTable.PASSWORD + " = '" + password + "'";
+                " WHERE " + ConstUserTable.PASSWORD + " = '" + password + "'" +
+                " AND " + ConstUserTable.EMAIL + " = '" + email + "'";
 
         PreparedStatement query = getDbConnection().prepareStatement(checkPassword);
 

@@ -40,6 +40,11 @@ public class SwitchPage implements PageSwitchInterface{
     }
 
     @Override
+    public void goPlay21(AnchorPane anchorPane) throws IOException {
+        checkLoginUser(anchorPane, "view/Games/twenty_one/start21.fxml");
+    }
+
+    @Override
     public void go21(AnchorPane anchorPane) throws IOException {
         checkLoginUser(anchorPane, "view/Games/twenty_one/twenty_one.fxml");
     }

@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane fx:id="dialog_anchor" prefHeight="400.0" prefWidth="600.0" styleClass="result-21-dialog-draw" stylesheets="@../styles/styles.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.mycasinofx.controllers.custom_dialog_stake.DialogControllerResult">
+   <children>
+      <Button fx:id="playAgain" layoutX="429.0" layoutY="301.0" mnemonicParsing="false" onAction="#playAgain" prefHeight="41.0" prefWidth="81.0" styleClass="access-button" stylesheets="@../styles/styles.css" text="Play Again" />
+      <Label fx:id="bigLabelResult" alignment="CENTER" layoutX="155.0" layoutY="53.0" prefHeight="62.0" prefWidth="279.0" text="Change Your Stake" textFill="WHITE">
+         <font>
+            <Font size="29.0" />
+         </font></Label>
+      <Button layoutX="79.0" layoutY="301.0" mnemonicParsing="false" onAction="#goMainMenu" prefHeight="41.0" prefWidth="81.0" styleClass="cansel-button" text="Main Menu" />
+      <Label fx:id="balanceLabel" layoutX="209.0" layoutY="215.0" prefHeight="31.0" prefWidth="172.0" text="Current Balance: " textFill="WHITE">
+         <font>
+            <Font name="System Bold" size="13.0" />
+         </font>
+      </Label>
+      <Label fx:id="warningLabel" alignment="CENTER" layoutX="189.0" layoutY="241.0" prefHeight="31.0" prefWidth="211.0" textFill="#9f0909">
+         <font>
+            <Font name="System Bold Italic" size="13.0" />
+         </font>
+      </Label>
+      <Label fx:id="amountStake" layoutX="209.0" layoutY="184.0" prefHeight="31.0" prefWidth="172.0" text="Current Stake: " textFill="WHITE">
+         <font>
+            <Font name="System Bold" size="13.0" />
+         </font>
+      </Label>
+      <Label fx:id="resultLabel" alignment="BOTTOM_LEFT" contentDisplay="CENTER" layoutX="179.0" layoutY="257.0" prefHeight="21.0" prefWidth="241.0" text="Profit" textAlignment="CENTER" textFill="WHITE">
+         <font>
+            <Font name="System Bold Italic" size="12.0" />
+         </font>
+      </Label>
+      <Label fx:id="botValue" layoutX="209.0" layoutY="115.0" prefHeight="31.0" prefWidth="172.0" text="Diller Value: " textFill="WHITE">
+         <font>
+            <Font name="System Bold" size="17.0" />
+         </font>
+      </Label>
+      <Label fx:id="playerValue" layoutX="209.0" layoutY="146.0" prefHeight="31.0" prefWidth="181.0" text="Your Value: " textFill="WHITE">
+         <font>
+            <Font name="System Bold" size="17.0" />
+         </font>
+      </Label>
+   </children>
+</AnchorPane>

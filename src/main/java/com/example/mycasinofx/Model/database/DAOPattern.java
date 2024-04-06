@@ -38,8 +38,8 @@ public class DAOPattern {
         return data.voteCheckNewUser(setPlayerId, tableName, usersId);
     }
 
-    public static int checkValidPassword(String password) throws SQLException, ClassNotFoundException {
-        return data.checkValidPassword(password);
+    public static int checkValidPassword(String password, String email) throws SQLException, ClassNotFoundException {
+        return data.checkValidPassword(password, email);
     }
 
     public static int checkValidEmail(String email) throws SQLException, ClassNotFoundException {

@@ -10,7 +10,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane fx:id="twentyOneStartedAnchor" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.mycasinofx.controllers.games.twentyOne.TwentyOneController">
+<AnchorPane fx:id="anchor21" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.mycasinofx.controllers.games.twentyOne.Start21Controller">
    <children>
       <BorderPane fx:id="borderPane" layoutY="-6.0" prefHeight="407.0" prefWidth="600.0" style="-fx-background-color: linear-gradient(to bottom, #31ED89, #187443);">
          <center>
@@ -91,11 +91,16 @@
                         <Image url="@../../picture/cards/card_shirt.png" />
                      </image>
                   </ImageView>
-                  <Label fx:id="result" alignment="CENTER" layoutX="17.0" layoutY="164.0" prefHeight="80.0" prefWidth="261.0" textAlignment="CENTER" textFill="WHITE">
+                  <Label fx:id="result" alignment="CENTER" layoutX="16.0" layoutY="133.0" prefHeight="80.0" prefWidth="261.0" text="Can You Win?" textAlignment="CENTER" textFill="WHITE">
                      <font>
-                        <Font name="System Bold" size="18.0" />
+                        <Font name="System Bold Italic" size="30.0" />
                      </font>
                   </Label>
+                  <Button fx:id="showRes" alignment="CENTER" contentDisplay="BOTTOM" layoutX="87.0" layoutY="204.0" mnemonicParsing="false" onAction="#go21" prefHeight="33.0" prefWidth="119.0" style="-fx-background-radius: 50; -fx-border-radius: 50; -fx-background-color: #00BD93; -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.5), 10, 0, 0, 0);" text="Play Game" textFill="WHITE">
+                     <font>
+                        <Font name="System Bold Italic" size="12.0" />
+                     </font>
+                  </Button>
                </children>
             </AnchorPane>
          </center>
@@ -119,13 +124,8 @@
                   <HBox prefHeight="5.0" prefWidth="189.0" />
                   <HBox prefHeight="19.0" prefWidth="225.0">
                      <children>
-                        <Label prefHeight="19.0" prefWidth="22.0" />
-                        <Label fx:id="balanceLabel" prefHeight="19.0" prefWidth="53.0" text="Balance: " textFill="WHITE">
-                           <font>
-                              <Font name="System Bold" size="12.0" />
-                           </font>
-                        </Label>
-                        <Label fx:id="balanceLabel" prefHeight="17.0" prefWidth="93.0" textAlignment="CENTER" textFill="WHITE">
+                        <Label prefHeight="25.0" prefWidth="24.0" />
+                        <Label fx:id="balanceLabel" prefHeight="19.0" prefWidth="147.0" text="Balance: " textFill="WHITE">
                            <font>
                               <Font name="System Bold" size="12.0" />
                            </font>
@@ -143,13 +143,8 @@
                   </HBox>
                   <HBox prefHeight="19.0" prefWidth="225.0">
                      <children>
-                        <Label prefHeight="19.0" prefWidth="45.0" />
-                        <Label fx:id="amountStake" prefHeight="19.0" prefWidth="120.0" text="Amount of Stake: " textFill="WHITE">
-                           <font>
-                              <Font name="System Bold" size="11.0" />
-                           </font>
-                        </Label>
-                        <Label fx:id="amountStake" prefHeight="17.0" prefWidth="93.0" textAlignment="CENTER" textFill="WHITE">
+                        <Label prefHeight="25.0" prefWidth="24.0" />
+                        <Label fx:id="amountStake" prefHeight="24.0" prefWidth="154.0" text="Amount of Stake: " textFill="WHITE">
                            <font>
                               <Font name="System Bold" size="12.0" />
                            </font>
@@ -165,77 +160,41 @@
                         </Label>
                      </children>
                   </HBox>
-                  <VBox prefHeight="47.0" prefWidth="189.0">
+                  <HBox alignment="BOTTOM_CENTER" prefHeight="28.0" prefWidth="211.0">
                      <children>
-                        <Label prefHeight="37.0" prefWidth="80.0" textFill="WHITE" />
-                        <HBox fx:id="dillerValueHbox" prefHeight="26.0" prefWidth="189.0">
+                        <Button alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#doStake" prefHeight="20.0" prefWidth="106.0" style="-fx-background-radius: 50; -fx-border-radius: 50; -fx-background-color: White; -fx-border-color: #772F1A; -fx-text-fill: #772F1A; -fx-border-width: 1.3; -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.5), 10, 0, 0, 0);" text="Change The Stake" textAlignment="CENTER" textFill="#367b53">
+                           <font>
+                              <Font name="System Bold Italic" size="10.0" />
+                           </font>
+                        </Button>
+                     </children>
+                  </HBox>
+                  <HBox prefHeight="1.0" prefWidth="189.0">
+                     <children>
+                        <Label prefHeight="6.0" prefWidth="24.0">
+                           <font>
+                              <Font size="7.0" />
+                           </font>
+                        </Label>
+                     </children>
+                  </HBox>
+                  <HBox alignment="CENTER" prefHeight="44.0" prefWidth="189.0">
+                     <children>
+                        <HBox prefHeight="19.0" prefWidth="225.0">
                            <children>
-                              <Label prefHeight="25.0" prefWidth="14.0" />
-                              <Label prefHeight="27.0" prefWidth="131.0" text="Diller Value:" textFill="WHITE">
+                              <Label prefHeight="25.0" prefWidth="24.0" />
+                              <Label fx:id="warningsLabel" prefHeight="24.0" prefWidth="169.0" textFill="WHITE">
                                  <font>
-                                    <Font name="System Bold" size="18.0" />
-                                 </font>
-                              </Label>
-                              <Label fx:id="dillerValue" alignment="CENTER" prefHeight="37.0" prefWidth="40.0" text="11" textFill="WHITE">
-                                 <font>
-                                    <Font size="19.0" />
+                                    <Font name="System Bold" size="12.0" />
                                  </font>
                               </Label>
                            </children>
                         </HBox>
-                     </children>
-                  </VBox>
-                  <HBox prefHeight="19.0" prefWidth="225.0">
-                     <children>
-                        <Label prefHeight="25.0" prefWidth="14.0" />
-                        <Label fx:id="balanceLabel111" prefHeight="27.0" prefWidth="131.0" text="Your Value:" textFill="WHITE">
-                           <font>
-                              <Font name="System Bold" size="18.0" />
-                           </font>
-                        </Label>
-                        <Label fx:id="playerValue" alignment="CENTER" prefHeight="37.0" prefWidth="40.0" text="11" textFill="WHITE">
-                           <font>
-                              <Font size="19.0" />
-                           </font>
-                        </Label>
-                     </children>
-                  </HBox>
-                  <Label prefHeight="1.0" prefWidth="187.0">
-                     <font>
-                        <Font size="8.0" />
-                     </font>
-                  </Label>
+                     </children></HBox>
+                  <HBox alignment="CENTER" prefHeight="44.0" prefWidth="189.0" />
                   <HBox alignment="CENTER" prefHeight="44.0" prefWidth="189.0">
                      <children>
-                        <AnchorPane>
-                           <children>
-                              <Button fx:id="getCard" alignment="CENTER" contentDisplay="BOTTOM" layoutX="10.0" layoutY="10.000000357627869" mnemonicParsing="false" onAction="#getCard" prefHeight="27.0" prefWidth="102.0" style="-fx-background-radius: 50; -fx-border-radius: 50; -fx-background-color: #00BD93; -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.5), 10, 0, 0, 0);" text="Get Card" textFill="WHITE">
-                                 <font>
-                                    <Font name="System Bold Italic" size="12.0" />
-                                 </font>
-                              </Button>
-                           </children>
-                        </AnchorPane>
-                     </children>
-                  </HBox>
-                  <HBox alignment="CENTER" prefHeight="44.0" prefWidth="189.0">
-                     <children>
-                        <AnchorPane>
-                           <children>
-                              <Button fx:id="showRes" alignment="CENTER" contentDisplay="BOTTOM" layoutX="10.0" layoutY="10.000000357627869" mnemonicParsing="false" onAction="#compareWinner" prefHeight="27.0" prefWidth="102.0" style="-fx-background-radius: 50; -fx-border-radius: 50; -fx-background-color: #00BD93; -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.5), 10, 0, 0, 0);" text="Show Result" textFill="WHITE">
-                                 <font>
-                                    <Font name="System Bold Italic" size="12.0" />
-                                 </font>
-                              </Button>
-                           </children>
-                        </AnchorPane>
-                     </children>
-                  </HBox>
-                  <HBox alignment="CENTER" prefHeight="11.0" prefWidth="189.0" />
-                  <HBox alignment="BOTTOM_LEFT" prefHeight="44.0" prefWidth="189.0">
-                     <children>
-                        <Label prefHeight="17.0" prefWidth="19.0" text="Label" />
-                        <Button fx:id="goPlay21" alignment="CENTER" contentDisplay="BOTTOM" mnemonicParsing="false" onAction="#goPlay21" prefHeight="27.0" prefWidth="102.0" style="-fx-background-radius: 50; -fx-border-radius: 50; -fx-background-color: #00BD93; -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.5), 10, 0, 0, 0);" text="Back" textFill="WHITE">
+                        <Button fx:id="showRes1" alignment="CENTER" contentDisplay="BOTTOM" mnemonicParsing="false" onAction="#goMainMenu" prefHeight="27.0" prefWidth="102.0" style="-fx-background-radius: 50; -fx-border-radius: 50; -fx-background-color: #00BD93; -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.5), 10, 0, 0, 0);" text="Main Menu" textFill="WHITE">
                            <font>
                               <Font name="System Bold Italic" size="12.0" />
                            </font>
@@ -246,6 +205,6 @@
             </VBox>
          </left>
       </BorderPane>
-      <AnchorPane fx:id="resultGame" layoutX="169.0" layoutY="74.0" prefHeight="194.0" prefWidth="309.0" />
+      <AnchorPane fx:id="dialogWindow" layoutX="157.0" layoutY="70.0" prefHeight="242.0" prefWidth="336.0" />
    </children>
 </AnchorPane>

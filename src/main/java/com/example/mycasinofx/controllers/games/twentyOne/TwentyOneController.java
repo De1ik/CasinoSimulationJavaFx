@@ -1,34 +1,82 @@
 package com.example.mycasinofx.controllers.games.twentyOne;
 
 import com.example.mycasinofx.Application;
-import com.example.mycasinofx.Model.games.TwentyOne.Cards;
 import com.example.mycasinofx.Model.games.TwentyOne.TwentyOne;
+import com.example.mycasinofx.Model.player.Player;
+import com.example.mycasinofx.controllers.custom_dialog_stake.ResultDialog;
+import com.example.mycasinofx.controllers.switchPage.PageSwitchInterface;
+import com.example.mycasinofx.controllers.switchPage.SwitchPage;
 import javafx.fxml.FXML;
+import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.BorderPane;
+import javafx.scene.layout.HBox;
 
+import java.io.IOException;
+import java.net.URL;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.Objects;
+import java.util.ResourceBundle;
 
-public class TwentyOneController {
-
-    @FXML
-    private AnchorPane newAnchor;
+public class TwentyOneController implements Initializable {
 
     @FXML
-    private Label result, playerCard1, playerCard2, playerCard3, playerCard4, playerCard5, playerCard6, playerCard7, playerValue, botCard1, botCard2, botValue, dillerValue;
+    private AnchorPane twentyOneStartedAnchor, resultGame;
+
+    @FXML
+    private Label result, balanceLabel, amountStake, playerCard3, playerCard4, playerCard5, playerCard6, playerCard7, playerValue, botCard1, botCard2, botValue, dillerValue;
 
     @FXML
     private ImageView imageView1, imageView2, imageView3, imageView4, imageView5, imageView6, imageView7, imageViewBot1, imageViewBot2, imageViewBot3, imageViewBot4;
 
     @FXML
-    Button getCard, showRes;
+    private Button getCard, showRes;
 
-    TwentyOne twentyOne = new TwentyOne();
+    @FXML
+    private HBox dillerValueHbox;
+
+    @FXML
+    BorderPane borderPane;
+
+    TwentyOne twentyOne;
+    private Player player;
+    private PageSwitchInterface pageSwitch;
+
+    public void initialize(URL url, ResourceBundle resourceBundle) {
+        twentyOne = new TwentyOne();
+        pageSwitch = new SwitchPage();
+        player = Player.getPlayer();
+    }
+
+
+    public void showGameResultDialog(int res) throws IOException {
+        ResultDialog.showGameResultDialog(twentyOneStartedAnchor, borderPane, resultGame, 3, twentyOne.getBotValue(), twentyOne.getPlayerValue(), res);
+    }
+
+    public void goPlay21() throws IOException {
+        pageSwitch.goPlay21(twentyOneStartedAnchor);
+    }
+
+
+    @FXML
+    public void setBalanceLabel() {
+        balanceLabel.setText("" + player.getBalance());
+    }
+
+    @FXML
+    public void setCurStakeLabel() {
+        amountStake.setText("" + player.getCurrentStake());
+    }
+
+    @FXML
+    public void updateLabels() {
+        setBalanceLabel();
+        setCurStakeLabel();
+    }
 
     public void startGame(){
         getCard.setVisible(true);
@@ -37,17 +85,19 @@ public class TwentyOneController {
         playerValue.setText("" + twentyOne.getPlayerValue());
         updateLabelsPlayerHandCards();
         updateBotHandCards(false);
+        updateLabels();
+        dillerValueHbox.setVisible(false);
     }
 
-    public void getCard(){
+    public void getCard() throws IOException {
         twentyOne.getCardToHand(true);
         playerValue.setText("" + twentyOne.getPlayerValue());
         updateLabelsPlayerHandCards();
         if (twentyOne.getPlayerValue() > 21){
-            result.setText("You lose");
             getCard.setVisible(false);
             showRes.setVisible(false);
             updateBotHandCards(true);
+            ResultDialog.showGameResultDialog(twentyOneStartedAnchor, borderPane, resultGame, 3, twentyOne.getBotValue(), twentyOne.getPlayerValue(), 2);
         }
 
     }
@@ -62,19 +112,31 @@ public class TwentyOneController {
     }
 
 
-    public void compareWinner(){
+    public void compareWinner() throws IOException {
+        dillerValueHbox.setVisible(true);
+        getCard.setVisible(false);
+        showRes.setVisible(false);
         getBotCard();
         updateBotHandCards(true);
         dillerValue.setText(""+twentyOne.getBotValue());
+        int res;
         if (twentyOne.getPlayerValue() > twentyOne.getBotValue() || twentyOne.getBotValue() > 21){
+            player.setBalance(player.getBalance() + player.getCurrentStake() * 2);
+            player.setProfit(player.getCurrentStake() * 2 - player.getCurrentStake());
             result.setText("You win");
+            res = 1;
         }
         else if(twentyOne.getPlayerValue() < twentyOne.getBotValue()){
+            player.setProfit(-(player.getCurrentStake() * 2));
             result.setText("You lose");
+            res = 2;
         }
         else{
+            player.setProfit(0);
             result.setText("Draw");
+            res = 0;
         }
+        showGameResultDialog(res);
     }
 
     public void showBotCards(){
