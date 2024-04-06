@@ -5,13 +5,16 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
+<?import javafx.scene.paint.Color?>
+<?import javafx.scene.paint.LinearGradient?>
+<?import javafx.scene.paint.Stop?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane fx:id="mainMenuNotLogin" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.mycasinofx.controllers.mainMenu.MainMenuNotLoginController">
+<AnchorPane fx:id="mainMenuNotLogin" prefHeight="400.0" prefWidth="600.0" stylesheets="@../styles/styles.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.mycasinofx.controllers.mainMenu.MainMenuNotLoginController">
    <children>
       <HBox layoutX="-1.0" prefHeight="400.0" prefWidth="600.0">
          <children>
-            <AnchorPane prefHeight="400.0" prefWidth="406.0" style="-fx-background-color: purple;">
+            <AnchorPane prefHeight="400.0" prefWidth="406.0" style="-fx-background-color: linear-gradient(to bottom, #D08035, #772F1A);">
                <children>
                   <VBox layoutY="-2.0" prefHeight="400.0" prefWidth="302.0">
                      <children>
@@ -34,7 +37,7 @@
                            <children>
                               <HBox alignment="CENTER" prefHeight="64.0" prefWidth="302.0">
                                  <children>
-                                    <Button alignment="CENTER" mnemonicParsing="false" onAction="#goRoulette" prefHeight="40.0" prefWidth="174.0" style="-fx-background-radius: 50; -fx-border-radius: 50; -fx-background-color: white; -fx-border-color: #3A003A;" styleClass="onPurple" text="Play Roullete" textFill="PURPLE">
+                                    <Button alignment="CENTER" mnemonicParsing="false" onAction="#goRoulette" prefHeight="40.0" prefWidth="174.0" styleClass="main-menu-buttons" stylesheets="@../styles/styles.css" text="Play Roullete" textFill="PURPLE">
                                        <font>
                                           <Font name="System Bold Italic" size="12.0" />
                                        </font>
@@ -43,7 +46,7 @@
                               </HBox>
                               <HBox alignment="CENTER" prefHeight="61.0" prefWidth="302.0">
                                  <children>
-                                    <Button alignment="CENTER" mnemonicParsing="false" onAction="#goSlots" prefHeight="40.0" prefWidth="174.0" style="-fx-background-radius: 50; -fx-border-radius: 50; -fx-background-color: white; -fx-border-color: #3A003A;" styleClass="onPurple" text="Slots" textFill="PURPLE">
+                                    <Button alignment="CENTER" mnemonicParsing="false" onAction="#goSlots" prefHeight="40.0" prefWidth="174.0" styleClass="main-menu-buttons" text="Slots" textFill="PURPLE">
                                        <font>
                                           <Font name="System Bold Italic" size="12.0" />
                                        </font>
@@ -52,7 +55,7 @@
                               </HBox>
                               <HBox alignment="CENTER" prefHeight="65.0" prefWidth="302.0">
                                  <children>
-                                    <Button alignment="CENTER" mnemonicParsing="false" onAction="#go21" prefHeight="40.0" prefWidth="174.0" style="-fx-background-radius: 50; -fx-border-radius: 50; -fx-background-color: white; -fx-border-color: #3A003A;" styleClass="onPurple" text="Play Twenty One" textFill="PURPLE">
+                                    <Button alignment="CENTER" mnemonicParsing="false" onAction="#go21" prefHeight="40.0" prefWidth="174.0" styleClass="main-menu-buttons" text="Play Twenty One" textFill="PURPLE">
                                        <font>
                                           <Font name="System Bold Italic" size="12.0" />
                                        </font>
@@ -61,7 +64,7 @@
                               </HBox>
                               <HBox alignment="CENTER" prefHeight="57.0" prefWidth="302.0">
                                  <children>
-                                    <Button alignment="CENTER" mnemonicParsing="false" onAction="#goFullList" prefHeight="40.0" prefWidth="174.0" style="-fx-background-radius: 50; -fx-border-radius: 50; -fx-background-color: white; -fx-border-color: #3A003A;" styleClass="onPurple" text="Full List of Games" textFill="PURPLE">
+                                    <Button alignment="CENTER" mnemonicParsing="false" onAction="#goFullList" prefHeight="40.0" prefWidth="174.0" styleClass="main-menu-buttons" text="Full List of Games" textFill="PURPLE">
                                        <font>
                                           <Font name="System Bold Italic" size="12.0" />
                                        </font>
@@ -70,7 +73,7 @@
                               </HBox>
                               <HBox alignment="CENTER" prefHeight="66.0" prefWidth="302.0">
                                  <children>
-                                    <Button alignment="CENTER" mnemonicParsing="false" onAction="#goVoting" prefHeight="40.0" prefWidth="174.0" style="-fx-background-radius: 50; -fx-border-radius: 50; -fx-background-color: white; -fx-border-color: #3A003A;" styleClass="onPurple" text="Active Voiting" textFill="PURPLE">
+                                    <Button alignment="CENTER" mnemonicParsing="false" onAction="#goVoting" prefHeight="40.0" prefWidth="174.0" styleClass="main-menu-buttons" text="Active Voiting" textFill="PURPLE">
                                        <font>
                                           <Font name="System Bold Italic" size="12.0" />
                                        </font>
@@ -84,7 +87,7 @@
                                           <Font name="System Bold Italic" size="14.0" />
                                        </font>
                                     </Label>
-                                    <Button fx:id="exitButton" alignment="CENTER" mnemonicParsing="false" prefHeight="28.0" prefWidth="101.0" style="-fx-background-radius: 50; -fx-border-radius: 50; -fx-background-color: white; -fx-border-color: #3A003A;" styleClass="onPurple" text="Exit" textFill="PURPLE">
+                                    <Button fx:id="exitButton" alignment="CENTER" mnemonicParsing="false" prefHeight="28.0" prefWidth="101.0" styleClass="main-menu-buttons" text="Exit" textFill="PURPLE">
                                        <font>
                                           <Font name="System Bold Italic" size="12.0" />
                                        </font>
@@ -108,44 +111,108 @@
                                     <Font name="System Bold" size="15.0" />
                                  </font>
                               </Label>
-                              <Label alignment="CENTER" prefHeight="99.0" prefWidth="309.0" text="Casino" textAlignment="CENTER" textFill="#0ca65e">
+                              <Label alignment="CENTER" prefHeight="99.0" prefWidth="309.0" text="Casino" textAlignment="CENTER">
                                  <font>
                                     <Font name="System Bold" size="32.0" />
                                  </font>
+                                 <textFill>
+                                    <LinearGradient endX="1.0" endY="1.0">
+                                       <stops>
+                                          <Stop>
+                                             <color>
+                                                <Color red="0.0313725508749485" green="0.5960784554481506" blue="0.32549020648002625" />
+                                             </color>
+                                          </Stop>
+                                          <Stop offset="1.0">
+                                             <color>
+                                                <Color red="1.0" green="0.5960784554481506" blue="0.1921568661928177" />
+                                             </color>
+                                          </Stop>
+                                       </stops>
+                                    </LinearGradient>
+                                 </textFill>
                               </Label>
-                              <Label alignment="TOP_CENTER" prefHeight="103.0" prefWidth="309.0" text="Simulation" textFill="#0ca65e">
+                              <Label alignment="TOP_CENTER" prefHeight="103.0" prefWidth="309.0" text="Simulation">
                                  <font>
                                     <Font name="System Bold" size="32.0" />
                                  </font>
+                                 <textFill>
+                                    <LinearGradient endX="1.0" endY="1.0">
+                                       <stops>
+                                          <Stop>
+                                             <color>
+                                                <Color red="0.0313725508749485" green="0.5960784554481506" blue="0.32549020648002625" />
+                                             </color>
+                                          </Stop>
+                                          <Stop offset="1.0">
+                                             <color>
+                                                <Color red="0.9736841917037964" green="0.5769980549812317" blue="0.1803118884563446" />
+                                             </color>
+                                          </Stop>
+                                       </stops>
+                                    </LinearGradient>
+                                 </textFill>
                               </Label>
                            </children>
                         </VBox>
-                        <VBox alignment="CENTER" prefHeight="87.0" prefWidth="298.0">
+                        <VBox alignment="CENTER" prefHeight="88.0" prefWidth="298.0">
                            <children>
-                              <Button mnemonicParsing="false" onAction="#goLogin" prefHeight="45.0" prefWidth="139.0" style="-fx-background-radius: 50; -fx-border-radius: 50; -fx-background-color: #00BD93;" text="Login" textFill="WHITE">
+                              <Button mnemonicParsing="false" onAction="#goLogin" prefHeight="36.0" prefWidth="139.0" styleClass="registration-buttons" text="Login" textFill="WHITE">
                                  <font>
-                                    <Font name="System Bold Italic" size="12.0" />
+                                    <Font name="System Bold Italic" size="1.0" />
                                  </font>
                               </Button>
                            </children>
                         </VBox>
                         <VBox alignment="BOTTOM_LEFT" prefHeight="42.0" prefWidth="298.0">
                            <children>
-                              <Label alignment="BOTTOM_CENTER" prefHeight="39.0" prefWidth="298.0" text="Or" textAlignment="CENTER" textFill="#0ca65e">
+                              <Label alignment="BOTTOM_CENTER" prefHeight="39.0" prefWidth="298.0" text="Or" textAlignment="CENTER">
                                  <font>
                                     <Font name="System Bold" size="32.0" />
                                  </font>
+                                 <textFill>
+                                    <LinearGradient endX="1.0" endY="1.0">
+                                       <stops>
+                                          <Stop>
+                                             <color>
+                                                <Color red="0.0313725508749485" green="0.5960784554481506" blue="0.32549020648002625" />
+                                             </color>
+                                          </Stop>
+                                          <Stop offset="1.0">
+                                             <color>
+                                                <Color red="1.0" green="0.595678985118866" blue="0.1913580298423767" />
+                                             </color>
+                                          </Stop>
+                                       </stops>
+                                    </LinearGradient>
+                                 </textFill>
                               </Label>
                            </children>
                         </VBox>
                         <VBox alignment="CENTER" prefHeight="87.0" prefWidth="298.0">
                            <children>
-                              <Label alignment="CENTER" prefHeight="69.0" prefWidth="298.0" text="Create New Account" textAlignment="CENTER" textFill="#0ca65e">
+                              <Label alignment="CENTER" prefHeight="69.0" prefWidth="298.0" text="Create New Account" textAlignment="CENTER">
                                  <font>
                                     <Font name="System Bold Italic" size="14.0" />
                                  </font>
+                                 <textFill>
+                                    <LinearGradient endX="1.0" endY="1.0">
+                                       <stops>
+                                          <Stop>
+                                             <color>
+                                                <Color red="0.0313725508749485" green="0.5960784554481506" blue="0.32549020648002625" />
+                                             </color>
+                                          </Stop>
+                                          <Stop offset="1.0">
+                                             <color>
+                                                <Color red="1.0" green="0.595678985118866" blue="0.1913580298423767" />
+                                             </color>
+                                          </Stop>
+                                       </stops>
+                                    </LinearGradient>
+                                 </textFill>
                               </Label>
-                              <Button mnemonicParsing="false" onAction="#goRegister" prefHeight="45.0" prefWidth="139.0" style="-fx-background-radius: 50; -fx-border-radius: 50; -fx-background-color: #00BD93;" text="Create Account" textFill="WHITE">
+                              <Button mnemonicParsing="false" onAction="#goRegister" prefHeight="45.0" prefWidth="139.0" styleClass="registration-buttons" text="Create Account" textFill="WHITE">
                                  <font>
                                     <Font name="System Bold Italic" size="12.0" />
                                  </font>

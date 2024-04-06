@@ -77,6 +77,9 @@ public class RegisterController {
             if (!newValue.matches("\\d*")) {
                 ageField.setText(oldValue);
             }
+            if (newValue.length() > 2){
+                ageField.setText(oldValue);
+            }
         });
 
 

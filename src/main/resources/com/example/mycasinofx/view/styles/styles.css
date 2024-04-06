@@ -22,7 +22,20 @@
 
 
 
+.result-21-dialog-winner{
+    -fx-background-color:  linear-gradient(to right, #07570a, #63d948);
+    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.5), 10, 0, 0, 0);
+}
 
+.result-21-dialog-lose{
+    -fx-background-color:  linear-gradient(to right, #720505, #e86b6b);
+    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.5), 10, 0, 0, 0);
+}
+
+.result-21-dialog-draw{
+    -fx-background-color:  linear-gradient(to right, #D86E04, #D8AD49);
+    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.5), 10, 0, 0, 0);
+}
 
 
 
@@ -132,14 +145,52 @@
 
 /* Define the base style for the button */
 
-
-.onPurple {
-    -fx-text-fill: purple;
+.registration-buttons{
+    -fx-background-radius: 50;
+    -fx-border-radius: 50;
+    -fx-background-color: #1b856e
 }
 
-.onPurple:hover {
-    -fx-background-color: black; /* Change background color on hover */
-    -fx-border-color: white; /* Change border color on hover */
+.registration-buttons:hover{
+    -fx-background-color: rgba(27, 133, 110, 0.7);
+    -fx-border-color: rgba(27, 133, 110, 0.7);
+    -fx-text-fill: rgba(255, 255, 255, 0.71);
+    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.5), 10, 0, 0, 0)
+}
+
+
+
+
+
+
+.change-stake-button{
+    -fx-background-color:  #BE7530;
+    -fx-border-radius: 50;
+    -fx-background-radius:  50;
+}
+
+.change-stake-button:hover{
+    -fx-background-color: rgba(190, 117, 48, 0.72);
+    -fx-text-fill: rgba(255, 255, 255, 0.8);
+    -fx-border-color: rgba(190, 117, 48, 0.72);
+    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.5), 10, 0, 0, 0)
+}
+
+
+.main-menu-buttons {
+    -fx-background-radius: 50;
+    -fx-border-radius: 50;
+    -fx-background-color:  white;
+    -fx-border-color: #9E5226;
+    -fx-text-fill: #824F20;
+
+}
+
+.main-menu-buttons:hover {
+    -fx-background-color: rgba(255, 255, 255, 0.73);
+    -fx-border-color: rgba(158, 82, 38, 0.69);
+    -fx-text-fill: rgba(130, 79, 32, 0.76);
+    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.5), 10, 0, 0, 0)
 }
 
 

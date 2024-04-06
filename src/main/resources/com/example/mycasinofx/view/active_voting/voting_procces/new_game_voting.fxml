@@ -5,11 +5,14 @@
 <?import javafx.scene.control.RadioButton?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.paint.Color?>
+<?import javafx.scene.paint.LinearGradient?>
+<?import javafx.scene.paint.Stop?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane fx:id="newGameVoting" prefHeight="384.0" prefWidth="564.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.mycasinofx.controllers.voting.votingProcces.NewGameVotingController">
+<AnchorPane fx:id="newGameVoting" prefHeight="384.0" prefWidth="564.0" stylesheets="@../../styles/styles.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.mycasinofx.controllers.voting.votingProcces.NewGameVotingController">
    <children>
-      <AnchorPane prefHeight="384.0" prefWidth="564.0" style="-fx-background-color: purple;" />
+      <AnchorPane prefHeight="384.0" prefWidth="564.0" style="-fx-background-color: linear-gradient(to bottom, #D08035, #772F1A);" />
       <AnchorPane layoutX="45.0" layoutY="31.0" prefHeight="318.0" prefWidth="477.0" style="-fx-background-color: white;">
          <children>
             <RadioButton fx:id="radioBackarat" layoutX="142.0" layoutY="86.0" mnemonicParsing="false" text="Backarat" />
@@ -17,22 +20,33 @@
             <RadioButton fx:id="radioDurak" layoutX="142.0" layoutY="135.0" mnemonicParsing="false" prefHeight="17.0" prefWidth="67.0" text="Durak" />
             <TextField fx:id="otherTextField" layoutX="142.0" layoutY="188.0" promptText="Enter your variant" />
             <RadioButton fx:id="radioOther" layoutX="142.0" layoutY="159.0" mnemonicParsing="false" prefHeight="17.0" prefWidth="83.0" text="Others" />
-            <Label alignment="CENTER" layoutX="18.0" layoutY="14.0" prefHeight="47.0" prefWidth="448.0" text="Voting For New Game" textAlignment="CENTER" textFill="#0ca65e">
-               <font>
-                  <Font name="System Bold" size="32.0" />
-               </font>
-            </Label>
-            <Label fx:id="warningLabel" alignment="CENTER" layoutX="119.0" layoutY="254.0" prefHeight="17.0" prefWidth="180.0" text="Warnings" textAlignment="CENTER" textFill="#0ca65e">
+            <Label fx:id="warningLabel" alignment="CENTER" layoutX="119.0" layoutY="254.0" prefHeight="17.0" prefWidth="180.0" textAlignment="CENTER">
                <font>
                   <Font name="System Bold" size="13.0" />
                </font>
+               <textFill>
+                  <LinearGradient endX="1.0" endY="1.0">
+                     <stops>
+                        <Stop>
+                           <color>
+                              <Color red="0.6499999761581421" green="0.052000001072883606" blue="0.052000001072883606" />
+                           </color>
+                        </Stop>
+                        <Stop offset="1.0">
+                           <color>
+                              <Color red="0.35087719559669495" green="0.07472384721040726" blue="0.07472384721040726" />
+                           </color>
+                        </Stop>
+                     </stops>
+                  </LinearGradient>
+               </textFill>
             </Label>
-            <Button layoutX="155.0" layoutY="221.0" mnemonicParsing="false" onAction="#vote" prefHeight="25.0" prefWidth="107.0" style="-fx-background-radius: 50; -fx-border-radius: 50; -fx-background-color: #00BD93;" text="Vote" textFill="WHITE">
+            <Button layoutX="155.0" layoutY="221.0" mnemonicParsing="false" onAction="#vote" prefHeight="25.0" prefWidth="107.0" styleClass="registration-buttons" text="Vote" textFill="WHITE">
                <font>
                   <Font name="System Bold Italic" size="12.0" />
                </font>
             </Button>
-            <Button layoutX="14.0" layoutY="278.0" mnemonicParsing="false" onAction="#goVoting" prefHeight="25.0" prefWidth="107.0" style="-fx-background-radius: 50; -fx-border-radius: 50; -fx-background-color: #00E1BC;" text="Back" textFill="WHITE">
+            <Button layoutX="14.0" layoutY="278.0" mnemonicParsing="false" onAction="#goVoting" prefHeight="25.0" prefWidth="107.0" styleClass="change-stake-button" text="Back" textFill="WHITE">
                <font>
                   <Font name="System Bold Italic" size="10.0" />
                </font>
@@ -41,6 +55,32 @@
                <font>
                   <Font name="System Bold Italic" size="14.0" />
                </font>
+            </Label>
+            <Label alignment="CENTER" layoutX="56.0" layoutY="14.0" prefHeight="47.0" prefWidth="365.0" text="Voting For New Game" textAlignment="CENTER">
+               <font>
+                  <Font name="System Bold" size="32.0" />
+               </font>
+               <textFill>
+                  <LinearGradient endX="1.0" endY="1.0">
+                     <stops>
+                        <Stop>
+                           <color>
+                              <Color red="0.0313725508749485" green="0.5960784554481506" blue="0.32549020648002625" />
+                           </color>
+                        </Stop>
+                        <Stop offset="0.006711409395973154">
+                           <color>
+                              <Color red="0.0313725508749485" green="0.5960784554481506" blue="0.32549020648002625" />
+                           </color>
+                        </Stop>
+                        <Stop offset="1.0">
+                           <color>
+                              <Color red="1.0" green="0.5960784554481506" blue="0.1921568661928177" />
+                           </color>
+                        </Stop>
+                     </stops>
+                  </LinearGradient>
+               </textFill>
             </Label>
          </children>
       </AnchorPane>

@@ -4,40 +4,96 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.RadioButton?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.paint.Color?>
+<?import javafx.scene.paint.LinearGradient?>
+<?import javafx.scene.paint.Stop?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane fx:id="bestGameVoting" prefHeight="401.0" prefWidth="540.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.mycasinofx.controllers.voting.votingProcces.BestGameVotingController">
+<AnchorPane fx:id="bestGameVoting" prefHeight="401.0" prefWidth="540.0" stylesheets="@../../styles/styles.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.mycasinofx.controllers.voting.votingProcces.BestGameVotingController">
    <children>
-      <AnchorPane prefHeight="401.0" prefWidth="566.0" style="-fx-background-color: purple;" />
+      <AnchorPane prefHeight="401.0" prefWidth="566.0" style="-fx-background-color: linear-gradient(to bottom, #D08035, #772F1A);" />
       <AnchorPane layoutX="42.0" layoutY="42.0" prefHeight="327.0" prefWidth="483.0" style="-fx-background-color: white;">
          <children>
             <RadioButton fx:id="radioRoulette" layoutX="133.0" layoutY="123.0" mnemonicParsing="false" text="Roulette" />
             <RadioButton fx:id="radioTwentyOne" layoutX="133.0" layoutY="151.0" mnemonicParsing="false" text="Twenty One" />
             <RadioButton fx:id="radioSlot" layoutX="133.0" layoutY="176.0" mnemonicParsing="false" text="Slots" />
-            <Label alignment="CENTER" layoutX="124.0" layoutY="26.0" prefHeight="44.0" prefWidth="185.0" text="Best Game" textAlignment="CENTER" textFill="#0ca65e">
+            <Label alignment="CENTER" layoutX="124.0" layoutY="26.0" prefHeight="44.0" prefWidth="185.0" text="Best Game" textAlignment="CENTER">
                <font>
                   <Font name="System Bold" size="32.0" />
                </font>
+               <textFill>
+                  <LinearGradient endX="1.0" endY="1.0">
+                     <stops>
+                        <Stop>
+                           <color>
+                              <Color red="0.0313725508749485" green="0.5960784554481506" blue="0.32549020648002625" />
+                           </color>
+                        </Stop>
+                        <Stop offset="0.006711409395973154">
+                           <color>
+                              <Color red="0.0313725508749485" green="0.5960784554481506" blue="0.32549020648002625" />
+                           </color>
+                        </Stop>
+                        <Stop offset="1.0">
+                           <color>
+                              <Color red="1.0" green="0.5960784554481506" blue="0.1921568661928177" />
+                           </color>
+                        </Stop>
+                     </stops>
+                  </LinearGradient>
+               </textFill>
             </Label>
-            <Label fx:id="warningLabel" alignment="CENTER" layoutX="134.0" layoutY="255.0" prefHeight="17.0" prefWidth="168.0" text="Warnings" textAlignment="CENTER" textFill="#0ca65e">
+            <Label fx:id="warningLabel" alignment="CENTER" layoutX="134.0" layoutY="246.0" prefHeight="17.0" prefWidth="168.0" textAlignment="CENTER">
                <font>
                   <Font name="System Bold" size="13.0" />
                </font>
+               <textFill>
+                  <LinearGradient endX="1.0" endY="1.0">
+                     <stops>
+                        <Stop>
+                           <color>
+                              <Color red="0.6499999761581421" green="0.052000001072883606" blue="0.052000001072883606" />
+                           </color>
+                        </Stop>
+                        <Stop offset="1.0">
+                           <color>
+                              <Color red="0.41228070855140686" green="0.11833982914686203" blue="0.11833982914686203" />
+                           </color>
+                        </Stop>
+                     </stops>
+                  </LinearGradient>
+               </textFill>
             </Label>
-            <Button layoutX="14.0" layoutY="281.0" mnemonicParsing="false" onAction="#goVoting" prefHeight="25.0" prefWidth="107.0" style="-fx-background-radius: 50; -fx-border-radius: 50; -fx-background-color: #00E1BC;" text="Back" textFill="WHITE">
+            <Button layoutX="14.0" layoutY="281.0" mnemonicParsing="false" onAction="#goVoting" prefHeight="25.0" prefWidth="107.0" styleClass="change-stake-button" text="Back" textFill="WHITE">
                <font>
                   <Font name="System Bold Italic" size="10.0" />
                </font>
             </Button>
-            <Button layoutX="163.0" layoutY="215.0" mnemonicParsing="false" onAction="#vote" prefHeight="25.0" prefWidth="107.0" style="-fx-background-radius: 50; -fx-border-radius: 50; -fx-background-color: #00BD93;" text="Vote" textFill="WHITE">
+            <Button layoutX="164.0" layoutY="208.0" mnemonicParsing="false" onAction="#vote" prefHeight="25.0" prefWidth="107.0" styleClass="registration-buttons" text="Vote" textFill="WHITE">
                <font>
                   <Font name="System Bold Italic" size="12.0" />
                </font>
             </Button>
-            <Label alignment="TOP_LEFT" layoutX="100.0" layoutY="89.0" prefHeight="20.0" prefWidth="271.0" text="What Is Your Favourite Fame?" textAlignment="CENTER" textFill="#723f3f">
+            <Label alignment="TOP_LEFT" layoutX="100.0" layoutY="89.0" prefHeight="20.0" prefWidth="271.0" text="What Is Your Favourite Fame?" textAlignment="CENTER">
                <font>
                   <Font name="System Bold Italic" size="14.0" />
                </font>
+               <textFill>
+                  <LinearGradient endX="1.0" endY="1.0">
+                     <stops>
+                        <Stop>
+                           <color>
+                              <Color red="0.6499999761581421" green="0.052000001072883606" blue="0.052000001072883606" />
+                           </color>
+                        </Stop>
+                        <Stop offset="1.0">
+                           <color>
+                              <Color red="0.41228070855140686" green="0.11833982914686203" blue="0.11833982914686203" />
+                           </color>
+                        </Stop>
+                     </stops>
+                  </LinearGradient>
+               </textFill>
             </Label>
          </children>
       </AnchorPane>

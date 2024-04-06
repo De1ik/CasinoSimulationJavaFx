@@ -3,6 +3,8 @@ package com.example.mycasinofx.Model.FxModels;
 import com.example.mycasinofx.Application;
 import com.example.mycasinofx.controllers.Registration.LoginPageController;
 import com.example.mycasinofx.controllers.games.slots.SlotsController;
+import com.example.mycasinofx.controllers.games.twentyOne.Start21Controller;
+import com.example.mycasinofx.controllers.games.twentyOne.TwentyOneController;
 import com.example.mycasinofx.controllers.mainMenu.MainMenuController;
 import com.example.mycasinofx.controllers.Registration.RegisterController;
 import com.example.mycasinofx.controllers.games.roulette.RouletteController;
@@ -38,6 +40,18 @@ public class SceneSwitch {
             SlotsController slotsController = loader.getController();
             if (slotsController != null) {
                 slotsController.updateLabels();
+            }
+        }
+        else if (nextAnchorPane != null && nextAnchorPane.getId().equals("anchor21")) {
+            Start21Controller start21Controller = loader.getController();
+            if (start21Controller != null) {
+                start21Controller.updateStakeBalanceLabels();
+            }
+        }
+        else if (nextAnchorPane != null && nextAnchorPane.getId().equals("twentyOneStartedAnchor")) {
+            TwentyOneController twentyOneController = loader.getController();
+            if (twentyOneController != null) {
+                twentyOneController.startGame();
             }
         }
         else if (nextAnchorPane != null && nextAnchorPane.getId().equals("rouletteResultAnchor")) {

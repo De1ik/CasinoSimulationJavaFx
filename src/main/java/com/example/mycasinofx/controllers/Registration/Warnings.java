@@ -41,7 +41,7 @@ public class Warnings implements RegistrationWarningsInterface{
 
     @Override
     public void passwordDoesNotExist(Label label){
-        label.setText("The password does not exist");
+        label.setText("The password is not correct");
         label.setVisible(true);
     }
 

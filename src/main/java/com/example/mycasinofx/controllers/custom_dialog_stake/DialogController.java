@@ -1,13 +1,18 @@
 package com.example.mycasinofx.controllers.custom_dialog_stake;
 
+import com.example.mycasinofx.Model.FxModels.SceneSwitch;
 import com.example.mycasinofx.Model.games.Games;
 import com.example.mycasinofx.Model.observeImplementation.Observer;
 import com.example.mycasinofx.Model.observeImplementation.ObserverArray;
 import com.example.mycasinofx.Model.player.Player;
+import com.example.mycasinofx.controllers.switchPage.PageSwitchInterface;
+import com.example.mycasinofx.controllers.switchPage.SwitchPage;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.AnchorPane;
+
+import java.io.IOException;
 
 public class DialogController {
     @FXML
@@ -17,26 +22,33 @@ public class DialogController {
     @FXML
     TextField newStakeField;
 
+
+
+
+
     private ObserverArray observerArray = new ObserverArray();
     private final Player player = Player.getPlayer();
 
     public void initialize(){
-        newStakeField.textProperty().addListener((observable, oldValue, newValue) -> {
-            if (!newValue.matches("\\d*(\\.\\d*)?")) {
-                newStakeField.setText(newValue.replaceAll("[^\\d.]", ""));
-            }
-            else if (newValue.isEmpty()){
-                newStakeField.setStyle("-fx-border-color: red;");
-            }
-            else if (Double.parseDouble(newValue) < Games.getMinimumStake() || Double.parseDouble(newValue) > Games.getMaximumStake() || Double.parseDouble(newValue) > player.getBalance()) {
+        if (newStakeField != null) {
+            newStakeField.textProperty().addListener((observable, oldValue, newValue) -> {
+                if (!newValue.matches("\\d*(\\.\\d*)?")) {
+                    newStakeField.setText(newValue.replaceAll("[^\\d.]", ""));
+                } else if (newValue.isEmpty()) {
                     newStakeField.setStyle("-fx-border-color: red;");
-            }
-            else {
-                newStakeField.setStyle("");
-                newStakeField.setStyle("-fx-border-color: #1ddc06;");
-            }
-        });
+                } else if (Double.parseDouble(newValue) < Games.getMinimumStake() || Double.parseDouble(newValue) > Games.getMaximumStake() || Double.parseDouble(newValue) > player.getBalance()) {
+                    newStakeField.setStyle("-fx-border-color: red;");
+                } else {
+                    newStakeField.setStyle("");
+                    newStakeField.setStyle("-fx-border-color: #1ddc06;");
+                }
+            });
+        }
     }
+
+
+
+
 
 
 
@@ -48,6 +60,7 @@ public class DialogController {
 
         observerArray.informAll(-1);
     }
+
 
     @FXML
     private void setStake() {
@@ -81,4 +94,5 @@ public class DialogController {
     public void updateBalanceLabel(){
         balanceLabel.setText("Current Balance: " + player.getBalance());
     }
+
 }

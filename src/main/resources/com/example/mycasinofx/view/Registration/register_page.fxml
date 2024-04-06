@@ -6,13 +6,16 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
+<?import javafx.scene.paint.Color?>
+<?import javafx.scene.paint.LinearGradient?>
+<?import javafx.scene.paint.Stop?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane fx:id="registrationPage" prefHeight="390.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.mycasinofx.controllers.Registration.RegisterController">
+<AnchorPane fx:id="registrationPage" prefHeight="390.0" prefWidth="600.0" stylesheets="@../styles/styles.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.mycasinofx.controllers.Registration.RegisterController">
    <children>
       <HBox layoutY="-2.0" prefHeight="400.0" prefWidth="600.0">
          <children>
-            <AnchorPane prefHeight="475.0" prefWidth="291.0" style="-fx-background-color: purple;" />
+            <AnchorPane prefHeight="475.0" prefWidth="291.0" style="-fx-background-color: linear-gradient(to bottom, #D08035, #772F1A);" />
             <AnchorPane prefHeight="400.0" prefWidth="309.0">
                <children>
                   <VBox layoutX="-2.0" prefHeight="400.0" prefWidth="309.0">
@@ -24,15 +27,47 @@
                                     <Font name="System Bold" size="7.0" />
                                  </font>
                               </Label>
-                              <Label alignment="CENTER" prefHeight="99.0" prefWidth="309.0" text="Casino" textAlignment="CENTER" textFill="#0ca65e">
+                              <Label alignment="CENTER" prefHeight="99.0" prefWidth="309.0" text="Casino" textAlignment="CENTER">
                                  <font>
                                     <Font name="System Bold" size="27.0" />
                                  </font>
+                                 <textFill>
+                                    <LinearGradient endX="1.0" endY="1.0">
+                                       <stops>
+                                          <Stop>
+                                             <color>
+                                                <Color red="0.0313725508749485" green="0.5960784554481506" blue="0.32549020648002625" />
+                                             </color>
+                                          </Stop>
+                                          <Stop offset="1.0">
+                                             <color>
+                                                <Color red="1.0" green="0.5960784554481506" blue="0.1921568661928177" />
+                                             </color>
+                                          </Stop>
+                                       </stops>
+                                    </LinearGradient>
+                                 </textFill>
                               </Label>
-                              <Label alignment="TOP_CENTER" prefHeight="25.0" prefWidth="309.0" text="Simulation" textFill="#0ca65e">
+                              <Label alignment="TOP_CENTER" prefHeight="25.0" prefWidth="309.0" text="Simulation">
                                  <font>
                                     <Font name="System Bold" size="27.0" />
                                  </font>
+                                 <textFill>
+                                    <LinearGradient endX="1.0" endY="1.0">
+                                       <stops>
+                                          <Stop>
+                                             <color>
+                                                <Color red="0.0313725508749485" green="0.5960784554481506" blue="0.32549020648002625" />
+                                             </color>
+                                          </Stop>
+                                          <Stop offset="1.0">
+                                             <color>
+                                                <Color red="1.0" green="0.5960784554481506" blue="0.1921568661928177" />
+                                             </color>
+                                          </Stop>
+                                       </stops>
+                                    </LinearGradient>
+                                 </textFill>
                               </Label>
                            </children>
                         </VBox>
@@ -61,14 +96,61 @@
                               <TextField fx:id="ageField" prefHeight="31.0" prefWidth="193.0" promptText="Age" style="-fx-background-radius: 50; -fx-border-radius: 50;" />
                            </children>
                         </HBox>
+                        <HBox alignment="CENTER" prefHeight="8.0" prefWidth="309.0">
+                           <children>
+                              <Label fx:id="errorMessage11" alignment="CENTER" prefHeight="2.0" prefWidth="183.0" textAlignment="CENTER">
+                                 <font>
+                                    <Font size="1.0" />
+                                 </font>
+                              </Label>
+                              <Label fx:id="errorMessage111" alignment="CENTER" prefHeight="2.0" prefWidth="183.0" textAlignment="CENTER">
+                                 <font>
+                                    <Font size="1.0" />
+                                 </font>
+                              </Label>
+                           </children>
+                        </HBox>
                         <HBox alignment="CENTER" prefHeight="17.0" prefWidth="309.0">
                            <children>
-                              <Label fx:id="errorMessage" alignment="CENTER" prefHeight="13.0" prefWidth="183.0" text="Label" textAlignment="CENTER" />
+                              <Label fx:id="errorMessage" alignment="CENTER" prefHeight="16.0" prefWidth="249.0" textAlignment="CENTER">
+                                 <font>
+                                    <Font name="System Bold" size="11.0" />
+                                 </font>
+                                 <textFill>
+                                    <LinearGradient endX="1.0" endY="1.0">
+                                       <stops>
+                                          <Stop>
+                                             <color>
+                                                <Color red="1.0" />
+                                             </color>
+                                          </Stop>
+                                          <Stop offset="1.0">
+                                             <color>
+                                                <Color red="0.41228070855140686" green="0.3257526457309723" blue="0.3257526457309723" />
+                                             </color>
+                                          </Stop>
+                                       </stops>
+                                    </LinearGradient>
+                                 </textFill></Label>
+                           </children>
+                        </HBox>
+                        <HBox alignment="CENTER" prefHeight="8.0" prefWidth="309.0">
+                           <children>
+                              <Label fx:id="errorMessage1" alignment="CENTER" prefHeight="2.0" prefWidth="183.0" textAlignment="CENTER">
+                                 <font>
+                                    <Font size="1.0" />
+                                 </font>
+                              </Label>
+                              <Label fx:id="errorMessage11" alignment="CENTER" prefHeight="2.0" prefWidth="183.0" textAlignment="CENTER">
+                                 <font>
+                                    <Font size="1.0" />
+                                 </font>
+                              </Label>
                            </children>
                         </HBox>
                         <HBox alignment="CENTER" prefHeight="45.0" prefWidth="309.0">
                            <children>
-                              <Button mnemonicParsing="false" onAction="#goRegistrationPage" prefHeight="31.0" prefWidth="125.0" style="-fx-background-radius: 50; -fx-border-radius: 50; -fx-background-color: #00BD93;" text="Registrate" textFill="WHITE">
+                              <Button mnemonicParsing="false" onAction="#goRegistrationPage" prefHeight="31.0" prefWidth="125.0" styleClass="registration-buttons" text="Registrate" textFill="WHITE">
                                  <font>
                                     <Font name="System Bold Italic" size="12.0" />
                                  </font>
@@ -82,7 +164,7 @@
                         </Label>
                         <HBox alignment="TOP_RIGHT" prefHeight="44.0" prefWidth="309.0">
                            <children>
-                              <Button mnemonicParsing="false" onAction="#goMainMenu" prefHeight="7.0" prefWidth="109.0" style="-fx-background-radius: 50; -fx-border-radius: 50; -fx-background-color: #00E1BC;" text="Main Menu" textFill="WHITE">
+                              <Button mnemonicParsing="false" onAction="#goMainMenu" prefHeight="7.0" prefWidth="109.0" styleClass="change-stake-button" text="Main Menu" textFill="WHITE">
                                  <font>
                                     <Font name="System Bold Italic" size="10.0" />
                                  </font>
@@ -190,7 +272,7 @@
                   </HBox>
                   <HBox alignment="CENTER" prefHeight="55.0" prefWidth="291.0">
                      <children>
-                        <Button alignment="CENTER" mnemonicParsing="false" onAction="#goLogin" prefHeight="37.0" prefWidth="115.0" style="-fx-background-radius: 50; -fx-border-radius: 50; -fx-background-color: white; -fx-border-color: #3A003A;" styleClass="onPurple" text="Login" textFill="PURPLE">
+                        <Button alignment="CENTER" mnemonicParsing="false" onAction="#goLogin" prefHeight="37.0" prefWidth="115.0" styleClass="main-menu-buttons" text="Login" textFill="PURPLE">
                            <font>
                               <Font name="System Bold Italic" size="12.0" />
                            </font>

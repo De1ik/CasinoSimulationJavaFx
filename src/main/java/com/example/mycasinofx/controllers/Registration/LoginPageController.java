@@ -4,6 +4,7 @@ import com.example.mycasinofx.Model.FxModels.SceneSwitch;
 import com.example.mycasinofx.Model.Hashing.PasswordHash;
 import com.example.mycasinofx.Model.database.DAOPattern;
 import com.example.mycasinofx.Model.database.DatabaseManager;
+import com.example.mycasinofx.Model.player.Player;
 import com.example.mycasinofx.controllers.switchPage.PageSwitchInterface;
 import com.example.mycasinofx.controllers.switchPage.SwitchPage;
 import javafx.fxml.FXML;
@@ -24,12 +25,14 @@ public class LoginPageController {
     private TextField passwordField;
     @FXML
     private Label errorMessage;
+    private Player player;
 
     private DatabaseManager databaseManager;
     private RegistrationWarningsInterface registrationWarningsInterface;
     private PageSwitchInterface pageSwitch;
 
     public void initialize(){
+        player = Player.getPlayer();
         registrationWarningsInterface = new Warnings();
         databaseManager = new DatabaseManager();
         pageSwitch = new SwitchPage();
@@ -78,12 +81,17 @@ public class LoginPageController {
         else if (DAOPattern.checkValidEmail(loginEmail) != 1 && DAOPattern.checkValidEmail(loginEmail) != -1) {
             registrationWarningsInterface.emailDoesNotExist(errorMessage);
         }
-        else if (DAOPattern.checkValidPassword(loginPassword) != 1 && DAOPattern.checkValidPassword(loginPassword) != -1){
+        else if (DAOPattern.checkValidPassword(loginPassword, loginEmail) != 1){
             registrationWarningsInterface.passwordDoesNotExist(errorMessage);
         }
         else{
             loginUser(loginEmail, loginPassword);
-            pageSwitch.goMainMenu(loginPane);
+            if (player.getUsername() == null) {
+                errorMessage.setText("Something went Wrong");
+            }
+            else{
+                pageSwitch.goMainMenu(loginPane);
+            }
         }
     }
 
