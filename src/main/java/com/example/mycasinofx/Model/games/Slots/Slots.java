@@ -41,7 +41,6 @@ public class Slots extends SlotsSetUp implements GameInterface {
             numb1 = getGeneralArrayList().get(0).get(finishIndex.get(0));
             numb2 = getGeneralArrayList().get(1).get(finishIndex.get(1));
             numb3 = getGeneralArrayList().get(2).get(finishIndex.get(2));
-            System.out.println(""+ numb1+ " "+numb2+" "+ numb3);;
             return WinnerCombination.WinnerCombinationCheckingFor3(numb1, numb2, numb3);
         }
         return -1;
@@ -95,6 +94,7 @@ public class Slots extends SlotsSetUp implements GameInterface {
 
 
     public void reset(){
+        generalArray.clear();
         startIndex.clear();
         finishIndex.clear();
     }
