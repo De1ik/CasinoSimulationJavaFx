@@ -3,10 +3,11 @@ package com.example.mycasinofx.Model.games.Roulette;
 
 
 import com.example.mycasinofx.Model.games.GameSetUpInterface;
+import com.example.mycasinofx.Model.games.Games;
 
 import java.util.HashMap;
 
-public class RouletteSetUp implements GameSetUpInterface {
+public class RouletteSetUp extends Games implements GameSetUpInterface {
     private static HashMap<Integer, String> colours;
 
 

@@ -16,10 +16,15 @@ import java.sql.SQLException;
 public class MenuVotingController {
 
     @FXML
-    AnchorPane menuVoting;
-    private final SwitchPage switchPage = new SwitchPage();
-    private final Player player = Player.getPlayer();
-    private final DatabaseManager databaseManager = new DatabaseManager();
+    private AnchorPane menuVoting;
+    private SwitchPage switchPage;
+    private Player player;
+
+
+    public void initialize(){
+        player = Player.getPlayer();
+        switchPage = new SwitchPage();
+    }
 
 
     public void goNewGame() throws IOException, SQLException, ClassNotFoundException {

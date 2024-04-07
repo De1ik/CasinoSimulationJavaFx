@@ -32,6 +32,7 @@ public class Cards implements CardsMainMethod, Iterator<String[]> {
         }
     }
 
+    @Override
     public void shuffleRandomSequence(){
         index = 0;
         Collections.shuffle(randomSequence);
@@ -52,6 +53,7 @@ public class Cards implements CardsMainMethod, Iterator<String[]> {
         }
     }
 
+    @Override
     public int getValueCard(String type){
         if (CARD_NUMBERS.contains(type)){
             return Integer.parseInt(type);

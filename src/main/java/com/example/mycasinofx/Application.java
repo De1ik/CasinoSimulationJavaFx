@@ -6,11 +6,13 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
+import javafx.scene.control.Button;
 import javafx.scene.control.ButtonType;
 import javafx.scene.transform.Scale;
 import javafx.stage.Modality;
 import javafx.stage.Screen;
 import javafx.stage.Stage;
+import javafx.stage.StageStyle;
 
 
 public class Application extends javafx.application.Application {
@@ -35,10 +37,16 @@ public class Application extends javafx.application.Application {
 
             stage.setScene(scene);
 
-            stage.setFullScreen(true);
             stage.setMinWidth(600);
             stage.setMinHeight(400);
+
+
+
+
+            stage.setFullScreen(true);
             stage.show();
+
+
 
 
 

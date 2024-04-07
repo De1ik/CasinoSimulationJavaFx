@@ -1,5 +1,6 @@
 package com.example.mycasinofx.Model.games.Roulette;
 
+import com.example.mycasinofx.Model.games.GameInterface;
 import com.example.mycasinofx.Model.games.GameSetUpInterface;
 import com.example.mycasinofx.Model.games.Games;
 import com.example.mycasinofx.Model.player.Player;
@@ -12,7 +13,7 @@ import java.util.Arrays;
 
 import static javafx.scene.input.KeyCode.R;
 
-public class Roulette extends Games {
+public class Roulette extends RouletteSetUp implements GameInterface {
     private boolean isGamed;
     private boolean evenStakeSet = false;
     private boolean oddStakeSet;

@@ -2,11 +2,12 @@ package com.example.mycasinofx.Model.games.Slots;
 
 
 import com.example.mycasinofx.Model.games.GameSetUpInterface;
+import com.example.mycasinofx.Model.games.Games;
 
 import java.util.ArrayList;
 import java.util.Collections;
 
-public class SlotsSetUp implements GameSetUpInterface {
+public class SlotsSetUp extends Games implements GameSetUpInterface {
 
     private final int ALL_AMOUNT = 60;
     private final int AMOUNT_COLUMNS = 3;
@@ -81,40 +82,14 @@ public class SlotsSetUp implements GameSetUpInterface {
     }
 
 
-//    @Override
     public int getALL_AMOUNT() {
         return ALL_AMOUNT;
     }
 
-//    @Override
     public int getAMOUNT_COLUMNS() {
         return AMOUNT_COLUMNS;
     }
 
-//    @Override
-    public int getAMOUNT_1() {
-        return AMOUNT_1;
-    }
-
-//    @Override
-    public int getAMOUNT_2() {
-        return AMOUNT_2;
-    }
-
-//    @Override
-    public int getAMOUNT_3() {
-        return AMOUNT_3;
-    }
-
-//    @Override
-    public int getAMOUNT_4() {
-        return AMOUNT_4;
-    }
-
-//    @Override
-    public int getAMOUNT_5() {
-        return AMOUNT_5;
-    }
 
 
     public ArrayList<ArrayList<Integer>> getGeneralArrayList() {
