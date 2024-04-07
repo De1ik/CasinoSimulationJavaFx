@@ -19,20 +19,21 @@ import java.sql.SQLException;
 public class NewGameVotingController {
 
     @FXML
-    AnchorPane newGameVoting;
-    private final ToggleGroup toggleGroup = new ToggleGroup();
+    private AnchorPane newGameVoting;
+    private  ToggleGroup toggleGroup;
     @FXML
-    RadioButton radioBackarat, radioPoker, radioDurak, radioOther, resultVoting;
+    private RadioButton radioBackarat, radioPoker, radioDurak, radioOther, resultVoting;
     @FXML
-    Label warningLabel;
+    private Label warningLabel;
     @FXML
-    TextField otherTextField;
+    private TextField otherTextField;
 
-    private final DatabaseManager databaseManager = new DatabaseManager();
-    private final SwitchPage switchPage = new SwitchPage();
+    private  SwitchPage switchPage;
 
 
     public void initialize(){
+        switchPage = new SwitchPage();
+        toggleGroup = new ToggleGroup();
         radioBackarat.setToggleGroup(toggleGroup);
         radioPoker.setToggleGroup(toggleGroup);
         radioDurak.setToggleGroup(toggleGroup);

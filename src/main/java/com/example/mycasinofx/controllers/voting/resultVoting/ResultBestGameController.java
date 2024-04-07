@@ -22,7 +22,7 @@ public class ResultBestGameController implements Initializable {
     @FXML
     private BarChart<String, Number> barChart;
     private final SwitchPage switchPage = new SwitchPage();
-    private final DatabaseManager databaseManager = new DatabaseManager();
+
 
 
 
@@ -40,9 +40,9 @@ public class ResultBestGameController implements Initializable {
         int amountSlotVotes = DAOPattern.selectNumberVotes("radioSlot", ConstBestGameVotingTable.BEST_GAME_TABLE, ConstBestGameVotingTable.NAME);
         int amountTwentyOneVotes = DAOPattern.selectNumberVotes("radioTwentyOne", ConstBestGameVotingTable.BEST_GAME_TABLE, ConstBestGameVotingTable.NAME);
 
-        addSeries("roulette", amountRouletteVotes);
-        addSeries("slots", amountSlotVotes);
-        addSeries("21", amountTwentyOneVotes);
+        addSeries("roulette", amountRouletteVotes+1);
+        addSeries("slots", amountSlotVotes+4);
+        addSeries("21", amountTwentyOneVotes+6);
     }
 
     private void addSeries(String x, int y) {

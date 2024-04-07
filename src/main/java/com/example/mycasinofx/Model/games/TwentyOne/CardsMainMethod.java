@@ -8,8 +8,7 @@ public interface CardsMainMethod {
     String[] CARD_SUIT = {"hearts", "diamonds", "spades", "clubs"};
     String[] CARD_VALUES = {"6", "7", "8", "9", "10", "jack", "queen", "king", "ace"};
     ArrayList<String> CARD_NUMBERS = new ArrayList<>(Arrays.asList("6", "7", "8", "9", "10"));
-//
-//    void shuffle();
-//    void get_cars();
+    void shuffleRandomSequence();
+    int getValueCard(String type);
 
 }

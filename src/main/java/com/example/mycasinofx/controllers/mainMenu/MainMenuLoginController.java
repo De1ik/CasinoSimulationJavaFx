@@ -24,11 +24,13 @@ public class MainMenuLoginController {
     @FXML
     private Button exitButton;
     @FXML
-    BorderPane borderPane;
-    private final Player player = Player.getPlayer();
-    private final PageSwitchInterface pageSwitch = new SwitchPage();
+    private BorderPane borderPane;
+    private Player player;
+    private PageSwitchInterface pageSwitch;
 
     public void initialize() {
+        player = Player.getPlayer();
+        pageSwitch = new SwitchPage();
         exitButton.setOnAction(e -> pageSwitch.confirmExit());
         dialogWindow.setMouseTransparent(true);
     }

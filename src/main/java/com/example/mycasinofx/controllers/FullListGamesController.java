@@ -16,7 +16,11 @@ public class FullListGamesController {
 
     @FXML
     private AnchorPane fullListGamesAnchor;
-    private PageSwitchInterface pageSwitch = new SwitchPage();
+    private PageSwitchInterface pageSwitch;
+
+    public void initialize(){
+        pageSwitch = new SwitchPage();
+    }
 
     @FXML
     public void goMainMenu() throws IOException{

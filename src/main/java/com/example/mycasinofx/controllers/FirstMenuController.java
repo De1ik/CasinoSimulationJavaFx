@@ -21,8 +21,13 @@ public class FirstMenuController {
 
     @FXML
     private AnchorPane firstAnchor, mainPaneNotChange, greenPain;
-    private final Player player = Player.getPlayer();
-    private final SwitchPage switchPage = new SwitchPage();
+    private SwitchPage switchPage;
+
+    public void initialize(){
+        switchPage = new SwitchPage();
+    }
+
+
 
     @FXML
     public void goListGames() throws IOException {

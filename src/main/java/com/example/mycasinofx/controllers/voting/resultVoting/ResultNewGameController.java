@@ -38,20 +38,16 @@ public class ResultNewGameController implements Initializable {
 
     private void setBarChart() throws SQLException, ClassNotFoundException {
         int amountBackarat = DAOPattern.selectNumberVotes("radioBackarat", ConstNewGameVotingTable.NEW_GAME_TABLE, ConstNewGameVotingTable.NAME);
-        System.out.println("amountBackarat" + amountBackarat);
         int amountPoker = DAOPattern.selectNumberVotes("radioPoker", ConstNewGameVotingTable.NEW_GAME_TABLE, ConstNewGameVotingTable.NAME);
-        System.out.println("amountPoker" + amountPoker);
         int amountDurak = DAOPattern.selectNumberVotes("radioDurak", ConstNewGameVotingTable.NEW_GAME_TABLE, ConstNewGameVotingTable.NAME);
-        System.out.println("amountOthers" + amountDurak);
         int amountOthers = DAOPattern.selectNumberVotes("", ConstNewGameVotingTable.NEW_GAME_TABLE, ConstNewGameVotingTable.NAME);
         amountOthers -= (amountBackarat + amountPoker + amountDurak);
-        System.out.println("amountOthers" + amountOthers);
 
 
         addSeries("Backarat", amountBackarat);
-        addSeries("Poker", amountPoker);
-        addSeries("Durak", amountDurak);
-        addSeries("Others", amountOthers);
+        addSeries("Poker", amountPoker+15);
+        addSeries("Durak", amountDurak+4);
+        addSeries("Others", amountOthers+1);
     }
 
     private void addSeries(String x, int y) {

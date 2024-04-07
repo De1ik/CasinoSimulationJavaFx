@@ -1,5 +1,6 @@
 package com.example.mycasinofx.Model.games.TwentyOne;
 
+import com.example.mycasinofx.Model.games.GameInterface;
 import com.example.mycasinofx.Model.games.Games;
 
 import java.util.ArrayList;
@@ -88,15 +89,5 @@ public class TwentyOne extends Games {
         botCards.clear();
         botValue = 0;
         playerValue = 0;
-    }
-
-    @Override
-    public Object checkWinner() {
-        return null;
-    }
-
-    @Override
-    public Object generateResult() {
-        return null;
     }
 }
