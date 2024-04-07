@@ -1,5 +1,7 @@
 Short Documentation for the first termin 
 
+Start Class: "Application"
+
 Inheritance is mainly used in models for games. There is a general abstract class "Games" from which classes of concrete games are inherited: "RouletteSetUp", "SlotsSetUp" and "TwentyOne". Double inheritance is present for classes "Roulette", "Slots", which inherit from "RouletteSetUp", "SlotsSetUp" respectively. 
 It should be noted that at the moment the double inheritance may look a bit unnecessary, but it is necessary in the future possible expansion of the game functionality. Inheritance is also used in the DatabaseManage class, which inherits from the Config class (in this case there was not much point in adding inheritance, we could use a static class, but in any case inheritance is possible here).
 
