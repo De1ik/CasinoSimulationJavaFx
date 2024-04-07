@@ -39,9 +39,9 @@ public class SlotsController implements Initializable {
     @FXML
     private Label balanceLabel, amountStake, warningsLabel, resultLabel;
     @FXML
-    BorderPane borderPane;
+    private BorderPane borderPane;
     @FXML
-    ImageView numb1upImg, numb1Img, numb1downImg, numb2upImg, numb2Img, numb2downImg, numb3upImg, numb3Img, numb3downImg;
+    private ImageView numb1upImg, numb1Img, numb1downImg, numb2upImg, numb2Img, numb2downImg, numb3upImg, numb3Img, numb3downImg;
     @FXML
     private Button playGameButton, skipButton;
     @FXML
@@ -126,6 +126,7 @@ public class SlotsController implements Initializable {
             int stake = (int) slots.checkWinner();
 
             player.setBalance(player.getBalance() - player.getCurrentStake());
+            balanceLabel.setText(""+player.getBalance());
             if (stake != -1) {
                 player.setBalance(player.getBalance() + player.getCurrentStake() * stake);
             }
