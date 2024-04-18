@@ -1,11 +1,14 @@
 package com.example.mycasinofx.Model.games.TwentyOne;
 
+
 import com.example.mycasinofx.Model.games.GameInterface;
 import com.example.mycasinofx.Model.games.Games;
+import com.example.mycasinofx.Model.games.ResultGenericClass;
+import com.example.mycasinofx.Model.player.Player;
 
 import java.util.ArrayList;
 
-public class TwentyOne extends Games {
+public class TwentyOne extends Games implements GameInterface {
 
     private Cards cards;
     private ArrayList<String[]> playerCards = new ArrayList<>();
@@ -13,11 +16,14 @@ public class TwentyOne extends Games {
 
     private int botValue;
     private int playerValue;
+    private final ResultGenericClass<Integer> resultGenericClass;
+
 
     public TwentyOne() {
         cards = new Cards();
         botValue = 0;
         playerValue = 0;
+        resultGenericClass = (ResultGenericClass<Integer>) ResultGenericClass.getResult();
     }
 
 
@@ -82,6 +88,30 @@ public class TwentyOne extends Games {
 
     public int getPlayerValue() {
         return playerValue;
+    }
+
+    @Override
+    public Object checkWinner(){
+        Player player = Player.getPlayer();
+        if (getPlayerValue() > getBotValue() || getBotValue() > 21){
+            player.setBalance(player.getBalance() + player.getCurrentStake() * 2);
+            player.setProfit(player.getCurrentStake() * 2 - player.getCurrentStake());
+            resultGenericClass.setResult(1);
+        }
+        else if(getPlayerValue() < getBotValue()){
+            player.setProfit(-(player.getCurrentStake() * 2));
+            resultGenericClass.setResult(2);
+        }
+        else{
+            player.setProfit(0);
+            resultGenericClass.setResult(0);
+        }
+        return null;
+    }
+
+    @Override
+    public Object generateResult() {
+        return null;
     }
 
     public void reset() {

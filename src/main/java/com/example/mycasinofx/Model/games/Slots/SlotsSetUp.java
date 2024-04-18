@@ -3,6 +3,7 @@ package com.example.mycasinofx.Model.games.Slots;
 
 import com.example.mycasinofx.Model.games.GameSetUpInterface;
 import com.example.mycasinofx.Model.games.Games;
+import com.example.mycasinofx.Model.games.ResultGenericClass;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -25,7 +26,7 @@ public class SlotsSetUp extends Games implements GameSetUpInterface {
     private ArrayList<ArrayList<Integer>> generalArrayList = new ArrayList<>();
 
     public SlotsSetUp() {
-
+        ;
     }
 
 

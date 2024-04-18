@@ -52,24 +52,4 @@ public class Cards implements CardsMainMethod, Iterator<String[]> {
             throw new IndexOutOfBoundsException("No more cards in the deck.");
         }
     }
-
-    @Override
-    public int getValueCard(String type){
-        if (CARD_NUMBERS.contains(type)){
-            return Integer.parseInt(type);
-        }
-
-        switch (type){
-            case "jack":
-                return 3;
-            case "queen":
-                return 4;
-            case "king":
-                return 5;
-            case "ace":
-                return 1;
-        }
-
-        return 0;
-    }
 }
