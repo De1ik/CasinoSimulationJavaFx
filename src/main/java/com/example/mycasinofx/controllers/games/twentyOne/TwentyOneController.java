@@ -1,6 +1,7 @@
 package com.example.mycasinofx.controllers.games.twentyOne;
 
 import com.example.mycasinofx.Application;
+import com.example.mycasinofx.Model.games.ResultGenericClass;
 import com.example.mycasinofx.Model.games.TwentyOne.TwentyOne;
 import com.example.mycasinofx.Model.player.Player;
 import com.example.mycasinofx.controllers.custom_dialog_stake.ResultDialog;
@@ -45,11 +46,14 @@ public class TwentyOneController implements Initializable {
     TwentyOne twentyOne;
     private Player player;
     private PageSwitchInterface pageSwitch;
+    private ResultGenericClass<Integer> resultGenericClass;
+
 
     public void initialize(URL url, ResourceBundle resourceBundle) {
         twentyOne = new TwentyOne();
         pageSwitch = new SwitchPage();
         player = Player.getPlayer();
+        resultGenericClass = (ResultGenericClass<Integer>) ResultGenericClass.getResult();
     }
 
 
@@ -119,24 +123,20 @@ public class TwentyOneController implements Initializable {
         getBotCard();
         updateBotHandCards(true);
         dillerValue.setText(""+twentyOne.getBotValue());
-        int res;
-        if (twentyOne.getPlayerValue() > twentyOne.getBotValue() || twentyOne.getBotValue() > 21){
-            player.setBalance(player.getBalance() + player.getCurrentStake() * 2);
-            player.setProfit(player.getCurrentStake() * 2 - player.getCurrentStake());
-            result.setText("You win");
-            res = 1;
+        twentyOne.checkWinner();
+        int res = resultGenericClass.getResultValue();
+        switch (res){
+            case 0:
+                result.setText("Draw");
+                break;
+            case 1:
+                result.setText("You win");
+                break;
+            case 2:
+                result.setText("You lose");
+                break;
         }
-        else if(twentyOne.getPlayerValue() < twentyOne.getBotValue()){
-            player.setProfit(-(player.getCurrentStake() * 2));
-            result.setText("You lose");
-            res = 2;
-        }
-        else{
-            player.setProfit(0);
-            result.setText("Draw");
-            res = 0;
-        }
-        showGameResultDialog(res);
+        showGameResultDialog(resultGenericClass.getResultValue());
     }
 
     public void showBotCards(){

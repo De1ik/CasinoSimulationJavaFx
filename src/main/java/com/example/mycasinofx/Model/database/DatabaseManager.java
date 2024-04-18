@@ -151,7 +151,7 @@ public class DatabaseManager extends Config implements Data {
                     query.executeUpdate();
                     onSuccess.run();
                 } catch (SQLException e) {
-                    onError.accept(e); // Обработка ошибки
+                    onError.accept(e);
                 }
 
             }
@@ -238,10 +238,10 @@ public class DatabaseManager extends Config implements Data {
                         statement.setDouble(1, newBalance);
                         statement.setInt(2, id);
                         statement.executeUpdate();
-                        onSuccess.run(); // Выполнение действий при успешном обновлении
+                        onSuccess.run();
                     }
                 } catch (SQLException | ClassNotFoundException e) {
-                    onError.accept(e); // Обработка ошибки
+                    onError.accept(e);
                 }
             }
         });

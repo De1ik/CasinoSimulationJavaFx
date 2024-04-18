@@ -1,6 +1,7 @@
 package com.example.mycasinofx.controllers.games.slots;
 
 import com.example.mycasinofx.Application;
+import com.example.mycasinofx.Model.games.ResultGenericClass;
 import com.example.mycasinofx.Model.games.Slots.Slots;
 import com.example.mycasinofx.Model.player.Player;
 
@@ -55,8 +56,9 @@ public class SlotsController implements Initializable {
 
     private Slots slots;
 
-
     private PageSwitchInterface pageSwitch;
+    private ResultGenericClass resultGenericClass;
+
 
 
     public void initialize(URL url, ResourceBundle resourceBundle) {
@@ -69,6 +71,7 @@ public class SlotsController implements Initializable {
         slotGrapesImage = new Image(Objects.requireNonNull(Application.class.getResourceAsStream("view/picture/slot_element_grapes.png")));
         slots = Slots.getSlots();
         pageSwitch = new SwitchPage();
+        resultGenericClass = ResultGenericClass.getResult();
     }
 
 
@@ -79,7 +82,7 @@ public class SlotsController implements Initializable {
 
     @FXML
     public void setBalanceLabel() {
-        balanceLabel.setText("Balance: " + player.getBalance());
+        balanceLabel.setText(" " + player.getBalance());
     }
 
     public void setMessageLabel() {
@@ -123,7 +126,9 @@ public class SlotsController implements Initializable {
             profit = player.getBalance();
             slots.generateResult();
 
-            int stake = (int) slots.checkWinner();
+            slots.checkWinner();
+            int stake = (int) resultGenericClass.getResultValue();
+
 
             player.setBalance(player.getBalance() - player.getCurrentStake());
             balanceLabel.setText(""+player.getBalance());

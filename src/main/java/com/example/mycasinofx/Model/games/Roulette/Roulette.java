@@ -2,16 +2,11 @@ package com.example.mycasinofx.Model.games.Roulette;
 
 import com.example.mycasinofx.Model.games.GameInterface;
 import com.example.mycasinofx.Model.games.GameSetUpInterface;
-import com.example.mycasinofx.Model.games.Games;
+import com.example.mycasinofx.Model.games.ResultGenericClass;
 import com.example.mycasinofx.Model.player.Player;
-import javafx.event.ActionEvent;
-import javafx.event.EventHandler;
 
-import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Arrays;
-
-import static javafx.scene.input.KeyCode.R;
 
 public class Roulette extends RouletteSetUp implements GameInterface {
     private boolean isGamed;
@@ -30,6 +25,7 @@ public class Roulette extends RouletteSetUp implements GameInterface {
     private ArrayList<Integer> exactNumberArray;
     private GameSetUpInterface gameSetUpInterface;
     private Player player;
+    private ResultGenericClass<Integer> resultGenericClass;
 
 
     private Roulette() {
@@ -39,6 +35,7 @@ public class Roulette extends RouletteSetUp implements GameInterface {
         resetCurStakes();
         player = Player.getPlayer();
         exactNumberArray = new ArrayList<>();
+        resultGenericClass = (ResultGenericClass<Integer>) ResultGenericClass.getResult();
 
     }
 
@@ -52,7 +49,9 @@ public class Roulette extends RouletteSetUp implements GameInterface {
 
     @Override
     public Object checkWinner()  {
-        int curGeneration = getResult();
+
+        int curGeneration = resultGenericClass.getResultValue();
+
         //check the colours
         String color = RouletteSetUp.getColours(curGeneration);
         if (isRedStakeSet() && color.equals("Red")) {
@@ -84,12 +83,11 @@ public class Roulette extends RouletteSetUp implements GameInterface {
     public Object generateResult() {
         this.setGamed(true);
         this.resultNumber = (int) (Math.random() * 37);
+        resultGenericClass.setResult((int) (Math.random() * 37));
         return null;
     }
 
-//    public int getCurrentResult(){
-//        return this.resultNumber;
-//    }
+
 
     //------------------------------Array cur Stakes------------------------------------
     public String getCurStakes(int index) {
@@ -148,11 +146,19 @@ public class Roulette extends RouletteSetUp implements GameInterface {
     public void returnStakeBeforeEnd() {
         if (!isGamed()) {
             System.out.println("RED:" + isRedStakeSet());
-            if (isEvenStakeSet()) player.setBalance(player.getBalance() + player.getCurrentStake());
-            if (isOddStakeSet()) player.setBalance(player.getBalance() + player.getCurrentStake());
-            if (isRedStakeSet()) player.setBalance(player.getBalance() + player.getCurrentStake());
-            if (isBlackStakeSet()) player.setBalance(player.getBalance() + player.getCurrentStake());
-            if (isGreenStakeSet()) player.setBalance(player.getBalance() + player.getCurrentStake());
+
+            CheckResultLambda lambda_checking = (boolean res) -> {
+                if (res){
+                    player.setBalance(player.getBalance() + player.getCurrentStake());
+                }
+            };
+
+            lambda_checking.checking(isEvenStakeSet());
+            lambda_checking.checking(isOddStakeSet());
+            lambda_checking.checking(isRedStakeSet());
+            lambda_checking.checking(isBlackStakeSet());
+            lambda_checking.checking(isGreenStakeSet());
+
             if (!isEmptyExactNumberArray()) {
                 double amount = exactNumberArray.size() * player.getCurrentStake();
                 player.setBalance(player.getBalance() + amount);
@@ -177,10 +183,6 @@ public class Roulette extends RouletteSetUp implements GameInterface {
     }
 
     //----------------------------------------Getters/Setters-------------------------------------------------
-    public int getResult() {
-        return resultNumber;
-    }
-
     //----------------------------getters/setters of the access to start game---------------------------------
     public boolean isGamed() {
         return isGamed;

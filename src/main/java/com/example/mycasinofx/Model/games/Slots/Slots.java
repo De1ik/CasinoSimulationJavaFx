@@ -1,11 +1,8 @@
 package com.example.mycasinofx.Model.games.Slots;
 
 import com.example.mycasinofx.Model.games.GameInterface;
-import com.example.mycasinofx.Model.games.GameSetUpInterface;
-import com.example.mycasinofx.Model.games.Games;
-import com.example.mycasinofx.Model.games.Roulette.Roulette;
-import com.example.mycasinofx.Model.games.Roulette.RouletteSetUp;
-import com.example.mycasinofx.Model.player.Player;
+import com.example.mycasinofx.Model.games.ResultGenericClass;
+
 
 import java.util.ArrayList;
 
@@ -16,12 +13,14 @@ public class Slots extends SlotsSetUp implements GameInterface {
     private final ArrayList<Integer> finishIndex;
     private ArrayList<ArrayList<Integer>> generalArray;
     public static Slots instanceSlots = null;
+    private final ResultGenericClass<Integer> resultGenericClass;
 
 
     private Slots() {
         startIndex = new ArrayList<>();
         finishIndex = new ArrayList<>();
         generalArray = null;
+        resultGenericClass = (ResultGenericClass<Integer>) ResultGenericClass.getResult();
     }
 
 
@@ -41,9 +40,10 @@ public class Slots extends SlotsSetUp implements GameInterface {
             numb1 = getGeneralArrayList().get(0).get(finishIndex.get(0));
             numb2 = getGeneralArrayList().get(1).get(finishIndex.get(1));
             numb3 = getGeneralArrayList().get(2).get(finishIndex.get(2));
-            return WinnerCombination.WinnerCombinationCheckingFor3(numb1, numb2, numb3);
+            resultGenericClass.setResult(WinnerCombination.WinnerCombinationCheckingFor3(numb1, numb2, numb3));
         }
-        return -1;
+        else resultGenericClass.setResult(-1);
+        return null;
     }
 
     @Override

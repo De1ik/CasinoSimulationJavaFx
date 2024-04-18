@@ -1,5 +1,6 @@
 package com.example.mycasinofx.controllers.games.roulette;
 
+import com.example.mycasinofx.Model.games.ResultGenericClass;
 import com.example.mycasinofx.Model.games.Roulette.RouletteSetUp;
 import com.example.mycasinofx.Model.player.Player;
 import com.example.mycasinofx.Model.games.Roulette.Roulette;
@@ -38,7 +39,9 @@ public class RouletteResultController {
 
     public Roulette roulette;
 
-    private final Player player = Player.getPlayer();
+    private ResultGenericClass resultGenericClass;
+
+    private final Player player;
     private PageSwitchInterface pageSwitch;
 
     public void initialize(){
@@ -53,6 +56,8 @@ public class RouletteResultController {
     public RouletteResultController() {
         roulette = Roulette.getRoulette();
         pageSwitch = new SwitchPage();
+        player = Player.getPlayer();
+        resultGenericClass = ResultGenericClass.getResult();
     }
 
 
@@ -80,13 +85,12 @@ public class RouletteResultController {
     }
 
 
-    ////profit before and profit after will be the same
+
     //-------------------Generate The Result Add All Components-----------------------
     public void generateGameResult() {
-//        setStakeButtons();
         updateLabels();
         //convert to int because the type of my result is Object
-        int curGeneration = roulette.getResult();
+        int curGeneration = (int) resultGenericClass.getResultValue();
         System.out.println("RES: " + curGeneration);
         System.out.println("PROFIT: " + player.getProfit());
         effectResult(gridPaneRoulette, curGeneration);
@@ -177,6 +181,7 @@ public class RouletteResultController {
                 } else {
                     setMessageLabel();
                 }
+            //RTTI -> instanceof
             } else if (gridPane.getChildren().get(number) instanceof Label) {
 
                 Label label = (Label) gridPane.getChildren().get(number);
