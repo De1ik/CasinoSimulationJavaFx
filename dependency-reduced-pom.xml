@@ -52,7 +52,7 @@
             <configuration>
               <transformers>
                 <transformer>
-                  <mainClass>testfx.Main</mainClass>
+                  <mainClass>com.example.mycasinofx.Main</mainClass>
                   <manifestEntries>
                     <Class-Path>.</Class-Path>
                   </manifestEntries>

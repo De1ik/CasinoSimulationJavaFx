@@ -1,4 +1,4 @@
-package com.example.mycasinofx.Model.UsefulComponents;
+package com.example.mycasinofx.Model.FxModels;
 
 import java.io.*;
 

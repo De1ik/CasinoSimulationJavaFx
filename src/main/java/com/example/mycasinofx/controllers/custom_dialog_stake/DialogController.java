@@ -78,6 +78,7 @@ public class DialogController {
                 warningLabel.setText("Insufficient balance");
             } else {
                 player.setCurrentStake(newStake);
+
                 dialog_anchor.getChildren().clear();
                 dialog_anchor.setVisible(false);
 

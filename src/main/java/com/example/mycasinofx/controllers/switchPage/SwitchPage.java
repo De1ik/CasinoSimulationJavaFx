@@ -1,6 +1,7 @@
 package com.example.mycasinofx.controllers.switchPage;
 
 import com.example.mycasinofx.Model.FxModels.SceneSwitch;
+import com.example.mycasinofx.Model.FxModels.Serialization;
 import com.example.mycasinofx.Model.player.Player;
 import javafx.application.Platform;
 import javafx.scene.control.Alert;
@@ -100,6 +101,9 @@ public class SwitchPage implements PageSwitchInterface{
         alert.initModality(Modality.APPLICATION_MODAL);
 
         if (alert.showAndWait().get() == ButtonType.OK) {
+            Player player = Player.getPlayer();
+            Serialization userSettingsToSave = new Serialization(player.getCurrentStake()); // Замените на реальные данные
+            userSettingsToSave.save("user_last_stake.ser");
             Platform.exit();
         }
     }
