@@ -3,6 +3,7 @@ module com.example.mycasinofx {
     requires javafx.fxml;
     requires java.sql;
     requires mysql.connector.java;
+    requires java.desktop;
 
 
     opens com.example.mycasinofx to javafx.fxml;

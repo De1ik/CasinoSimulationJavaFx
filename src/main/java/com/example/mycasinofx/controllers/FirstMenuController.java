@@ -30,8 +30,13 @@ public class FirstMenuController {
 
 
     @FXML
-    public void goListGames() throws IOException {
+    public void goMainMenu() throws IOException {
         switchPage.goMainMenu(firstAnchor);
+    }
+
+    @FXML
+    public void goAboutAuthor() throws IOException {
+        switchPage.goAboutAuthor(firstAnchor);
     }
 
     @FXML

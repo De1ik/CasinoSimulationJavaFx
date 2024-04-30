@@ -24,4 +24,6 @@ public interface PageSwitchInterface {
     public void goVotingNewGameResult(AnchorPane anchorPane) throws IOException;
 
     public void goVotingBestGameResult(AnchorPane anchorPane) throws IOException;
+    public void goAboutAuthor(AnchorPane anchorPane) throws IOException;
+    public void goFirstMenu(AnchorPane anchorPane) throws IOException;
 }

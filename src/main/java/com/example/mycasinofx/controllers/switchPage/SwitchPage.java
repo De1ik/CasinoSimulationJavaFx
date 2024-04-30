@@ -90,6 +90,16 @@ public class SwitchPage implements PageSwitchInterface{
         new SceneSwitch(anchorPane, "view/active_voting/voting_result/best_game_result.fxml");
     }
 
+    @Override
+    public void goAboutAuthor(AnchorPane anchorPane) throws IOException {
+        new SceneSwitch(anchorPane, "view/aboutAuthor.fxml");
+    }
+
+    @Override
+    public void goFirstMenu(AnchorPane anchorPane) throws IOException {
+        new SceneSwitch(anchorPane, "view/firstMenu.fxml");
+    }
+
 
     @Override
     public void confirmExit() {

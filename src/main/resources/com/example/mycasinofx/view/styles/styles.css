@@ -1,3 +1,8 @@
+
+
+
+
+
 .button {
     -fx-background-color: #4CAF50; /* Button background color */
     -fx-text-fill: white; /* Button text color */
@@ -15,10 +20,43 @@
 }
 
 /* Define the hover effect */
-.button:hover {
-    -fx-background-color: #388E3C; /* Change background color on hover */
-    -fx-border-color: #2E7D32; /* Change border color on hover */
+/*.button:hover {*/
+/*    -fx-background-color: #388E3C; !* Change background color on hover *!*/
+/*    -fx-border-color: #2E7D32; !* Change border color on hover *!*/
+/*}*/
+
+
+
+.neon-button {
+    -fx-font-size: 16px;
+    -fx-padding: 10px 20px;
+    -fx-background-color: transparent;
+    -fx-text-fill: #fff;
+    -fx-border-color: #00ffff;
+    -fx-border-width: 2px;
+    -fx-border-radius: 20px;
+    -fx-cursor: hand;
+    -fx-effect: dropshadow(gaussian, #00ffff, 10, 0, 0, 0); /* Эффект неона */
+    -fx-transition: all 0.3s ease;
 }
+
+.neon-button:hover {
+    -fx-border-color: #00ffff; /* Изменение цвета рамки при наведении */
+    -fx-effect: dropshadow(gaussian, #00ffff, 20, 0, 0, 0); /* Усиление эффекта неона при наведении */
+}
+
+.about-author-label{
+    -fx-effect: dropshadow(gaussian, #00ffff, 10, 0, 0, 0); /* Эффект неона */
+    -fx-transition: all 0.3s ease;
+    -fx-text-fill: #00ffff;
+}
+
+.about-author-link{
+    -fx-effect: dropshadow(gaussian, #ff54f3, 10, 0, 0, 0); /* Эффект неона */
+    -fx-transition: all 0.3s ease;
+    -fx-text-fill: #ff63f3;
+}
+
 
 
 
@@ -472,6 +510,9 @@
     -fx-background-color: rgba(190, 107, 30, 0.63);
     -fx-transition: background-color 0.3s;
 }
+
+
+
 
 
 
