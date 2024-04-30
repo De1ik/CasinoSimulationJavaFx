@@ -1,4 +1,4 @@
-package com.example.mycasinofx.Model.FxModels;
+package com.example.mycasinofx.Model.UsefulComponents;
 
 import javafx.scene.control.ButtonType;
 import javafx.scene.control.Dialog;

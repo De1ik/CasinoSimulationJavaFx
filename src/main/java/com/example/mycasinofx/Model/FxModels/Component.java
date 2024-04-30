@@ -1,8 +1,6 @@
-package com.example.mycasinofx.Model.FxModels;
+package com.example.mycasinofx.Model.UsefulComponents;
 
-import javafx.scene.Parent;
 import javafx.scene.layout.AnchorPane;
-import javafx.scene.layout.BorderPane;
 import javafx.scene.transform.Scale;
 
 public class Component {
