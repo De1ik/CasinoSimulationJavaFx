@@ -25,6 +25,7 @@ public class FullListGamesController {
     @FXML
     public void goMainMenu() throws IOException{
         pageSwitch.goMainMenu(fullListGamesAnchor);
+        return;
     }
 
 }

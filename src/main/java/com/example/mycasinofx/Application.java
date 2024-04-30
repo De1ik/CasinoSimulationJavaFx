@@ -1,6 +1,8 @@
 package com.example.mycasinofx;
 
 import com.example.mycasinofx.Model.FxModels.Component;
+import com.example.mycasinofx.Model.FxModels.Serialization;
+import com.example.mycasinofx.Model.player.Player;
 import com.example.mycasinofx.controllers.FirstMenuController;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -82,11 +84,14 @@ public class Application extends javafx.application.Application {
 
         stage.setFullScreen(false);
         if (alert.showAndWait().get() == ButtonType.OK) {
+            Player player = Player.getPlayer();
+            Serialization userSettingsToSave = new Serialization(player.getCurrentStake()); // Замените на реальные данные
+            userSettingsToSave.save("user_last_stake.ser");
             stage.close();
         }
     }
 
-    public static void main(String[] args) {
+    public void start() {
         launch();
     }
 }

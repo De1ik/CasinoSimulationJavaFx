@@ -1,5 +1,6 @@
 package com.example.mycasinofx.Model.player;
 
+import com.example.mycasinofx.Model.FxModels.Serialization;
 import com.example.mycasinofx.Model.database.DAOPattern;
 import com.example.mycasinofx.Model.database.Data;
 import com.example.mycasinofx.Model.database.DatabaseManager;
@@ -20,6 +21,11 @@ public class Player {
 
     private Player(){
         setCurrentStake(5);
+        Serialization loadedUserSettings = Serialization.load("user_last_stake.ser");
+        if (loadedUserSettings != null) {
+            System.out.println("lAst Stake: " + loadedUserSettings.getStake());
+            setCurrentStake(loadedUserSettings.getStake());
+        }
         inner = new AdditionalUserInfo();
     }
 

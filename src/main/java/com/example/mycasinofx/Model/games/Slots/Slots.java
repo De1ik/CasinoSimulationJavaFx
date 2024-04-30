@@ -69,7 +69,7 @@ public class Slots extends SlotsSetUp implements GameInterface {
         if (curIndex != 0){
             return array.get(col).get(curIndex - 1);
         }
-        return array.get(col).getLast();
+        return array.get(col).get(array.get(col).size() - 1);
     }
 
     public int getNextIndexArray(ArrayList<ArrayList<Integer>> array, int col, int curIndex){

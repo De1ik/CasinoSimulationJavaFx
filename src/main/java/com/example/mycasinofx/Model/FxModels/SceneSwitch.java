@@ -1,10 +1,11 @@
-package com.example.mycasinofx.Model.UsefulComponents;
+package com.example.mycasinofx.Model.FxModels;
 
 import com.example.mycasinofx.Application;
 import com.example.mycasinofx.controllers.Registration.LoginPageController;
 import com.example.mycasinofx.controllers.games.slots.SlotsController;
 import com.example.mycasinofx.controllers.games.twentyOne.Start21Controller;
 import com.example.mycasinofx.controllers.games.twentyOne.TwentyOneController;
+import com.example.mycasinofx.controllers.mainMenu.MainMenuController;
 import com.example.mycasinofx.controllers.Registration.RegisterController;
 import com.example.mycasinofx.controllers.games.roulette.RouletteController;
 import com.example.mycasinofx.controllers.games.roulette.RouletteResultController;
@@ -13,6 +14,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.layout.AnchorPane;
 
 import java.io.IOException;
+import java.sql.SQLException;
 
 public class SceneSwitch {
     public SceneSwitch(AnchorPane currentAnchorPane, String fxml) throws IOException {
