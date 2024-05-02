@@ -15,10 +15,10 @@ public class DatabaseManager extends Config implements Data {
 
 
     public Connection getDbConnection() throws ClassNotFoundException, SQLException {
-        String connectionString = "jdbc:mysql://" + dbHost + ":" + dbPort + "/" + dbName;
+        String connectionString = "jdbc:mysql://" + DB_HOST + ":" + DB_PORT + "/" + DB_NAME;
 
         Class.forName("com.mysql.cj.jdbc.Driver");
-        dbConnection = DriverManager.getConnection(connectionString, dbUser, dbPass);
+        dbConnection = DriverManager.getConnection(connectionString, DB_USER, DB_PASS);
 
         return dbConnection;
     }
