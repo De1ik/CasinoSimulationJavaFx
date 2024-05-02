@@ -1,13 +1,9 @@
 package com.example.mycasinofx.controllers;
 
-import com.example.mycasinofx.Model.FxModels.SceneSwitch;
-import com.example.mycasinofx.Model.player.Player;
 import com.example.mycasinofx.controllers.switchPage.SwitchPage;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-
 import javafx.scene.Node;
-
 import javafx.scene.control.Alert;
 import javafx.scene.control.ButtonType;
 import javafx.scene.layout.AnchorPane;

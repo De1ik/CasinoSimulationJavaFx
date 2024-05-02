@@ -1,11 +1,11 @@
 package com.example.mycasinofx.controllers;
 
 import com.example.mycasinofx.controllers.switchPage.SwitchPage;
-import java.awt.Desktop;
 import javafx.fxml.FXML;
 import javafx.scene.control.Hyperlink;
 import javafx.scene.layout.AnchorPane;
 
+import java.awt.*;
 import java.io.IOException;
 import java.net.URI;
 import java.net.URISyntaxException;

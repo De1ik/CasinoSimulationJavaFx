@@ -1,15 +1,13 @@
 package com.example.mycasinofx.controllers.voting.resultVoting;
 
 import com.example.mycasinofx.Model.database.DAOPattern;
-import com.example.mycasinofx.Model.database.DatabaseManager;
-import com.example.mycasinofx.Model.database.constants.ConstBestGameVotingTable;
 import com.example.mycasinofx.Model.database.constants.ConstNewGameVotingTable;
 import com.example.mycasinofx.controllers.switchPage.SwitchPage;
-import javafx.application.Platform;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.chart.BarChart;
 import javafx.scene.chart.XYChart;
+import javafx.scene.control.Label;
 import javafx.scene.layout.AnchorPane;
 
 import java.io.IOException;
@@ -23,7 +21,8 @@ public class ResultNewGameController implements Initializable {
     @FXML
     private BarChart<String, Number> barChart;
     private final SwitchPage switchPage = new SwitchPage();
-    private final DatabaseManager databaseManager = new DatabaseManager();
+    @FXML
+    private Label allVoters;
 
 
 
@@ -43,6 +42,9 @@ public class ResultNewGameController implements Initializable {
         int amountOthers = DAOPattern.selectNumberVotes("", ConstNewGameVotingTable.NEW_GAME_TABLE, ConstNewGameVotingTable.NAME);
         amountOthers -= (amountBackarat + amountPoker + amountDurak);
 
+        int amount = amountBackarat + amountPoker + amountDurak + amountOthers + 20;
+        System.out.println(amount);
+        allVoters.setText("The number of voters: "+ amount);
 
         addSeries("Backarat", amountBackarat);
         addSeries("Poker", amountPoker+15);
