@@ -1,8 +1,6 @@
 package com.example.mycasinofx.controllers.voting;
 
-import com.example.mycasinofx.Model.FxModels.SceneSwitch;
 import com.example.mycasinofx.Model.database.DAOPattern;
-import com.example.mycasinofx.Model.database.DatabaseManager;
 import com.example.mycasinofx.Model.database.constants.ConstBestGameVotingTable;
 import com.example.mycasinofx.Model.database.constants.ConstNewGameVotingTable;
 import com.example.mycasinofx.Model.player.Player;

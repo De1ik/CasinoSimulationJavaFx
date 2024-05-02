@@ -1,6 +1,5 @@
 package com.example.mycasinofx.controllers.Registration;
 
-import com.example.mycasinofx.Model.FxModels.SceneSwitch;
 import com.example.mycasinofx.Model.Hashing.PasswordHash;
 import com.example.mycasinofx.Model.database.DAOPattern;
 import com.example.mycasinofx.Model.database.DatabaseManager;
@@ -9,7 +8,6 @@ import com.example.mycasinofx.controllers.switchPage.PageSwitchInterface;
 import com.example.mycasinofx.controllers.switchPage.SwitchPage;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
-import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.AnchorPane;
 

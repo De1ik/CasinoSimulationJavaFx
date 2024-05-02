@@ -10,7 +10,6 @@ import javafx.scene.layout.AnchorPane;
 import javafx.stage.Modality;
 
 import java.io.IOException;
-import java.sql.SQLException;
 
 public class SwitchPage implements PageSwitchInterface{
 

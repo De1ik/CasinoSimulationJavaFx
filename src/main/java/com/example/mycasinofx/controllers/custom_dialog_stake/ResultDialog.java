@@ -2,11 +2,8 @@ package com.example.mycasinofx.controllers.custom_dialog_stake;
 
 import com.example.mycasinofx.Application;
 import com.example.mycasinofx.Model.FxModels.Component;
-import com.example.mycasinofx.Model.observeImplementation.Observer;
-import com.example.mycasinofx.controllers.custom_dialog_stake.DialogController;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
-import javafx.scene.control.Label;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
 

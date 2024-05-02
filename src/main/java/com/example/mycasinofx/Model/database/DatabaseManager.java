@@ -3,11 +3,7 @@ package com.example.mycasinofx.Model.database;
 import com.example.mycasinofx.Model.database.constants.ConstUserTable;
 import com.example.mycasinofx.Model.player.Player;
 
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.PreparedStatement;
-import java.sql.SQLException;
-import java.sql.ResultSet;
+import java.sql.*;
 import java.util.function.Consumer;
 
 public class DatabaseManager extends Config implements Data {

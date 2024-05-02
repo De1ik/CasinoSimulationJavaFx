@@ -4,7 +4,6 @@ module com.example.mycasinofx {
     requires java.sql;
     requires mysql.connector.java;
     requires java.desktop;
-    requires dotenv.java;
 
 
     opens com.example.mycasinofx to javafx.fxml;

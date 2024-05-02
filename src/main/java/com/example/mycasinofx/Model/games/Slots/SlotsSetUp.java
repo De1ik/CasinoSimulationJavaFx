@@ -3,7 +3,6 @@ package com.example.mycasinofx.Model.games.Slots;
 
 import com.example.mycasinofx.Model.games.GameSetUpInterface;
 import com.example.mycasinofx.Model.games.Games;
-import com.example.mycasinofx.Model.games.ResultGenericClass;
 
 import java.util.ArrayList;
 import java.util.Collections;
