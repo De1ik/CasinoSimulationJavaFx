@@ -1,8 +1,6 @@
 package com.example.mycasinofx.controllers.voting.votingProcces;
 
 import com.example.mycasinofx.Model.database.DAOPattern;
-import com.example.mycasinofx.Model.database.DatabaseManager;
-import com.example.mycasinofx.Model.database.constants.ConstBestGameVotingTable;
 import com.example.mycasinofx.Model.database.constants.ConstNewGameVotingTable;
 import com.example.mycasinofx.Model.player.Player;
 import com.example.mycasinofx.controllers.switchPage.SwitchPage;
@@ -59,6 +57,7 @@ public class NewGameVotingController {
 
     public void vote() throws IOException{
         Player player = Player.getPlayer();
+        int res = 1;
         if (resultVoting == null){
             warningLabel.setText("Choose the variant");
         }
@@ -67,27 +66,32 @@ public class NewGameVotingController {
                 String resultToDb = resultVoting.getId();
                 if (resultToDb.equals(radioOther.getId())){
                     resultToDb = otherTextField.getText().trim();
+                    if (resultToDb.isEmpty()){
+                        warningLabel.setText("Write what you want to add");
+                        res = -1;
+                    }
                 }
-                else {
+                else{
                     resultToDb = resultVoting.getId();
                 }
 
-                if (DAOPattern.voteCheckNewUser(player.getUserId(),
-                        ConstNewGameVotingTable.NEW_GAME_TABLE,
-                        ConstNewGameVotingTable.USERS_ID
-                )){
-                    DAOPattern.updateVoteUser(resultToDb,
+                if (res != -1) {
+                    if (DAOPattern.voteCheckNewUser(player.getUserId(),
                             ConstNewGameVotingTable.NEW_GAME_TABLE,
-                            ConstNewGameVotingTable.NAME, player.getUserId());
+                            ConstNewGameVotingTable.USERS_ID
+                    )) {
+                        DAOPattern.updateVoteUser(resultToDb,
+                                ConstNewGameVotingTable.NEW_GAME_TABLE,
+                                ConstNewGameVotingTable.NAME, player.getUserId());
+                    } else {
+                        DAOPattern.voteNewUser(player.getUserId(),
+                                resultVoting.getId(),
+                                ConstNewGameVotingTable.NEW_GAME_TABLE,
+                                ConstNewGameVotingTable.USERS_ID,
+                                ConstNewGameVotingTable.NAME);
+                    }
+                    switchPage.goVotingNewGameResult(newGameVoting);
                 }
-                else{
-                    DAOPattern.voteNewUser(player.getUserId(),
-                            resultVoting.getId(),
-                            ConstNewGameVotingTable.NEW_GAME_TABLE,
-                            ConstNewGameVotingTable.USERS_ID,
-                            ConstNewGameVotingTable.NAME);
-                }
-                switchPage.goVotingNewGameResult(newGameVoting);
             } catch (SQLException | ClassNotFoundException e){
                 warningLabel.setText("Oops...Something went wrong");
             }

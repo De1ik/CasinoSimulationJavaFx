@@ -1,6 +1,5 @@
 package com.example.mycasinofx.controllers.Registration;
 
-import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 
 public interface RegistrationWarningsInterface {

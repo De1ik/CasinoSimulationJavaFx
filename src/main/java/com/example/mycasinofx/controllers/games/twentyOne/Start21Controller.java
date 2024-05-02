@@ -1,7 +1,5 @@
 package com.example.mycasinofx.controllers.games.twentyOne;
 
-import com.example.mycasinofx.Application;
-import com.example.mycasinofx.Model.games.Slots.Slots;
 import com.example.mycasinofx.Model.player.Player;
 import com.example.mycasinofx.controllers.custom_dialog_stake.SetStakeCustomDialog;
 import com.example.mycasinofx.controllers.switchPage.PageSwitchInterface;
@@ -9,14 +7,11 @@ import com.example.mycasinofx.controllers.switchPage.SwitchPage;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Label;
-import javafx.scene.image.Image;
 import javafx.scene.layout.AnchorPane;
-import javafx.scene.layout.Border;
 import javafx.scene.layout.BorderPane;
 
 import java.io.IOException;
 import java.net.URL;
-import java.util.Objects;
 import java.util.ResourceBundle;
 
 public class Start21Controller implements Initializable {

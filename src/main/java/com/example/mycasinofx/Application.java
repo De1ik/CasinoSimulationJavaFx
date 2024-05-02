@@ -4,23 +4,19 @@ import com.example.mycasinofx.Model.FxModels.Component;
 import com.example.mycasinofx.Model.FxModels.Serialization;
 import com.example.mycasinofx.Model.player.Player;
 import com.example.mycasinofx.controllers.FirstMenuController;
-import io.github.cdimascio.dotenv.Dotenv;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
-import javafx.scene.control.Button;
 import javafx.scene.control.ButtonType;
 import javafx.scene.transform.Scale;
 import javafx.stage.Modality;
 import javafx.stage.Screen;
 import javafx.stage.Stage;
-import javafx.stage.StageStyle;
 
 
 public class Application extends javafx.application.Application {
     private static Scale lastTransformation;
-    Dotenv dotenv = Dotenv.configure().load();
     @Override
     public void start(Stage stage){
         try {

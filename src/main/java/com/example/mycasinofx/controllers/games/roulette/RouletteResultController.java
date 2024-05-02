@@ -1,9 +1,9 @@
 package com.example.mycasinofx.controllers.games.roulette;
 
 import com.example.mycasinofx.Model.games.ResultGenericClass;
+import com.example.mycasinofx.Model.games.Roulette.Roulette;
 import com.example.mycasinofx.Model.games.Roulette.RouletteSetUp;
 import com.example.mycasinofx.Model.player.Player;
-import com.example.mycasinofx.Model.games.Roulette.Roulette;
 import com.example.mycasinofx.controllers.games.usefulComponent.ResultMessage;
 import com.example.mycasinofx.controllers.switchPage.PageSwitchInterface;
 import com.example.mycasinofx.controllers.switchPage.SwitchPage;

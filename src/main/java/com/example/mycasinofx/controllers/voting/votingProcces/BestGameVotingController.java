@@ -1,13 +1,10 @@
 package com.example.mycasinofx.controllers.voting.votingProcces;
 
-import com.example.mycasinofx.Model.FxModels.SceneSwitch;
 import com.example.mycasinofx.Model.database.DAOPattern;
-import com.example.mycasinofx.Model.database.DatabaseManager;
 import com.example.mycasinofx.Model.database.constants.ConstBestGameVotingTable;
 import com.example.mycasinofx.Model.player.Player;
 import com.example.mycasinofx.controllers.switchPage.SwitchPage;
 import javafx.fxml.FXML;
-import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.scene.control.RadioButton;
 import javafx.scene.control.ToggleGroup;

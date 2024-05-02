@@ -1,18 +1,13 @@
 package com.example.mycasinofx.controllers.custom_dialog_stake;
 
-import com.example.mycasinofx.Model.FxModels.SceneSwitch;
 import com.example.mycasinofx.Model.games.Games;
 import com.example.mycasinofx.Model.observeImplementation.Observer;
 import com.example.mycasinofx.Model.observeImplementation.ObserverArray;
 import com.example.mycasinofx.Model.player.Player;
-import com.example.mycasinofx.controllers.switchPage.PageSwitchInterface;
-import com.example.mycasinofx.controllers.switchPage.SwitchPage;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.AnchorPane;
-
-import java.io.IOException;
 
 public class DialogController {
     @FXML

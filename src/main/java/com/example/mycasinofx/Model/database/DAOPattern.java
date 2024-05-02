@@ -1,6 +1,5 @@
 package com.example.mycasinofx.Model.database;
 
-import java.sql.Connection;
 import java.sql.SQLException;
 import java.util.function.Consumer;
 

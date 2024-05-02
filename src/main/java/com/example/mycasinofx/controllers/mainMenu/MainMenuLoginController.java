@@ -1,7 +1,6 @@
 package com.example.mycasinofx.controllers.mainMenu;
 
-import com.example.mycasinofx.Model.FxModels.NumericInputDialog;
-import com.example.mycasinofx.Model.games.Games;
+
 import com.example.mycasinofx.Model.player.Player;
 import com.example.mycasinofx.controllers.custom_dialog_stake.SetStakeCustomDialog;
 import com.example.mycasinofx.controllers.switchPage.PageSwitchInterface;

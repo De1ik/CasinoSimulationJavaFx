@@ -1,7 +1,5 @@
 package com.example.mycasinofx.Model.observeImplementation;
 
-import java.util.ArrayList;
-
 public class Observer {
     @FunctionalInterface
     public static interface ActionExecute{

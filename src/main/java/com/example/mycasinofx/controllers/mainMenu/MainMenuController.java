@@ -1,21 +1,16 @@
 package com.example.mycasinofx.controllers.mainMenu;
 
-import com.example.mycasinofx.Application;
-import com.example.mycasinofx.Model.FxModels.Component;
 import com.example.mycasinofx.Model.FxModels.NumericInputDialog;
-import com.example.mycasinofx.Model.player.Player;
 import com.example.mycasinofx.Model.FxModels.SceneSwitch;
 import com.example.mycasinofx.Model.games.Games;
+import com.example.mycasinofx.Model.player.Player;
 import javafx.application.Platform;
 import javafx.fxml.FXML;
-
-
-import java.io.IOException;
-
-import javafx.fxml.FXMLLoader;
 import javafx.scene.control.Label;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.paint.Color;
+
+import java.io.IOException;
 
 
 public class MainMenuController {

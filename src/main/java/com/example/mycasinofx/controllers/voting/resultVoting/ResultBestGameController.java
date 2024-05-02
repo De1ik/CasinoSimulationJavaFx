@@ -1,14 +1,13 @@
 package com.example.mycasinofx.controllers.voting.resultVoting;
 
 import com.example.mycasinofx.Model.database.DAOPattern;
-import com.example.mycasinofx.Model.database.DatabaseManager;
 import com.example.mycasinofx.Model.database.constants.ConstBestGameVotingTable;
 import com.example.mycasinofx.controllers.switchPage.SwitchPage;
-import javafx.application.Platform;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.chart.BarChart;
 import javafx.scene.chart.XYChart;
+import javafx.scene.control.Label;
 import javafx.scene.layout.AnchorPane;
 
 import java.io.IOException;
@@ -21,6 +20,8 @@ public class ResultBestGameController implements Initializable {
     private AnchorPane resultBestGame;
     @FXML
     private BarChart<String, Number> barChart;
+    @FXML
+    private Label allVoters;
     private final SwitchPage switchPage = new SwitchPage();
 
 
@@ -39,6 +40,11 @@ public class ResultBestGameController implements Initializable {
         int amountRouletteVotes = DAOPattern.selectNumberVotes("radioRoulette", ConstBestGameVotingTable.BEST_GAME_TABLE, ConstBestGameVotingTable.NAME);
         int amountSlotVotes = DAOPattern.selectNumberVotes("radioSlot", ConstBestGameVotingTable.BEST_GAME_TABLE, ConstBestGameVotingTable.NAME);
         int amountTwentyOneVotes = DAOPattern.selectNumberVotes("radioTwentyOne", ConstBestGameVotingTable.BEST_GAME_TABLE, ConstBestGameVotingTable.NAME);
+
+        int amount = amountRouletteVotes + amountSlotVotes + amountTwentyOneVotes + 11;
+        System.out.println(amount);
+        allVoters.setText("The number of voters: "+ amount);
+
 
         addSeries("roulette", amountRouletteVotes+1);
         addSeries("slots", amountSlotVotes+4);

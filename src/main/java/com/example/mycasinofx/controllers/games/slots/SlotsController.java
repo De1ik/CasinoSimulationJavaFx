@@ -4,15 +4,10 @@ import com.example.mycasinofx.Application;
 import com.example.mycasinofx.Model.games.ResultGenericClass;
 import com.example.mycasinofx.Model.games.Slots.Slots;
 import com.example.mycasinofx.Model.player.Player;
-
 import com.example.mycasinofx.controllers.custom_dialog_stake.SetStakeCustomDialog;
 import com.example.mycasinofx.controllers.games.usefulComponent.ResultMessage;
 import com.example.mycasinofx.controllers.switchPage.PageSwitchInterface;
 import com.example.mycasinofx.controllers.switchPage.SwitchPage;
-import javafx.animation.KeyFrame;
-import javafx.animation.RotateTransition;
-import javafx.animation.Timeline;
-import javafx.animation.TranslateTransition;
 import javafx.application.Platform;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -23,7 +18,6 @@ import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.GridPane;
-import javafx.util.Duration;
 
 import java.io.IOException;
 import java.net.URL;
