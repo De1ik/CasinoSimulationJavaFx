@@ -2,10 +2,6 @@ package com.example.mycasinofx.Model.player;
 
 import com.example.mycasinofx.Model.FxModels.Serialization;
 import com.example.mycasinofx.Model.database.DAOPattern;
-import com.example.mycasinofx.Model.database.Data;
-import com.example.mycasinofx.Model.database.DatabaseManager;
-
-import java.sql.SQLException;
 
 public class Player {
 
