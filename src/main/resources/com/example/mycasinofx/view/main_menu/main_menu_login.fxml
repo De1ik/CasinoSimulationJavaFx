@@ -50,14 +50,14 @@
                                     </LinearGradient>
                                  </textFill>
                               </Label>
-                              <Label alignment="CENTER" prefHeight="31.0" prefWidth="302.0" textAlignment="CENTER" textFill="#0ca65e">
+                              <Label alignment="CENTER" prefHeight="27.0" prefWidth="302.0" textAlignment="CENTER" textFill="#0ca65e">
                                  <font>
                                     <Font name="System Bold" size="11.0" />
                                  </font>
                               </Label>
-                              <VBox alignment="CENTER" prefHeight="385.0" prefWidth="302.0">
+                              <VBox alignment="CENTER" prefHeight="283.0" prefWidth="302.0">
                                  <children>
-                                    <HBox alignment="CENTER" prefHeight="64.0" prefWidth="302.0">
+                                    <HBox alignment="CENTER" prefHeight="50.0" prefWidth="302.0">
                                        <children>
                                           <Button alignment="CENTER" mnemonicParsing="false" onAction="#goRoulette" prefHeight="40.0" prefWidth="174.0" styleClass="main-menu-buttons" text="Play Roullete">
                                              <font>
@@ -82,7 +82,7 @@
                                           </Button>
                                        </children>
                                     </HBox>
-                                    <HBox alignment="CENTER" prefHeight="61.0" prefWidth="302.0">
+                                    <HBox alignment="CENTER" prefHeight="51.0" prefWidth="302.0">
                                        <children>
                                           <Button alignment="CENTER" mnemonicParsing="false" onAction="#goSlots" prefHeight="40.0" prefWidth="174.0" styleClass="main-menu-buttons" text="Slots" textFill="PURPLE">
                                              <font>
@@ -91,7 +91,7 @@
                                           </Button>
                                        </children>
                                     </HBox>
-                                    <HBox alignment="CENTER" prefHeight="65.0" prefWidth="302.0">
+                                    <HBox alignment="CENTER" prefHeight="53.0" prefWidth="302.0">
                                        <children>
                                           <Button alignment="CENTER" mnemonicParsing="false" onAction="#goPlay21" prefHeight="40.0" prefWidth="174.0" styleClass="main-menu-buttons" text="Play Twenty One" textFill="PURPLE">
                                              <font>
@@ -100,16 +100,7 @@
                                           </Button>
                                        </children>
                                     </HBox>
-                                    <HBox alignment="CENTER" prefHeight="57.0" prefWidth="302.0">
-                                       <children>
-                                          <Button alignment="CENTER" mnemonicParsing="false" onAction="#goFullList" prefHeight="40.0" prefWidth="174.0" styleClass="main-menu-buttons" text="Full List of Games" textFill="PURPLE">
-                                             <font>
-                                                <Font name="System Bold Italic" size="12.0" />
-                                             </font>
-                                          </Button>
-                                       </children>
-                                    </HBox>
-                                    <HBox alignment="CENTER" prefHeight="66.0" prefWidth="302.0">
+                                    <HBox alignment="CENTER" prefHeight="47.0" prefWidth="302.0">
                                        <children>
                                           <Button alignment="CENTER" mnemonicParsing="false" onAction="#goVoting" prefHeight="40.0" prefWidth="174.0" styleClass="main-menu-buttons" text="Active Voiting" textFill="PURPLE">
                                              <font>
@@ -118,7 +109,7 @@
                                           </Button>
                                        </children>
                                     </HBox>
-                                    <HBox alignment="CENTER_LEFT" prefHeight="57.0" prefWidth="302.0">
+                                    <HBox alignment="CENTER_LEFT" prefHeight="65.0" prefWidth="302.0">
                                        <children>
                                           <Label alignment="CENTER" prefHeight="57.0" prefWidth="24.0" textAlignment="CENTER" textFill="#0ca65e">
                                              <font>
@@ -130,15 +121,6 @@
                                                 <Font name="System Bold Italic" size="12.0" />
                                              </font>
                                           </Button>
-                                       </children>
-                                    </HBox>
-                                    <HBox alignment="CENTER_LEFT" prefHeight="11.0" prefWidth="302.0">
-                                       <children>
-                                          <Label alignment="CENTER" prefHeight="57.0" prefWidth="24.0" textAlignment="CENTER" textFill="#0ca65e">
-                                             <font>
-                                                <Font name="System Bold Italic" size="14.0" />
-                                             </font>
-                                          </Label>
                                        </children>
                                     </HBox>
                                  </children>
@@ -202,21 +184,21 @@
                                     </Label>
                                  </children>
                               </VBox>
-                              <VBox alignment="CENTER" prefHeight="87.0" prefWidth="298.0">
+                              <VBox alignment="CENTER" prefHeight="111.0" prefWidth="298.0">
                                  <children>
-                                    <ImageView fitHeight="82.0" fitWidth="95.0" pickOnBounds="true" preserveRatio="true">
+                                    <ImageView fitHeight="66.0" fitWidth="65.0" pickOnBounds="true" preserveRatio="true">
                                        <image>
-                                          <Image url="@../../Picture/profile_icon.png" />
+                                          <Image url="@../picture/avatar.png" />
                                        </image>
                                     </ImageView>
                                  </children>
                               </VBox>
                               <VBox alignment="BOTTOM_LEFT" prefHeight="73.0" prefWidth="298.0">
                                  <children>
-                                    <HBox prefHeight="57.0" prefWidth="298.0">
+                                    <HBox alignment="CENTER" prefHeight="47.0" prefWidth="298.0">
                                        <children>
                                           <Label fx:id="setBalanceViewLabel11" prefHeight="37.0" prefWidth="59.0" />
-                                          <Label fx:id="setBalanceViewLabel" prefHeight="53.0" prefWidth="242.0" text="Balance:  12345">
+                                          <Label fx:id="setBalanceViewLabel" prefHeight="35.0" prefWidth="188.0" text="Balance:  12345">
                                              <font>
                                                 <Font name="Arial Narrow Bold" size="18.0" />
                                              </font>
@@ -239,10 +221,10 @@
                                           </Label>
                                        </children>
                                     </HBox>
-                                    <HBox prefHeight="57.0" prefWidth="298.0">
+                                    <HBox prefHeight="43.0" prefWidth="298.0">
                                        <children>
                                           <Label fx:id="setBalanceViewLabel111" prefHeight="51.0" prefWidth="113.0" />
-                                          <Label fx:id="stakeLabelView" prefHeight="53.0" prefWidth="298.0" text="Current Stake: 12345">
+                                          <Label fx:id="stakeLabelView" prefHeight="74.0" prefWidth="241.0" text="Current Stake: 12345">
                                              <font>
                                                 <Font name="Arial Narrow Bold" size="18.0" />
                                              </font>
@@ -265,70 +247,19 @@
                                           </Label>
                                        </children>
                                     </HBox>
-                                    <HBox prefHeight="57.0" prefWidth="298.0">
-                                       <children>
-                                          <Label fx:id="stakeErrorSuccess" alignment="CENTER" contentDisplay="CENTER" prefHeight="25.0" prefWidth="301.0">
-                                             <font>
-                                                <Font name="Arial Narrow Bold" size="13.0" />
-                                             </font>
-                                             <textFill>
-                                                <LinearGradient endX="1.0" endY="1.0">
-                                                   <stops>
-                                                      <Stop>
-                                                         <color>
-                                                            <Color red="0.7280701994895935" green="0.03595408424735069" blue="0.03595408424735069" />
-                                                         </color>
-                                                      </Stop>
-                                                      <Stop offset="1.0">
-                                                         <color>
-                                                            <Color red="0.6666666865348816" green="0.31018519401550293" blue="0.0555555559694767" />
-                                                         </color>
-                                                      </Stop>
-                                                   </stops>
-                                                </LinearGradient>
-                                             </textFill>
-                                          </Label>
-                                       </children>
-                                    </HBox>
                                  </children>
                               </VBox>
-                              <VBox alignment="CENTER" prefHeight="99.0" prefWidth="298.0">
+                              <VBox alignment="CENTER" prefHeight="74.0" prefWidth="298.0">
                                  <children>
                                     <Label fx:id="stakeLabelView11" prefHeight="2.0" prefWidth="298.0" textFill="#0ca65e">
                                        <font>
                                           <Font name="Arial Narrow Bold" size="9.0" />
                                        </font>
                                     </Label>
-                                    <Button alignment="CENTER" contentDisplay="BOTTOM" mnemonicParsing="false" onAction="#doStake" prefHeight="25.0" prefWidth="104.0" styleClass="change-stake-button" text="Change Stake" textFill="WHITE">
+                                    <Button alignment="CENTER" contentDisplay="BOTTOM" mnemonicParsing="false" onAction="#doStake" prefHeight="41.0" prefWidth="119.0" styleClass="change-stake-button" text="Change Stake" textFill="WHITE">
                                        <font>
                                           <Font name="System Bold Italic" size="12.0" />
                                        </font>
-                                    </Button>
-                                    <Label fx:id="stakeLabelView1" prefHeight="53.0" prefWidth="298.0" textFill="#0ca65e">
-                                       <font>
-                                          <Font name="Arial Narrow Bold" size="18.0" />
-                                       </font>
-                                    </Label>
-                                    <Button mnemonicParsing="false" prefHeight="69.0" prefWidth="151.0" styleClass="change-stake-button" text="Show More">
-                                       <font>
-                                          <Font name="System Bold Italic" size="12.0" />
-                                       </font>
-                                       <textFill>
-                                          <RadialGradient centerX="0.2845303867403315" centerY="0.37203791469194314" radius="0.5">
-                                             <stops>
-                                                <Stop>
-                                                   <color>
-                                                      <Color red="0.501960813999176" green="0.30980393290519714" blue="0.12941177189350128" />
-                                                   </color>
-                                                </Stop>
-                                                <Stop offset="1.0">
-                                                   <color>
-                                                      <Color red="1.0" green="0.4833333194255829" />
-                                                   </color>
-                                                </Stop>
-                                             </stops>
-                                          </RadialGradient>
-                                       </textFill>
                                     </Button>
                                  </children>
                               </VBox>

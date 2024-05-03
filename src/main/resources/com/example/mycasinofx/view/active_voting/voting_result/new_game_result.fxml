@@ -6,10 +6,13 @@
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
 
-<AnchorPane fx:id="resultNewGame" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.mycasinofx.controllers.voting.resultVoting.ResultNewGameController">
+<AnchorPane fx:id="resultNewGame" prefHeight="400.0" prefWidth="600.0" stylesheets="@../../styles/styles.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.mycasinofx.controllers.voting.resultVoting.ResultNewGameController">
    <children>
-      <BarChart fx:id="barChart" layoutX="59.0" layoutY="66.0" prefHeight="267.0" prefWidth="481.0" title="Result New Game Voting">
+      <BarChart fx:id="barChart" layoutX="15.0" layoutY="66.0" prefHeight="267.0" prefWidth="356.0" title="Result New Game Voting">
         <xAxis>
           <CategoryAxis label="Type Gemes" side="LEFT" />
         </xAxis>
@@ -17,8 +20,125 @@
           <NumberAxis focusTraversable="true" label=" Number of Votes" minorTickVisible="false" side="LEFT" />
         </yAxis>
       </BarChart>
-      <Button layoutX="438.0" layoutY="333.0" mnemonicParsing="false" onAction="#reVote" text="Revote" />
-      <Button layoutX="107.0" layoutY="333.0" mnemonicParsing="false" onAction="#mainMenu" text="Main Menu" />
-      <Label fx:id="allVoters" layoutX="285.0" layoutY="337.0" />
+      <Button layoutX="139.0" layoutY="342.0" mnemonicParsing="false" onAction="#mainMenu" prefHeight="33.0" prefWidth="107.0" styleClass="change-stake-button" text="Main Menu" textFill="WHITE">
+         <font>
+            <Font name="System Bold Italic" size="10.0" />
+         </font>
+      </Button>
+      <VBox layoutX="384.0" prefHeight="400.0" prefWidth="217.0" style="-fx-background-color: linear-gradient(to bottom, #D08035, #772F1A);">
+         <children>
+            <HBox prefHeight="0.0" prefWidth="291.0">
+               <children>
+                  <Label alignment="TOP_LEFT" prefHeight="47.0" prefWidth="127.0" textAlignment="CENTER" textFill="#0ca65e">
+                     <font>
+                        <Font name="System Bold" size="32.0" />
+                     </font>
+                  </Label>
+               </children>
+            </HBox>
+            <HBox prefHeight="0.0" prefWidth="291.0">
+               <children>
+                  <Label alignment="TOP_LEFT" prefHeight="47.0" prefWidth="193.0" textAlignment="CENTER" textFill="#0ca65e">
+                     <font>
+                        <Font name="System Bold" size="19.0" />
+                     </font>
+                  </Label>
+               </children>
+            </HBox>
+            <HBox prefHeight="38.0" prefWidth="213.0">
+               <children>
+                  <Label alignment="TOP_LEFT" prefHeight="29.0" prefWidth="28.0" textAlignment="CENTER" textFill="#0ca65e">
+                     <font>
+                        <Font name="System Bold" size="1.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="allVoters" prefHeight="38.0" prefWidth="186.0" text="Total Number Voters:" textAlignment="CENTER" textFill="WHITE">
+                     <font>
+                        <Font name="System Bold" size="12.0" />
+                     </font>
+                  </Label>
+               </children>
+            </HBox>
+            <HBox prefHeight="38.0" prefWidth="213.0">
+               <children>
+                  <Label alignment="TOP_LEFT" prefHeight="29.0" prefWidth="28.0" textAlignment="CENTER" textFill="#0ca65e">
+                     <font>
+                        <Font name="System Bold" size="1.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="bacaratV" prefHeight="38.0" prefWidth="186.0" text="Bacarat Number Voters:" textAlignment="CENTER" textFill="WHITE">
+                     <font>
+                        <Font name="System Bold" size="12.0" />
+                     </font>
+                  </Label>
+               </children>
+            </HBox>
+            <HBox prefHeight="38.0" prefWidth="213.0">
+               <children>
+                  <Label alignment="TOP_LEFT" prefHeight="29.0" prefWidth="28.0" textAlignment="CENTER" textFill="#0ca65e">
+                     <font>
+                        <Font name="System Bold" size="1.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="pokerV" prefHeight="38.0" prefWidth="186.0" text="Poker Number Voters:" textAlignment="CENTER" textFill="WHITE">
+                     <font>
+                        <Font name="System Bold" size="12.0" />
+                     </font>
+                  </Label>
+               </children>
+            </HBox>
+            <HBox prefHeight="38.0" prefWidth="213.0">
+               <children>
+                  <Label alignment="TOP_LEFT" prefHeight="29.0" prefWidth="28.0" textAlignment="CENTER" textFill="#0ca65e">
+                     <font>
+                        <Font name="System Bold" size="1.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="duracV" prefHeight="38.0" prefWidth="186.0" text="Durak Number Voters:" textAlignment="CENTER" textFill="WHITE">
+                     <font>
+                        <Font name="System Bold" size="12.0" />
+                     </font>
+                  </Label>
+               </children>
+            </HBox>
+            <HBox prefHeight="38.0" prefWidth="213.0">
+               <children>
+                  <Label alignment="TOP_LEFT" prefHeight="29.0" prefWidth="28.0" textAlignment="CENTER" textFill="#0ca65e">
+                     <font>
+                        <Font name="System Bold" size="1.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="otherV" prefHeight="38.0" prefWidth="186.0" text="Other Number Voters:" textAlignment="CENTER" textFill="WHITE">
+                     <font>
+                        <Font name="System Bold" size="12.0" />
+                     </font>
+                  </Label>
+               </children>
+            </HBox>
+            <HBox prefHeight="25.0" prefWidth="213.0">
+               <children>
+                  <Label alignment="TOP_LEFT" prefHeight="29.0" prefWidth="47.0" textAlignment="CENTER" textFill="#0ca65e">
+                     <font>
+                        <Font name="System Bold" size="1.0" />
+                     </font>
+                  </Label>
+               </children>
+            </HBox>
+            <HBox prefHeight="38.0" prefWidth="213.0">
+               <children>
+                  <Label alignment="TOP_LEFT" prefHeight="29.0" prefWidth="58.0" textAlignment="CENTER" textFill="#0ca65e">
+                     <font>
+                        <Font name="System Bold" size="1.0" />
+                     </font>
+                  </Label>
+                  <Button mnemonicParsing="false" onAction="#reVote" prefHeight="33.0" prefWidth="107.0" styleClass="change-stake-button" text="Revote" textAlignment="CENTER" textFill="WHITE">
+                     <font>
+                        <Font name="System Bold Italic" size="10.0" />
+                     </font>
+                  </Button>
+               </children>
+            </HBox>
+         </children>
+      </VBox>
    </children>
 </AnchorPane>

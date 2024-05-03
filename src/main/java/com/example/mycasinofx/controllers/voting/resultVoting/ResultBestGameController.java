@@ -21,7 +21,7 @@ public class ResultBestGameController implements Initializable {
     @FXML
     private BarChart<String, Number> barChart;
     @FXML
-    private Label allVoters;
+    private Label allVoters, rouletteV, slotV, twentyOneV;
     private final SwitchPage switchPage = new SwitchPage();
 
 
@@ -41,9 +41,12 @@ public class ResultBestGameController implements Initializable {
         int amountSlotVotes = DAOPattern.selectNumberVotes("radioSlot", ConstBestGameVotingTable.BEST_GAME_TABLE, ConstBestGameVotingTable.NAME);
         int amountTwentyOneVotes = DAOPattern.selectNumberVotes("radioTwentyOne", ConstBestGameVotingTable.BEST_GAME_TABLE, ConstBestGameVotingTable.NAME);
 
+
         int amount = amountRouletteVotes + amountSlotVotes + amountTwentyOneVotes + 11;
-        System.out.println(amount);
         allVoters.setText("The number of voters: "+ amount);
+        rouletteV.setText("Roulette Number Voters: "+ (amountRouletteVotes+1));
+        slotV.setText("Slot number of voters: "+ amountSlotVotes+4);
+        twentyOneV.setText("Twenty One number of voters: "+ (amountTwentyOneVotes+6));
 
 
         addSeries("roulette", amountRouletteVotes+1);

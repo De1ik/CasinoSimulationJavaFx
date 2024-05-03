@@ -22,7 +22,7 @@ public class ResultNewGameController implements Initializable {
     private BarChart<String, Number> barChart;
     private final SwitchPage switchPage = new SwitchPage();
     @FXML
-    private Label allVoters;
+    private Label allVoters, pokerV, bacaratV, duracV, otherV;
 
 
 
@@ -43,8 +43,11 @@ public class ResultNewGameController implements Initializable {
         amountOthers -= (amountBackarat + amountPoker + amountDurak);
 
         int amount = amountBackarat + amountPoker + amountDurak + amountOthers + 20;
-        System.out.println(amount);
         allVoters.setText("The number of voters: "+ amount);
+        pokerV.setText("Poker Number Voters: "+ (amountPoker+15));
+        bacaratV.setText("Backarat number of voters: "+ amountBackarat);
+        duracV.setText("Durak number of voters: "+ (amountDurak+4));
+        otherV.setText("Other number of voters: "+ (amountOthers+1));
 
         addSeries("Backarat", amountBackarat);
         addSeries("Poker", amountPoker+15);

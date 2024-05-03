@@ -6,25 +6,27 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-
-
-
-<AnchorPane fx:id="fullListGamesAnchor" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.mycasinofx.controllers.FullListGamesController">
+<AnchorPane fx:id="fullListGamesAnchor" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" stylesheets="@styles/styles.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.mycasinofx.controllers.FullListGamesController">
    <children>
-      <Button layoutX="358.0" layoutY="174.0" mnemonicParsing="false" onAction="#goMainMenu" text="Go Main Menu">
-         <font>
-            <Font size="19.0" />
-         </font>
-      </Button>
       <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="31.0" layoutY="29.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@../../../../../../../../../OneDrive/Зображення/кошице/DSC01773.JPG" />
+            <Image url="@picture/slot_element_7.png" />
          </image>
       </ImageView>
       <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="31.0" layoutY="200.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@../../../../../../../../../OneDrive/Зображення/кошице/DSC01773.JPG" />
+            <Image url="@picture/slot_element_cherry.png" />
          </image>
       </ImageView>
+      <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="312.0" layoutY="29.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@picture/slot_element_7.png" />
+         </image>
+      </ImageView>
+      <Button alignment="CENTER" contentDisplay="BOTTOM" layoutX="351.0" layoutY="225.0" mnemonicParsing="false" onAction="#goMainMenu" prefHeight="41.0" prefWidth="119.0" styleClass="change-stake-button" text="Go Main Menu" textFill="WHITE">
+         <font>
+            <Font name="System Bold Italic" size="12.0" />
+         </font>
+      </Button>
    </children>
 </AnchorPane>
