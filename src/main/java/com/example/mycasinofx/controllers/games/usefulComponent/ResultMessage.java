@@ -9,12 +9,12 @@ public class ResultMessage {
         balanceLabel.setText("" + player.getBalance());
         if (player.getProfit() > 0) {
             messageLabel.setText("You won: " + player.getProfit());
-            messageLabel.setStyle("-fx-border-color: #1a5709; -fx-text-fill: #1a5709");
-            balanceLabel.setStyle("-fx-border-color: #1a5709; -fx-text-fill: #1a5709");
+            messageLabel.setStyle("-fx-border-color: #34ff00; -fx-text-fill: #ffffff");
+            balanceLabel.setStyle("-fx-border-color: #38ff00; -fx-text-fill: #ffffff");
         } else if (player.getProfit() < 0) {
             messageLabel.setText("You lose: " + (player.getProfit() * (-1)));
-            messageLabel.setStyle("-fx-border-color: #750808;  -fx-text-fill: #750808");
-            balanceLabel.setStyle("-fx-border-color: #750808;  -fx-text-fill: #750808");
+            messageLabel.setStyle("-fx-border-color: #ff0000;  -fx-text-fill: #ffffff");
+            balanceLabel.setStyle("-fx-border-color: #ff0000;  -fx-text-fill: #ffffff");
         } else {
             messageLabel.setText("You're left with the same balance");
             messageLabel.setStyle("-fx-border-color: #ffffff; -fx-text-fill: white");
