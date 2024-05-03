@@ -4,19 +4,19 @@
 
 
 .button {
-    -fx-background-color: #4CAF50; /* Button background color */
-    -fx-text-fill: white; /* Button text color */
-    -fx-font-family: "Arial", sans-serif; /* Button font family */
-    -fx-font-size: 10px; /* Button font size */
-    -fx-font-weight: bold; /* Button font weight */
+    -fx-background-color: #4CAF50;
+    -fx-text-fill: white;
+    -fx-font-family: "Arial", sans-serif;
+    -fx-font-size: 10px;
+    -fx-font-weight: bold;
 
-    -fx-border-radius: 5px; /* Button border radius */
-    -fx-cursor: hand; /* Change cursor to hand on hover */
-    -fx-border-width: 2px; /* Button border width */
-    -fx-border-color: transparent; /* Button border color */
-    -fx-background-insets: 0; /* Button background insets */
-    -fx-focus-traversable: false; /* Remove focus border */
-    -fx-transition: all 0.3s; /* Smooth transition for hover effect */
+    -fx-border-radius: 5px;
+    -fx-cursor: hand;
+    -fx-border-width: 2px;
+    -fx-border-color: transparent;
+    -fx-background-insets: 0;
+    -fx-focus-traversable: false;
+    -fx-transition: all 0.3s;
 }
 
 /* Define the hover effect */
@@ -36,23 +36,23 @@
     -fx-border-width: 2px;
     -fx-border-radius: 20px;
     -fx-cursor: hand;
-    -fx-effect: dropshadow(gaussian, #00ffff, 10, 0, 0, 0); /* Эффект неона */
+    -fx-effect: dropshadow(gaussian, #00ffff, 10, 0, 0, 0);
     -fx-transition: all 0.3s ease;
 }
 
 .neon-button:hover {
-    -fx-border-color: #00ffff; /* Изменение цвета рамки при наведении */
-    -fx-effect: dropshadow(gaussian, #00ffff, 20, 0, 0, 0); /* Усиление эффекта неона при наведении */
+    -fx-border-color: #00ffff;
+    -fx-effect: dropshadow(gaussian, #00ffff, 20, 0, 0, 0);
 }
 
 .about-author-label{
-    -fx-effect: dropshadow(gaussian, #00ffff, 10, 0, 0, 0); /* Эффект неона */
+    -fx-effect: dropshadow(gaussian, #00ffff, 10, 0, 0, 0);
     -fx-transition: all 0.3s ease;
     -fx-text-fill: #00ffff;
 }
 
 .about-author-link{
-    -fx-effect: dropshadow(gaussian, #ff54f3, 10, 0, 0, 0); /* Эффект неона */
+    -fx-effect: dropshadow(gaussian, #ff54f3, 10, 0, 0, 0);
     -fx-transition: all 0.3s ease;
     -fx-text-fill: #ff63f3;
 }
@@ -61,19 +61,89 @@
 
 
 .result-21-dialog-winner{
-    -fx-background-color:  linear-gradient(to right, #07570a, #63d948);
+    -fx-background-color:  linear-gradient(to right, #18811d, #25a906);
     -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.5), 10, 0, 0, 0);
 }
 
 .result-21-dialog-lose{
-    -fx-background-color:  linear-gradient(to right, #720505, #e86b6b);
+    -fx-background-color:  linear-gradient(to right, #720505, #a91414);
     -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.5), 10, 0, 0, 0);
 }
 
 .result-21-dialog-draw{
-    -fx-background-color:  linear-gradient(to right, #D86E04, #D8AD49);
+    -fx-background-color:  linear-gradient(to right, #D86E04, #ab832b);
     -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.5), 10, 0, 0, 0);
 }
+
+
+
+
+.alert {
+    -fx-background-color: #fff;
+    -fx-border-color: #ffffff;
+    -fx-border-width: 2px;
+    -fx-border-radius: 5px;
+}
+
+/* Заголовок Alert */
+.alert .header-panel {
+    -fx-background-color:  linear-gradient(to bottom, #D08035, #772F1A);
+    -fx-border-color: #b500ff;
+    -fx-border-width: 0 0 2px 0;
+    -fx-border-radius: 5px 5px 0 0;
+}
+
+.alert .header-panel .label {
+    -fx-text-fill: #fff;
+    -fx-font-size: 16px;
+    -fx-font-weight: bold;
+}
+
+
+.alert .warning-icon {
+    -fx-shape: "M5.8 5.8h14.3l-7.1 11.4zm8.5 11.4h-1.6v-1.6h1.6zm0-3.1h-1.6v-5.5h1.6z";
+    -fx-fill: #f0ad4e;
+}
+
+.alert .error-icon {
+    -fx-shape: "M12 2c-5.5 0-10 4.5-10 10s4.5 10 10 10 10-4.5 10-10-4.5-10-10-10zm4.4 13.8l-1.3 1.3-3.1-3.1-3.1 3.1-1.3-1.3 3.1-3.1-3.1-3.1 1.3-1.3 3.1 3.1 3.1-3.1 1.3 1.3-3.1 3.1 3.1 3.1z";
+    -fx-fill: #d9534f;
+}
+
+.alert .info-icon {
+    -fx-shape: "M12 2c-5.5 0-10 4.5-10 10s4.5 10 10 10 10-4.5 10-10-4.5-10-10-10zm1.6 14.5h-3.2v-3.2h3.2v3.2zm0-5.3h-3.2v-6.5h3.2v6.5z";
+    -fx-fill: #5bc0de;
+}
+
+.alert .success-icon {
+    -fx-shape: "M15.3 5.7l-6.2 6.1-2.6-2.6-1.7 1.7 4.3 4.2 7.9-7.9zm-2.6-5.7c-5 0-9 4-9 9s4 9 9 9 9-4 9-9-4-9-9-9zm0 15.4c-3.7 0-6.7-3-6.7-6.7s3-6.7 6.7-6.7 6.7 3 6.7 6.7-3 6.7-6.7 6.7z";
+    -fx-fill: #5cb85c;
+}
+
+.alert .content {
+    -fx-text-fill: #d08035;
+    -fx-font-size: 14px;
+    -fx-background-color:  linear-gradient(to bottom, #ffffff, #ffffff);
+}
+
+
+.alert .button-bar{
+    -fx-background-color:  linear-gradient(to bottom, #ffffff, #ffffff);
+}
+
+.alert .button-bar .button {
+    -fx-background-color:  linear-gradient(to bottom, #D08035, #de7214);
+    -fx-text-fill: rgb(255, 255, 255);
+    -fx-font-size: 14px;
+    -fx-border-radius: 5px;
+}
+
+.alert .button-bar .button:hover {
+    -fx-background-color: #814715;
+    -fx-text-fill: rgba(255, 255, 255, 0.76);
+}
+
+
 
 
 
@@ -255,9 +325,9 @@
 }
 
 .label-with-bottom-line {
-    -fx-border-width: 0 0 1 0; /* Толщина границы (только снизу) */
-    -fx-border-color: black; /* Цвет границы */
-    -fx-border-style: solid; /* Стиль границы (сплошная линия) */
+    -fx-border-width: 0 0 1 0;
+    -fx-border-color: black;
+    -fx-border-style: solid;
 }
 
 

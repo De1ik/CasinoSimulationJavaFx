@@ -9,14 +9,20 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.ButtonType;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
+import javafx.scene.layout.HBox;
 import javafx.scene.transform.Scale;
 import javafx.stage.Modality;
 import javafx.stage.Screen;
 import javafx.stage.Stage;
 
+import java.util.Objects;
+
 
 public class Application extends javafx.application.Application {
     private static Scale lastTransformation;
+//    ImageView imageView = new ImageView(new Image("picture/photo_2024-05-02_20-21-07.jpg"));
     @Override
     public void start(Stage stage){
         try {
@@ -39,6 +45,8 @@ public class Application extends javafx.application.Application {
 
             stage.setMinWidth(600);
             stage.setMinHeight(400);
+            stage.setForceIntegerRenderScale(true);
+            stage.getIcons().add(new Image("/casino-logo.png"));
 
 
 
@@ -73,10 +81,21 @@ public class Application extends javafx.application.Application {
 
     public void exitCasino(Stage stage){
 
+        ImageView imageView = new ImageView(new Image("/casino-logo.png"));
+        imageView.setFitWidth(70);
+        imageView.setFitHeight(70);
+
         Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
-        alert.setTitle("Exit Casino");
-        alert.setHeaderText("You want to exit Casino");
+
+        HBox graphicContainer = new HBox(imageView);
+        alert.getDialogPane().setGraphic(graphicContainer);
+
+        alert.setTitle("Exit Application");
+        alert.setHeaderText("Do you want to exit Casino?");
         alert.setContentText("Are you sure?");
+
+        String css = Objects.requireNonNull(this.getClass().getResource("view/styles/styles.css")).toExternalForm();
+        alert.getDialogPane().getStylesheets().add(css);
 
         alert.initModality(Modality.APPLICATION_MODAL);
 
