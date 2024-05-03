@@ -30,9 +30,17 @@ public class SlotsSetUp extends Games implements GameSetUpInterface {
 
 
     public void setColumns() {
+
+
+        column1.clear();
+        column2.clear();
+        column3.clear();
+
+
         generalArrayList.add(column1);
         generalArrayList.add(column2);
         generalArrayList.add(column3);
+
 
         for (int col = 0; col < AMOUNT_COLUMNS; col++) {
 
@@ -56,6 +64,7 @@ public class SlotsSetUp extends Games implements GameSetUpInterface {
                 generalArrayList.get(col).add(5);
             }
         }
+
     }
 
 
@@ -70,6 +79,8 @@ public class SlotsSetUp extends Games implements GameSetUpInterface {
     @Override
     public Object gameSetUp() {
         setColumns();
+
+
         return shuffleSequence();
     }
 
@@ -78,6 +89,9 @@ public class SlotsSetUp extends Games implements GameSetUpInterface {
         column1.clear();
         column2.clear();
         column3.clear();
+        generalArrayList.get(0).clear();
+        generalArrayList.get(1).clear();
+        generalArrayList.get(2).clear();
         generalArrayList.clear();
     }
 

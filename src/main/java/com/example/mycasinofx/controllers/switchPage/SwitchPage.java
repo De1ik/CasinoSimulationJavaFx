@@ -1,15 +1,20 @@
 package com.example.mycasinofx.controllers.switchPage;
 
+import com.example.mycasinofx.Application;
 import com.example.mycasinofx.Model.FxModels.SceneSwitch;
 import com.example.mycasinofx.Model.FxModels.Serialization;
 import com.example.mycasinofx.Model.player.Player;
 import javafx.application.Platform;
 import javafx.scene.control.Alert;
 import javafx.scene.control.ButtonType;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.HBox;
 import javafx.stage.Modality;
 
 import java.io.IOException;
+import java.util.Objects;
 
 public class SwitchPage implements PageSwitchInterface{
 
@@ -102,12 +107,24 @@ public class SwitchPage implements PageSwitchInterface{
 
     @Override
     public void confirmExit() {
+
+        ImageView imageView = new ImageView(new Image("/casino-logo.png"));
+        imageView.setFitWidth(70);
+        imageView.setFitHeight(70);
+
         Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
-        alert.setTitle("Exit Casino");
-        alert.setHeaderText("You want to exit Casino");
+        alert.setTitle("Exit Application");
+        alert.setHeaderText("Do you want to exit Casino?");
         alert.setContentText("Are you sure?");
 
+        HBox graphicContainer = new HBox(imageView);
+        alert.getDialogPane().setGraphic(graphicContainer);
+
+        String css = Objects.requireNonNull(Application.class.getResource("view/styles/styles.css")).toExternalForm();
+        alert.getDialogPane().getStylesheets().add(css);
+
         alert.initModality(Modality.APPLICATION_MODAL);
+
 
         if (alert.showAndWait().get() == ButtonType.OK) {
             Player player = Player.getPlayer();

@@ -156,6 +156,7 @@ public class SlotsController implements Initializable {
 
         int sizeArray1 = generalArray.get(0).size();
 
+
         int startIndex1 = slots.getStartIndex().get(0);
         int startIndex2 = slots.getStartIndex().get(1);
         int startIndex3 = slots.getStartIndex().get(2);
@@ -163,6 +164,9 @@ public class SlotsController implements Initializable {
         int finishIndex1 = slots.getFinishIndex().get(0);
         int finishIndex2 = slots.getFinishIndex().get(1);
         int finishIndex3 = slots.getFinishIndex().get(2);
+
+
+
 
         new Thread(() -> {
             skipButton.setVisible(true);
@@ -197,12 +201,16 @@ public class SlotsController implements Initializable {
                 } catch (InterruptedException e) {
                     e.printStackTrace();
                 }
+
+
             }
+            System.out.println();
             Platform.runLater(() -> {
                 if (skipAnimation)
                     setLabelsResult(generalArrayCopy, finishIndex1, finishIndex2, finishIndex3);
                 actionAfterAnimation();
             });
+            slots.reset();
         }).start();
     }
 
