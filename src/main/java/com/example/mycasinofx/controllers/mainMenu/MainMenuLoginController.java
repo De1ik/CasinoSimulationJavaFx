@@ -36,9 +36,9 @@ public class MainMenuLoginController {
 
 
 
-    public void goFullList() throws IOException {
-        pageSwitch.goFullList(mainMenuLogin);
-    }
+//    public void goFullList() throws IOException {
+//        pageSwitch.goFullList(mainMenuLogin);
+//    }
 
     public void goRoulette() throws IOException{
         pageSwitch.goRoulette(mainMenuLogin);
