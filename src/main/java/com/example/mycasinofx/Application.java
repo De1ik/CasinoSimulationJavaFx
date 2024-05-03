@@ -87,8 +87,8 @@ public class Application extends javafx.application.Application {
 
         Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
 
-        HBox graphicContainer = new HBox(imageView);
-        alert.getDialogPane().setGraphic(graphicContainer);
+
+        alert.getDialogPane().setGraphic(imageView);
 
         alert.setTitle("Exit Application");
         alert.setHeaderText("Do you want to exit Casino?");
@@ -99,7 +99,6 @@ public class Application extends javafx.application.Application {
 
         alert.initModality(Modality.APPLICATION_MODAL);
 
-        stage.setFullScreen(false);
         if (alert.showAndWait().get() == ButtonType.OK) {
             Player player = Player.getPlayer();
             Serialization userSettingsToSave = new Serialization(player.getCurrentStake()); // Замените на реальные данные

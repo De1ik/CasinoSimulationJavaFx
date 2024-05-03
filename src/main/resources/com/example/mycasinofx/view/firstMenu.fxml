@@ -16,7 +16,7 @@
                         <Image url="@picture/firs-menu-back.jpg" />
                      </image>
                   </ImageView>
-                  <Button layoutX="34.0" layoutY="326.0" mnemonicParsing="false" onAction="#exitCasino" styleClass="neon-button" text="exit" />
+                  <Button fx:id="exitButton" layoutX="34.0" layoutY="326.0" mnemonicParsing="false" styleClass="neon-button" text="exit" />
                   <Button id="n" layoutX="70.0" layoutY="217.0" mnemonicParsing="false" onAction="#goMainMenu" prefHeight="44.0" prefWidth="159.0" styleClass="neon-button" stylesheets="@styles/styles.css" text="play" />
                   <Button layoutX="60.0" layoutY="156.0" mnemonicParsing="false" onAction="#goAboutAuthor" styleClass="neon-button" text="About The Author" />
                </children>
