@@ -21,12 +21,6 @@ public class MainMenuNotLoginController {
         exitButton.setOnAction(e -> pageSwitch.confirmExit());
     }
 
-
-
-//    public void goFullList() throws IOException {
-//        pageSwitch.goFullList(mainMenuNotLogin);
-//    }
-
     public void goRoulette() throws IOException{
         pageSwitch.goRoulette(mainMenuNotLogin);
     }

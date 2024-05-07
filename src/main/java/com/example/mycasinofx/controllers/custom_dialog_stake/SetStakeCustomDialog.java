@@ -29,7 +29,7 @@ public class SetStakeCustomDialog {
                     dialog_window.setMouseTransparent(true);
                     if (number > -1){
                         warningsLabel.setText("The Stake Was Changed");
-                        amountStake.setText("Amount of Stake: " + number);
+                        amountStake.setText("Stake: " + number);
                     }
                 }));
 

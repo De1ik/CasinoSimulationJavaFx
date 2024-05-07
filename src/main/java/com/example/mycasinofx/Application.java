@@ -22,7 +22,6 @@ import java.util.Objects;
 
 public class Application extends javafx.application.Application {
     private static Scale lastTransformation;
-//    ImageView imageView = new ImageView(new Image("picture/photo_2024-05-02_20-21-07.jpg"));
     @Override
     public void start(Stage stage){
         try {
@@ -101,7 +100,8 @@ public class Application extends javafx.application.Application {
 
         if (alert.showAndWait().get() == ButtonType.OK) {
             Player player = Player.getPlayer();
-            Serialization userSettingsToSave = new Serialization(player.getCurrentStake()); // Замените на реальные данные
+            Serialization userSettingsToSave = new Serialization(player.getCurrentStake());
+            System.out.println("Last user stake was save in 'user_last_stake.ser'");
             userSettingsToSave.save("user_last_stake.ser");
             stage.close();
         }

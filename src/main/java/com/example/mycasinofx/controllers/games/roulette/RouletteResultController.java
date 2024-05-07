@@ -91,8 +91,6 @@ public class RouletteResultController {
         updateLabels();
         //convert to int because the type of my result is Object
         int curGeneration = (int) resultGenericClass.getResultValue();
-        System.out.println("RES: " + curGeneration);
-        System.out.println("PROFIT: " + player.getProfit());
         effectResult(gridPaneRoulette, curGeneration);
 
 
@@ -167,7 +165,6 @@ public class RouletteResultController {
     private void changeColor(GridPane gridPane, int index, int delay, int curGeneration) {
         if (index < 55) {
             int number = ((curGeneration + 19) + index) % 37;
-            System.out.println("INDEX : " + number);
             if (number == 36) {
                 zeroPolygon.setFill(Color.YELLOW);
                 if (index + 1 != 55) {

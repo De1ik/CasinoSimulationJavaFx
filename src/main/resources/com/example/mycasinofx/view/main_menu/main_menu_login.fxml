@@ -184,7 +184,7 @@
                                     </Label>
                                  </children>
                               </VBox>
-                              <VBox alignment="CENTER" prefHeight="111.0" prefWidth="298.0">
+                              <VBox alignment="CENTER" prefHeight="77.0" prefWidth="298.0">
                                  <children>
                                     <ImageView fitHeight="66.0" fitWidth="65.0" pickOnBounds="true" preserveRatio="true">
                                        <image>
@@ -200,7 +200,7 @@
                                           <Label fx:id="setBalanceViewLabel11" prefHeight="37.0" prefWidth="59.0" />
                                           <Label fx:id="setBalanceViewLabel" prefHeight="35.0" prefWidth="188.0" text="Balance:  12345">
                                              <font>
-                                                <Font name="Arial Narrow Bold" size="18.0" />
+                                                <Font name="Arial Narrow Bold" size="20.0" />
                                              </font>
                                              <textFill>
                                                 <RadialGradient centerX="0.5662983425414364" centerY="0.37203791469194314" radius="0.5">
@@ -221,12 +221,47 @@
                                           </Label>
                                        </children>
                                     </HBox>
-                                    <HBox prefHeight="43.0" prefWidth="298.0">
+                                    <HBox prefHeight="32.0" prefWidth="298.0">
                                        <children>
                                           <Label fx:id="setBalanceViewLabel111" prefHeight="51.0" prefWidth="113.0" />
                                           <Label fx:id="stakeLabelView" prefHeight="74.0" prefWidth="241.0" text="Current Stake: 12345">
                                              <font>
-                                                <Font name="Arial Narrow Bold" size="18.0" />
+                                                <Font name="Arial Narrow Bold" size="20.0" />
+                                             </font>
+                                             <textFill>
+                                                <RadialGradient centerX="0.48342541436464087" centerY="0.37203791469194314" radius="0.5">
+                                                   <stops>
+                                                      <Stop>
+                                                         <color>
+                                                            <Color red="0.501960813999176" green="0.30980393290519714" blue="0.12941177189350128" />
+                                                         </color>
+                                                      </Stop>
+                                                      <Stop offset="1.0">
+                                                         <color>
+                                                            <Color red="1.0" green="0.48235294222831726" />
+                                                         </color>
+                                                      </Stop>
+                                                   </stops>
+                                                </RadialGradient>
+                                             </textFill>
+                                          </Label>
+                                       </children>
+                                    </HBox>
+                                    <HBox prefHeight="43.0" prefWidth="298.0">
+                                       <children>
+                                          <Label fx:id="setBalanceViewLabel1111" prefHeight="51.0" prefWidth="113.0">
+                                             <font>
+                                                <Font size="5.0" />
+                                             </font>
+                                          </Label>
+                                       </children>
+                                    </HBox>
+                                    <HBox prefHeight="43.0" prefWidth="298.0">
+                                       <children>
+                                          <Label fx:id="setBalanceViewLabel11111" prefHeight="51.0" prefWidth="113.0" />
+                                          <Label fx:id="stakeErrorSuccess" prefHeight="74.0" prefWidth="241.0">
+                                             <font>
+                                                <Font name="Arial Narrow Bold" size="14.0" />
                                              </font>
                                              <textFill>
                                                 <RadialGradient centerX="0.48342541436464087" centerY="0.37203791469194314" radius="0.5">

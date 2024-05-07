@@ -151,7 +151,6 @@ public class TwentyOneController implements Initializable {
         setInvisibleButtons();
         ArrayList<String[]> cards = twentyOne.getPlayerCards();
         for (String[] card: cards) {
-            System.out.println(card[0] + " " + card[1]);
             Image image = new Image(Objects.requireNonNull(Application.class.getResourceAsStream("view/picture/cards/"+card[1]+"_of_"+card[0]+".png")));
             if (!imageView1.isVisible()){
                 imageView1.setImage(image);
@@ -189,7 +188,6 @@ public class TwentyOneController implements Initializable {
         setInvisibleBotButtons();
         ArrayList<String[]> cards = twentyOne.getBotCards();
         for (String[] card: cards) {
-            System.out.println(card[0] + " " + card[1]);
             Image image = new Image(Objects.requireNonNull(Application.class.getResourceAsStream("view/picture/cards/"+card[1]+"_of_"+card[0]+".png")));
             Image imageShirt = new Image(Objects.requireNonNull(Application.class.getResourceAsStream("view/picture/cards/card_shirt.png")));
             if (!imageViewBot1.isVisible()){

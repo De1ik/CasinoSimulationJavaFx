@@ -19,7 +19,7 @@ public class Player {
         setCurrentStake(5);
         Serialization loadedUserSettings = Serialization.load("user_last_stake.ser");
         if (loadedUserSettings != null) {
-            System.out.println("lAst Stake: " + loadedUserSettings.getStake());
+            System.out.println("Last user stake was download from 'user_last_stake.ser'");
             setCurrentStake(loadedUserSettings.getStake());
         }
         inner = new AdditionalUserInfo();

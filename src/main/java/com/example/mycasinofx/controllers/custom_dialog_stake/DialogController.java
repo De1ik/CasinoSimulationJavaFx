@@ -27,6 +27,9 @@ public class DialogController {
     public void initialize(){
         if (newStakeField != null) {
             newStakeField.textProperty().addListener((observable, oldValue, newValue) -> {
+                if (!newValue.matches("\\d*\\.?\\d{0,2}")) {
+                    newStakeField.setText(oldValue);
+                }
                 if (!newValue.matches("\\d*(\\.\\d*)?")) {
                     newStakeField.setText(newValue.replaceAll("[^\\d.]", ""));
                 } else if (newValue.isEmpty()) {

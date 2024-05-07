@@ -7,8 +7,8 @@ public class DAOPattern {
 
     static Data data = new DatabaseManager();
 
-    public static Runnable onSuccess = () -> {
-        System.out.println("Action was executed correct");
+    public static Action onSuccess = (functionName) -> {
+        System.out.println("Method '" + functionName + "' was executed correct");
     };
     static Consumer<Exception> onError = e -> {
         System.out.println("Error during executing: " + e.getMessage());

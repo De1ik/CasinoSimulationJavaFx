@@ -145,7 +145,6 @@ public class Roulette extends RouletteSetUp implements GameInterface {
     //if player did the stake, but did not play and go to main menu, then return money
     public void returnStakeBeforeEnd() {
         if (!isGamed()) {
-            System.out.println("RED:" + isRedStakeSet());
 
             CheckResultLambda lambda_checking = (boolean res) -> {
                 if (res){
