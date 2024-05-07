@@ -20,7 +20,8 @@ public class DatabaseManager extends Config implements Data {
     }
 
     @Override
-    public void registerUserAsync(String name, String password, String email, int age, final Runnable onSuccess, final Consumer<Exception> onError) {
+    public void registerUserAsync(String name, String password, String email, int age, final Action onSuccess, final Consumer<Exception> onError) {
+        String methodName = new Object() {}.getClass().getEnclosingMethod().getName();
         Thread thread = new Thread(new Runnable() {
             public void run() {
                 String insert = "INSERT INTO " + ConstUserTable.USER_TABLE +
@@ -33,7 +34,8 @@ public class DatabaseManager extends Config implements Data {
                 PreparedStatement query = null;
                 try {
                     query = getDbConnection().prepareStatement(insert);
-                    onSuccess.run();
+                    String methodNameInner = new Object() {}.getClass().getEnclosingMethod().getName();
+                    onSuccess.perform(methodName + "/" + methodNameInner);
                 } catch (SQLException | ClassNotFoundException e) {
                     onError.accept(e);
                 }
@@ -43,7 +45,8 @@ public class DatabaseManager extends Config implements Data {
                     query.setString(3, email);
                     query.setString(4, String.valueOf(age));
                     query.executeUpdate();
-                    onSuccess.run();
+                    String methodNameInner = new Object() {}.getClass().getEnclosingMethod().getName();
+                    onSuccess.perform(methodName + "/" + methodNameInner);
                 } catch (SQLException e) {
                     onError.accept(e);
                 }
@@ -53,7 +56,7 @@ public class DatabaseManager extends Config implements Data {
     }
 
     @Override
-    public void loginUserDB(String email, String password, final Runnable onSuccess, final Consumer<Exception> onError) {
+    public void loginUserDB(String email, String password, final Action onSuccess, final Consumer<Exception> onError) {
         String query = "SELECT * FROM " + ConstUserTable.USER_TABLE +
                 " WHERE " + ConstUserTable.EMAIL + " = ? AND " + ConstUserTable.PASSWORD + " = ?";
 
@@ -74,7 +77,8 @@ public class DatabaseManager extends Config implements Data {
 
                     Player player = Player.getPlayer();
                     player.setAllData(userId, userName, userPassword, userEmail, playerAge, balance);
-                    onSuccess.run();
+                    String methodName = new Object() {}.getClass().getEnclosingMethod().getName();
+                    onSuccess.perform(methodName);
                 }
             }
         } catch (SQLException | ClassNotFoundException e) {
@@ -124,7 +128,8 @@ public class DatabaseManager extends Config implements Data {
     }
 
     @Override
-    public void voteNewUser(int setPlayerId, String setCategory, String tableName, String usersId, String category, final Runnable onSuccess, final Consumer<Exception> onError) {
+    public void voteNewUser(int setPlayerId, String setCategory, String tableName, String usersId, String category, final Action onSuccess, final Consumer<Exception> onError) {
+        String methodName = new Object() {}.getClass().getEnclosingMethod().getName();
         Thread thread = new Thread(new Runnable() {
             @Override
             public void run() {
@@ -145,7 +150,8 @@ public class DatabaseManager extends Config implements Data {
                     query.setInt(1, setPlayerId);
                     query.setString(2, setCategory);
                     query.executeUpdate();
-                    onSuccess.run();
+                    String methodNameInner = new Object() {}.getClass().getEnclosingMethod().getName();
+                    onSuccess.perform(methodName + "/" + methodNameInner);
                 } catch (SQLException e) {
                     onError.accept(e);
                 }
@@ -177,9 +183,8 @@ public class DatabaseManager extends Config implements Data {
 
 
 
-    //ПО СУТИ МОЖНО ЗАЮЗАТЬ КАКОЙ ТО ПАТЕРН, ЧТОБ ЗНАТЬ КАКАЯ ТАБЛИЦА ПРИШЛА
     @Override
-    public void updateVoteUser(String setCategory, String tableName, String category, int userId, final Runnable onSuccess, final Consumer<Exception> onError) {
+    public void updateVoteUser(String setCategory, String tableName, String category, int userId, final Action onSuccess, final Consumer<Exception> onError) {
         String insert = "UPDATE " + tableName + " SET " + category + " = ?" + " WHERE " + " idusers " + " = ?";
 
         try (Connection connection = getDbConnection();
@@ -188,7 +193,8 @@ public class DatabaseManager extends Config implements Data {
             query.setString(1, setCategory);
             query.setInt(2, userId);
             query.executeUpdate();
-            onSuccess.run();
+            String methodName = new Object() {}.getClass().getEnclosingMethod().getName();
+            onSuccess.perform(methodName);
         } catch (SQLException | ClassNotFoundException e) {
             onError.accept(e);
         }
@@ -222,7 +228,8 @@ public class DatabaseManager extends Config implements Data {
 
 
     @Override
-    public void updateBalanceAsync(int id, double newBalance, final Runnable onSuccess, final Consumer<Exception> onError) {
+    public void updateBalanceAsync(int id, double newBalance, final Action onSuccess, final Consumer<Exception> onError) {
+        String methodName = new Object() {}.getClass().getEnclosingMethod().getName();
         Thread thread = new Thread(new Runnable() {
             @Override
             public void run() {
@@ -234,7 +241,8 @@ public class DatabaseManager extends Config implements Data {
                         statement.setDouble(1, newBalance);
                         statement.setInt(2, id);
                         statement.executeUpdate();
-                        onSuccess.run();
+                        String methodNameInner = new Object() {}.getClass().getEnclosingMethod().getName();
+                        onSuccess.perform(methodName + "/" + methodNameInner);
                     }
                 } catch (SQLException | ClassNotFoundException e) {
                     onError.accept(e);

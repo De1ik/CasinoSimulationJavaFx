@@ -34,12 +34,6 @@ public class MainMenuLoginController {
         dialogWindow.setMouseTransparent(true);
     }
 
-
-
-//    public void goFullList() throws IOException {
-//        pageSwitch.goFullList(mainMenuLogin);
-//    }
-
     public void goRoulette() throws IOException{
         pageSwitch.goRoulette(mainMenuLogin);
     }

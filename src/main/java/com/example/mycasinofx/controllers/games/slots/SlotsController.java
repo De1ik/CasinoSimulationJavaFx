@@ -204,7 +204,6 @@ public class SlotsController implements Initializable {
 
 
             }
-            System.out.println();
             Platform.runLater(() -> {
                 if (skipAnimation)
                     setLabelsResult(generalArrayCopy, finishIndex1, finishIndex2, finishIndex3);
@@ -214,39 +213,6 @@ public class SlotsController implements Initializable {
         }).start();
     }
 
-//    @FXML
-//    public void testAnimation() {
-//        double startY = numb1upImg.localToScene(numb1upImg.getBoundsInLocal()).getCenterY();
-//        double finishY = numb1downImg.localToScene(numb1downImg.getBoundsInLocal()).getCenterY();
-//
-//
-//        Timeline timeline = new Timeline(
-//                new KeyFrame(Duration.millis(1000 / 60), event -> {
-////                    moveImageViewDown(numb1upImg, startY, finishY);
-//                    moveImageViewDown(numb1Img, startY, finishY);
-////                    moveImageViewDown(numb1downImg, startY, finishY);
-//                })
-//        );
-//        timeline.setCycleCount(Timeline.INDEFINITE); // Бесконечный цикл
-//        timeline.play();
-//
-//
-//    }
-
-//    public static void moveImageViewDown(ImageView imageView, double startY, double finishY) {
-//        double currentY = imageView.localToScene(imageView.getBoundsInLocal()).getCenterY();
-//
-//        if (currentY > finishY) {
-//            imageView.setLayoutY(startY);
-//            System.out.println("New Y: " + imageView.getLayoutY());
-//            System.out.println("CHANGED PLACE!");
-//        }
-//        else {
-//            TranslateTransition transition = new TranslateTransition(Duration.millis(1000 / 60), imageView);
-//            transition.setByY(1);
-//            transition.play();
-//        }
-//    }
 
 
     @FXML

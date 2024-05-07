@@ -17,34 +17,32 @@ public class NumericInputDialog extends Dialog<Double> {
         setHeaderText(headerText);
         setContentText(contentText);
 
-        // Создаем текстовое поле
+
         textField = new TextField();
         textField.setPromptText("Введите число");
 
-        // Ограничиваем ввод только числовыми символами
+
         textField.textProperty().addListener((observable, oldValue, newValue) -> {
             if (!newValue.matches("\\d*(\\.\\d*)?")) {
                 textField.setText(newValue.replaceAll("[^\\d.]", ""));
             }
         });
 
-        // Упаковываем элементы в вертикальный контейнер
+
         VBox vbox = new VBox();
         vbox.getChildren().addAll(new Label(contentText), textField);
         getDialogPane().setContent(vbox);
 
-        // Устанавливаем кнопки "ОК" и "Отмена"
+
         getDialogPane().getButtonTypes().addAll(ButtonType.OK, ButtonType.CANCEL);
 
-        // Устанавливаем результат при нажатии на кнопку "ОК"
+
         setResultConverter(buttonType -> {
             if (buttonType == ButtonType.OK) {
                 try {
-                    // Пытаемся преобразовать введенное значение в число
                     double value = Double.parseDouble(textField.getText());
                     return value;
                 } catch (NumberFormatException e) {
-                    // Если не удалось преобразовать, возвращаем null
                     return null;
                 }
             }
