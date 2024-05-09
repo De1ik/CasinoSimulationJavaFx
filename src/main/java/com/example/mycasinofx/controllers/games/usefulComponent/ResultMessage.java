@@ -1,10 +1,20 @@
 package com.example.mycasinofx.controllers.games.usefulComponent;
 
-import com.example.mycasinofx.Model.player.Player;
+import com.example.mycasinofx.Model.Player;
 import javafx.scene.control.Label;
 
+/**
+ * Utility class for updating message and balance labels based on player's result of the game.
+ */
 public class ResultMessage {
 
+    /**
+     * Updates the message and balance labels based on the player's result of the game.
+     *
+     * @param messageLabel The label to display the result message.
+     * @param balanceLabel The label to display the player's balance.
+     * @param player The player whose result and balance will be displayed.
+     */
     public static void updateMessageLabel(Label messageLabel, Label balanceLabel, Player player) {
         balanceLabel.setText("" + player.getBalance());
         if (player.getProfit() > 0) {

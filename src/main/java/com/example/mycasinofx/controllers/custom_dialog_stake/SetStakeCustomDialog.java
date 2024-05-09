@@ -11,8 +11,19 @@ import javafx.scene.layout.BorderPane;
 
 import java.io.IOException;
 
+/**
+ * Utility class for setting custom stakes in dialog window.
+ */
 public class SetStakeCustomDialog {
 
+    /**
+     * Executes the stake setting dialog.
+     * @param borderPane The border pane containing the main content.
+     * @param dialog_window The anchor pane representing the dialog window.
+     * @param warningsLabel The label for displaying warning messages.
+     * @param amountStake The label for displaying the stake amount.
+     * @throws IOException If an I/O error occurs.
+     */
     @FXML
     public static void doStake(BorderPane borderPane, AnchorPane dialog_window, Label warningsLabel, Label amountStake) throws IOException {
 

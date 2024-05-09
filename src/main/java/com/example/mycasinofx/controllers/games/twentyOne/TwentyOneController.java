@@ -3,7 +3,9 @@ package com.example.mycasinofx.controllers.games.twentyOne;
 import com.example.mycasinofx.Application;
 import com.example.mycasinofx.Model.games.ResultGenericClass;
 import com.example.mycasinofx.Model.games.TwentyOne.TwentyOne;
-import com.example.mycasinofx.Model.player.Player;
+import com.example.mycasinofx.Model.games.strategy_pattern.GameResultStrategy;
+import com.example.mycasinofx.Model.games.strategy_pattern.TwentyOneResultImpl;
+import com.example.mycasinofx.Model.Player;
 import com.example.mycasinofx.controllers.custom_dialog_stake.ResultDialog;
 import com.example.mycasinofx.controllers.switchPage.PageSwitchInterface;
 import com.example.mycasinofx.controllers.switchPage.SwitchPage;
@@ -23,66 +25,176 @@ import java.util.ArrayList;
 import java.util.Objects;
 import java.util.ResourceBundle;
 
+/**
+ * Controller class for managing the UI and logic of the Twenty-One (Blackjack) game.
+ */
 public class TwentyOneController implements Initializable {
 
+    /**
+     * Anchor pane containing the UI elements for the game.
+     */
     @FXML
     private AnchorPane twentyOneStartedAnchor, resultGame;
 
+    /**
+     * Label displaying the game result.
+     */
     @FXML
-    private Label result, balanceLabel, amountStake, playerCard3, playerCard4, playerCard5, playerCard6, playerCard7, playerValue, botCard1, botCard2, botValue, dillerValue;
+    private Label result;
 
+    /**
+     * Label displaying the player's balance.
+     */
     @FXML
-    private ImageView imageView1, imageView2, imageView3, imageView4, imageView5, imageView6, imageView7, imageViewBot1, imageViewBot2, imageViewBot3, imageViewBot4;
+    private Label balanceLabel;
 
+    /**
+     * Label displaying the amount of stake placed by the player.
+     */
     @FXML
-    private Button getCard, showRes;
+    private Label amountStake;
 
+    /**
+     * Label displaying the total value of player's hand cards.
+     */
+    @FXML
+    private Label playerValue;
+
+    /**
+     * Label displaying the total value of dealer's hand cards (alternative layout).
+     */
+    @FXML
+    private Label dillerValue;
+
+    /**
+     * Image views for displaying player's hand cards.
+     */
+    @FXML
+    private ImageView imageView1, imageView2, imageView3, imageView4, imageView5, imageView6, imageView7;
+
+    /**
+     * Image views for displaying dealer's hand cards.
+     */
+    @FXML
+    private ImageView imageViewBot1, imageViewBot2, imageViewBot3, imageViewBot4;
+
+    /**
+     * Button for getting a new card.
+     */
+    @FXML
+    private Button getCard;
+
+    /**
+     * Button for showing the game result.
+     */
+    @FXML
+    private Button showRes;
+
+    /**
+     * HBox containing the dealer's total value label (alternative layout).
+     */
     @FXML
     private HBox dillerValueHbox;
 
+    /**
+     * Border pane containing the main layout of the game.
+     */
     @FXML
-    BorderPane borderPane;
+    private BorderPane borderPane;
 
-    TwentyOne twentyOne;
+    /**
+     * Instance of the Twenty-One game.
+     */
+    private TwentyOne twentyOne;
+
+    /**
+     * Instance of the player participating in the game.
+     */
     private Player player;
+
+    /**
+     * Interface for switching pages in the application.
+     */
     private PageSwitchInterface pageSwitch;
+
+    /**
+     * Instance of the generic class for storing game results.
+     */
     private ResultGenericClass<Integer> resultGenericClass;
 
+    /**
+     * Strategy for displaying game results.
+     */
+    private GameResultStrategy gameResultStrategy;
 
+    /**
+     * Player's balance before placing the stake.
+     */
+    private double balanceBeforeStake;
+
+    /**
+     * Initializes the controller after its root element has been completely processed.
+     * Sets up initial configurations and initializes game components.
+     * @param url            The location used to resolve relative paths for the root object, or null if the location is not known.
+     * @param resourceBundle The resources used to localize the root object, or null if the root object was not localized.
+     */
     public void initialize(URL url, ResourceBundle resourceBundle) {
         twentyOne = new TwentyOne();
         pageSwitch = new SwitchPage();
         player = Player.getPlayer();
         resultGenericClass = (ResultGenericClass<Integer>) ResultGenericClass.getResult();
+        gameResultStrategy = new TwentyOneResultImpl();
     }
 
-
+    /**
+     * Shows the game result dialog with the provided result value.
+     * @param res The result value indicating the outcome of the game.
+     * @throws IOException If an I/O exception occurs.
+     */
     public void showGameResultDialog(int res) throws IOException {
         ResultDialog.showGameResultDialog(twentyOneStartedAnchor, borderPane, resultGame, 3, twentyOne.getBotValue(), twentyOne.getPlayerValue(), res);
     }
 
+    /**
+     * Navigates to the Play21 game page.
+     * @throws IOException If an I/O exception occurs.
+     */
     public void goPlay21() throws IOException {
         pageSwitch.goPlay21(twentyOneStartedAnchor);
     }
 
-
+    /**
+     * Updates the balance label with the player's current balance.
+     */
     @FXML
     public void setBalanceLabel() {
         balanceLabel.setText("" + player.getBalance());
     }
 
+    /**
+     * Updates the current stake label with the player's current stake amount.
+     */
     @FXML
     public void setCurStakeLabel() {
         amountStake.setText("" + player.getCurrentStake());
     }
 
+    /**
+     * Updates the labels displaying balance and current stake.
+     */
     @FXML
     public void updateLabels() {
         setBalanceLabel();
         setCurStakeLabel();
     }
 
+    /**
+     * Starts the game by updating player's balance, showing game elements, playing the game,
+     * updating UI with player's hand and bot's hand, and hiding dealer's value box.
+     */
     public void startGame(){
+        balanceBeforeStake = player.getBalance();
+        player.setBalance(player.getBalance() - player.getCurrentStake());
         getCard.setVisible(true);
         showRes.setVisible(true);
         twentyOne.play_game();
@@ -93,6 +205,10 @@ public class TwentyOneController implements Initializable {
         dillerValueHbox.setVisible(false);
     }
 
+    /**
+     * Draws a card for the player, updates UI accordingly, and checks if player's value exceeds 21.
+     * @throws IOException If an I/O error occurs.
+     */
     public void getCard() throws IOException {
         twentyOne.getCardToHand(true);
         playerValue.setText("" + twentyOne.getPlayerValue());
@@ -101,13 +217,15 @@ public class TwentyOneController implements Initializable {
             getCard.setVisible(false);
             showRes.setVisible(false);
             updateBotHandCards(true);
+            player.setProfit(-player.getCurrentStake());
             ResultDialog.showGameResultDialog(twentyOneStartedAnchor, borderPane, resultGame, 3, twentyOne.getBotValue(), twentyOne.getPlayerValue(), 2);
         }
 
     }
 
-
-
+    /**
+     * Draws cards for the bot until it reaches a value less than or equal to 17.
+     */
     public void getBotCard(){
         while(twentyOne.tryGetBotCard()) {
             twentyOne.tryGetBotCard();
@@ -115,7 +233,10 @@ public class TwentyOneController implements Initializable {
         }
     }
 
-
+    /**
+     * Compares player's and bot's values, updates UI accordingly, and displays game result.
+     * @throws IOException If an I/O error occurs.
+     */
     public void compareWinner() throws IOException {
         dillerValueHbox.setVisible(true);
         getCard.setVisible(false);
@@ -124,6 +245,9 @@ public class TwentyOneController implements Initializable {
         updateBotHandCards(true);
         dillerValue.setText(""+twentyOne.getBotValue());
         twentyOne.checkWinner();
+        double differBalance = player.getBalance() - balanceBeforeStake;
+        player.setProfit(differBalance);
+        gameResultStrategy.showGameResult(differBalance);
         int res = resultGenericClass.getResultValue();
         switch (res){
             case 0:
@@ -139,14 +263,9 @@ public class TwentyOneController implements Initializable {
         showGameResultDialog(resultGenericClass.getResultValue());
     }
 
-    public void showBotCards(){
-        ArrayList<String[]> cards = twentyOne.getBotCards();
-        botValue.setText("" + twentyOne.getBotValue());
-        botCard1.setText(cards.get(0)[0] + " " + cards.get(0)[1] + " " + cards.get(0)[2]);
-        botCard2.setText(cards.get(1)[0] + " " + cards.get(1)[1] + " " + cards.get(1)[2]);
-    }
-
-
+    /**
+     * Updates UI with player's hand cards.
+     */
     public void updateLabelsPlayerHandCards(){
         setInvisibleButtons();
         ArrayList<String[]> cards = twentyOne.getPlayerCards();
@@ -183,7 +302,10 @@ public class TwentyOneController implements Initializable {
         }
     }
 
-
+    /**
+     * Updates UI with bot's hand cards.
+     * @param show True to show the cards, false to hide them.
+     */
     public void updateBotHandCards(boolean show){
         setInvisibleBotButtons();
         ArrayList<String[]> cards = twentyOne.getBotCards();
@@ -210,25 +332,13 @@ public class TwentyOneController implements Initializable {
                 else imageViewBot4.setImage(imageShirt);
                 imageViewBot4.setVisible(true);
             }
-//            else if (!imageView5.isVisible()){
-//                imageView5.setImage(image);
-//                imageView5.setVisible(true);
-//            }
-//            else if (!imageView6.isVisible()){
-//                imageView6.setImage(image);
-//                imageView6.setVisible(true);
-//            }
-//            else if (!imageView7.isVisible()){
-//                imageView7.setImage(image);
-//                imageView7.setVisible(true);
-//            }
+
         }
     }
 
-
-
-
-
+    /**
+     * Hides player's hand cards.
+     */
     public void setInvisibleButtons(){
         imageView1.setVisible(false);
         imageView2.setVisible(false);
@@ -239,6 +349,9 @@ public class TwentyOneController implements Initializable {
         imageView7.setVisible(false);
     }
 
+    /**
+     * Hides bot's hand cards.
+     */
     public void setInvisibleBotButtons(){
         imageViewBot1.setVisible(false);
         imageViewBot2.setVisible(false);

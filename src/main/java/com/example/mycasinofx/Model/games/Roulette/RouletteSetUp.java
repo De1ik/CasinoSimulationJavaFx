@@ -7,16 +7,29 @@ import com.example.mycasinofx.Model.games.Games;
 
 import java.util.HashMap;
 
+
+/**
+ * Represents the setup for the game of Roulette.
+ * Extends the abstract class Games and implements the GameSetUpInterface.
+ */
 public class RouletteSetUp extends Games implements GameSetUpInterface {
+    /**
+     * HashMap to store the mapping of numbers to colours on the roulette wheel.
+     */
     private static HashMap<Integer, String> colours;
 
-
+    /**
+     * Constructor for RouletteSetUp.
+     * Initializes the HashMap of colours and performs game setup.
+     */
     public RouletteSetUp(){
         colours = new HashMap<>();
         gameSetUp();
     }
 
-
+    /**
+     * Sets the colours for the roulette wheel.
+     */
     public void setColours(){
         colours.put(0, "Green");
         colours.put(1, "Black");
@@ -57,10 +70,20 @@ public class RouletteSetUp extends Games implements GameSetUpInterface {
         colours.put(36, "Black");
     }
 
+    /**
+     * Gets the colour for the specified number on the roulette wheel.
+     * @param number The number on the roulette wheel.
+     * @return The colour corresponding to the number.
+     */
     public static String getColours(int number){
         return colours.get(number);
     }
 
+    /**
+     * Overrides the gameSetUp method to perform setup specific to Roulette.
+     * Sets the colours for the roulette wheel.
+     * @return null.
+     */
     @Override
     public Object gameSetUp() {
         setColours();

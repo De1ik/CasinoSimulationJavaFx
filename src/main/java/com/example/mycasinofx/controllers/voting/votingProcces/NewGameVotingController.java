@@ -2,7 +2,7 @@ package com.example.mycasinofx.controllers.voting.votingProcces;
 
 import com.example.mycasinofx.Model.database.DAOPattern;
 import com.example.mycasinofx.Model.database.constants.ConstNewGameVotingTable;
-import com.example.mycasinofx.Model.player.Player;
+import com.example.mycasinofx.Model.Player;
 import com.example.mycasinofx.controllers.switchPage.SwitchPage;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
@@ -14,21 +14,74 @@ import javafx.scene.layout.AnchorPane;
 import java.io.IOException;
 import java.sql.SQLException;
 
+/**
+ * Controller class for the new game voting scene.
+ */
 public class NewGameVotingController {
 
+    /**
+     * The AnchorPane for the new game voting scene.
+     */
     @FXML
     private AnchorPane newGameVoting;
-    private  ToggleGroup toggleGroup;
+
+    /**
+     * ToggleGroup for radio buttons representing voting options.
+     */
+    private ToggleGroup toggleGroup;
+
+    /**
+     * RadioButton for voting option "Backarat".
+     */
     @FXML
-    private RadioButton radioBackarat, radioPoker, radioDurak, radioOther, resultVoting;
+    private RadioButton radioBackarat;
+
+    /**
+     * RadioButton for voting option "Poker".
+     */
+    @FXML
+    private RadioButton radioPoker;
+
+    /**
+     * RadioButton for voting option "Durak".
+     */
+    @FXML
+    private RadioButton radioDurak;
+
+    /**
+     * RadioButton for voting option "Other".
+     */
+    @FXML
+    private RadioButton radioOther;
+
+    /**
+     * RadioButton for displaying the selected voting result.
+     */
+    @FXML
+    private RadioButton resultVoting;
+
+    /**
+     * Label for displaying warnings or messages to the user.
+     */
     @FXML
     private Label warningLabel;
+
+    /**
+     * TextField for entering an alternative voting option.
+     */
     @FXML
     private TextField otherTextField;
 
-    private  SwitchPage switchPage;
+    /**
+     * Instance of SwitchPage for handling scene navigation.
+     */
+    private SwitchPage switchPage;
 
-
+    /**
+     * Initializes the controller.
+     * Sets up the ToggleGroup for radio buttons, hides the otherTextField,
+     * and initializes SwitchPage instance.
+     */
     public void initialize(){
         switchPage = new SwitchPage();
         toggleGroup = new ToggleGroup();
@@ -54,7 +107,13 @@ public class NewGameVotingController {
         });
     }
 
-
+    /**
+     * Handles the action of submitting the vote.
+     * Retrieves the current player and checks if a voting option is selected.
+     * If a vote is submitted successfully, navigates to the voting result page.
+     * Displays a warning message if an error occurs during voting.
+     * @throws IOException if an error occurs during scene switching
+     */
     public void vote() throws IOException{
         Player player = Player.getPlayer();
         int res = 1;
@@ -98,7 +157,10 @@ public class NewGameVotingController {
         }
     }
 
-
+    /**
+     * Handles the action of navigating back to the main voting page.
+     * @throws IOException if an error occurs during scene switching
+     */
     public void goVoting() throws IOException {
         switchPage.goVotingPageChange(newGameVoting);
     }

@@ -3,27 +3,54 @@ package com.example.mycasinofx.controllers.custom_dialog_stake;
 import com.example.mycasinofx.Model.games.Games;
 import com.example.mycasinofx.Model.observeImplementation.Observer;
 import com.example.mycasinofx.Model.observeImplementation.ObserverArray;
-import com.example.mycasinofx.Model.player.Player;
+import com.example.mycasinofx.Model.Player;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.AnchorPane;
 
+
+/**
+ * The DialogController class controls the dialog window for setting stakes in the game.
+ * It manages user input validation, stake setting, and updating balance information.
+ */
 public class DialogController {
+
+    /**
+     * The anchor pane of the dialog window.
+     */
     @FXML
     AnchorPane dialog_anchor;
+
+    /**
+     * The label displaying the current balance and warning messages.
+     */
     @FXML
     Label balanceLabel, warningLabel;
+
+    /**
+     * The text field for entering a new stake.
+     */
     @FXML
     TextField newStakeField;
 
 
 
 
-
+    /**
+     * The array to manage observers.
+     */
     private ObserverArray observerArray = new ObserverArray();
+
+    /**
+     * The player object representing the current player.
+     */
     private final Player player = Player.getPlayer();
 
+    /**
+     * Initializes the controller.
+     * Sets up a listener for the new stake field to ensure valid input.
+     */
     public void initialize(){
         if (newStakeField != null) {
             newStakeField.textProperty().addListener((observable, oldValue, newValue) -> {
@@ -49,7 +76,9 @@ public class DialogController {
 
 
 
-
+    /**
+     * Closes the dialog window and informs observers.
+     */
     @FXML
     private void closeDialog() {
         // Получаем Stage, в котором находится AnchorPane
@@ -60,6 +89,10 @@ public class DialogController {
     }
 
 
+    /**
+     * Sets the stake according to the value entered in the new stake field.
+     * If the entered value is invalid, displays warning messages.
+     */
     @FXML
     private void setStake() {
         String stake = newStakeField.getText();
@@ -85,11 +118,18 @@ public class DialogController {
         }
     }
 
+
+    /**
+     * Subscribes a follower to receive updates.
+     * @param follower The follower to subscribe.
+     */
     public void subscribe(Observer follower) {
         this.observerArray.subscribe(follower);
     }
 
-
+    /**
+     * Updates the balance label with the current player balance.
+     */
     public void updateBalanceLabel(){
         balanceLabel.setText("Current Balance: " + player.getBalance());
     }

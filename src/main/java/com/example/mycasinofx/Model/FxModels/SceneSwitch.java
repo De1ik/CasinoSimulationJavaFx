@@ -14,7 +14,17 @@ import javafx.scene.layout.AnchorPane;
 
 import java.io.IOException;
 
+/**
+ * The SceneSwitch class facilitates switching between different scenes in a JavaFX application.
+ * If actions are to be called before a scene change, these actions are also called here.
+ */
 public class SceneSwitch {
+    /**
+     * Constructs a SceneSwitch object to switch between scenes.
+     * @param currentAnchorPane The current AnchorPane containing the scene to be switched.
+     * @param fxml The path to the FXML file of the next scene.
+     * @throws IOException If an I/O exception occurs during loading of the FXML file.
+     */
     public SceneSwitch(AnchorPane currentAnchorPane, String fxml) throws IOException {
         FXMLLoader loader = new FXMLLoader(Application.class.getResource(fxml));
         AnchorPane nextAnchorPane = loader.load();
