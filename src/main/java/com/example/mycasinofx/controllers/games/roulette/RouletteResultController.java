@@ -3,7 +3,7 @@ package com.example.mycasinofx.controllers.games.roulette;
 import com.example.mycasinofx.Model.games.ResultGenericClass;
 import com.example.mycasinofx.Model.games.Roulette.Roulette;
 import com.example.mycasinofx.Model.games.Roulette.RouletteSetUp;
-import com.example.mycasinofx.Model.player.Player;
+import com.example.mycasinofx.Model.Player;
 import com.example.mycasinofx.controllers.games.usefulComponent.ResultMessage;
 import com.example.mycasinofx.controllers.switchPage.PageSwitchInterface;
 import com.example.mycasinofx.controllers.switchPage.SwitchPage;
@@ -23,27 +23,114 @@ import javafx.util.Duration;
 import java.io.IOException;
 
 public class RouletteResultController {
+    /**
+     * Anchor pane containing the UI elements for the Roulette game result.
+     */
     @FXML
     private AnchorPane rouletteResultAnchor;
 
+    /**
+     * Label displaying the player's balance after the game.
+     */
     @FXML
-    private Label balanceLabel, exactNumberLabel, messageLabel, amountStake, balanceDefaultLabel;
+    private Label balanceLabel;
+
+    /**
+     * Label displaying the exact number selected by the player.
+     */
+    @FXML
+    private Label exactNumberLabel;
+
+    /**
+     * Label displaying messages or notifications to the player.
+     */
+    @FXML
+    private Label messageLabel;
+
+    /**
+     * Label displaying the amount of stake placed by the player.
+     */
+    @FXML
+    private Label amountStake;
+
+    /**
+     * Label displaying the default balance.
+     */
+    @FXML
+    private Label balanceDefaultLabel;
+
+    /**
+     * Grid pane containing the numbers layout in the roulette game result.
+     */
     @FXML
     private GridPane gridPaneRoulette;
+
+    /**
+     * Polygon representing the zero number in the roulette grid.
+     */
     @FXML
     private Polygon zeroPolygon;
+
+    /**
+     * Text flow for displaying dynamic text in the UI.
+     */
     @FXML
     private TextFlow textFlow;
-    @FXML
-    private Button redButton, blackButton, greenButton, evenButton, oddButton;
 
+    /**
+     * Button for selecting red numbers in the roulette game result.
+     */
+    @FXML
+    private Button redButton;
+
+    /**
+     * Button for selecting black numbers in the roulette game result.
+     */
+    @FXML
+    private Button blackButton;
+
+    /**
+     * Button for selecting green numbers in the roulette game result.
+     */
+    @FXML
+    private Button greenButton;
+
+    /**
+     * Button for selecting even numbers in the roulette game result.
+     */
+    @FXML
+    private Button evenButton;
+
+    /**
+     * Button for selecting odd numbers in the roulette game result.
+     */
+    @FXML
+    private Button oddButton;
+
+    /**
+     * The Roulette game instance associated with the result.
+     */
     public Roulette roulette;
 
+    /**
+     * Instance of the ResultGenericClass used for managing game results.
+     */
     private ResultGenericClass resultGenericClass;
 
+    /**
+     * The player object associated with the current game session.
+     */
     private final Player player;
+
+    /**
+     * Interface for switching pages in the application.
+     */
     private PageSwitchInterface pageSwitch;
 
+    /**
+     * Initializes the controller after its root element has been completely processed.
+     * Sets up initial configurations and disables button interactions.
+     */
     public void initialize(){
         redButton.setMouseTransparent(true);
         blackButton.setMouseTransparent(true);
@@ -52,7 +139,10 @@ public class RouletteResultController {
         oddButton.setMouseTransparent(true);
     }
 
-
+    /**
+     * Constructor for the RouletteResultController class.
+     * Initializes necessary objects and variables.
+     */
     public RouletteResultController() {
         roulette = Roulette.getRoulette();
         pageSwitch = new SwitchPage();
@@ -60,7 +150,9 @@ public class RouletteResultController {
         resultGenericClass = ResultGenericClass.getResult();
     }
 
-
+    /**
+     * Sets the CSS style for stake buttons based on the player's current stakes.
+     */
     public void setStakeButtons() {
         if (roulette.isGreenStakeSet()) {
             greenButton.getStyleClass().clear();
@@ -86,7 +178,9 @@ public class RouletteResultController {
 
 
 
-    //-------------------Generate The Result Add All Components-----------------------
+    /**
+     * Generates the game result by updating labels and animating the roulette grid.
+     */
     public void generateGameResult() {
         updateLabels();
         //convert to int because the type of my result is Object
@@ -95,9 +189,10 @@ public class RouletteResultController {
 
 
     }
-    //--------------------------------------------------------------------------------
 
-
+    /**
+     * Sets the message label displaying the game result.
+     */
     public void setMessageLabel() {
 
         balanceDefaultLabel.setText("Current balance is: ");
@@ -105,7 +200,9 @@ public class RouletteResultController {
     }
 
 
-    //-------------------Set Label Info-----------------------------------------------
+    /**
+     * Sets the text for the current stake labels.
+     */
     @FXML
     public void setCurrentStakeText() {
         int index = 0;
@@ -130,6 +227,9 @@ public class RouletteResultController {
 
     }
 
+    /**
+     * Sets the text for the exact number label.
+     */
     @FXML
     public void setExactNumberText() {
         String res = roulette.getStringExactNumber();
@@ -141,12 +241,17 @@ public class RouletteResultController {
         }
     }
 
-
+    /**
+     * Sets the text for the amount of stake label.
+     */
     @FXML
     public void setAmountStake() {
         amountStake.setText("Amount of Stake: " + player.getCurrentStake());
     }
 
+    /**
+     * Updates all labels and stake buttons in the UI.
+     */
     public void updateLabels() {
         setCurrentStakeText();
         setExactNumberText();
@@ -154,14 +259,19 @@ public class RouletteResultController {
         setStakeButtons();
 //        setBalanceLabel();
     }
-    //--------------------------------------------------------------------------------
 
 
-    //-------------------Start Animation----------------------------------------------
+
+    /**
+     * Animates the result by changing the color of roulette grid elements.
+     */
     public void effectResult(GridPane gridPane, int curGeneration) {
         changeColor(gridPane, 0, 10, curGeneration);
     }
 
+    /**
+     * Changes the color of roulette grid elements to simulate animation.
+     */
     private void changeColor(GridPane gridPane, int index, int delay, int curGeneration) {
         if (index < 55) {
             int number = ((curGeneration + 19) + index) % 37;
@@ -222,14 +332,19 @@ public class RouletteResultController {
             //end animation
         }
     }
-    //--------------------------------------------------------------------------------
 
-
-    //-----------------------------Change Page----------------------------------------
+    /**
+     * Navigates to the roulette game page to play again.
+     * @throws IOException If an I/O exception occurs.
+     */
     public void playAgain() throws IOException {
         pageSwitch.goRoulette(rouletteResultAnchor);
     }
 
+    /**
+     * Navigates to the main menu.
+     * @throws IOException If an I/O exception occurs.
+     */
     public void goMainMenu() throws IOException {
         pageSwitch.goMainMenu(rouletteResultAnchor);
     }

@@ -9,6 +9,7 @@ module com.example.mycasinofx {
     opens com.example.mycasinofx to javafx.fxml;
     exports com.example.mycasinofx;
     exports com.example.mycasinofx.controllers;
+    exports com.example.mycasinofx.Model;
     opens com.example.mycasinofx.controllers to javafx.fxml;
     exports com.example.mycasinofx.controllers.games.roulette;
     opens com.example.mycasinofx.controllers.games.roulette to javafx.fxml;

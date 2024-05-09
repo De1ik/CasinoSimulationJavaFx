@@ -2,7 +2,7 @@ package com.example.mycasinofx;
 
 import com.example.mycasinofx.Model.FxModels.Component;
 import com.example.mycasinofx.Model.FxModels.Serialization;
-import com.example.mycasinofx.Model.player.Player;
+import com.example.mycasinofx.Model.Player;
 import com.example.mycasinofx.controllers.FirstMenuController;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -11,7 +11,6 @@ import javafx.scene.control.Alert;
 import javafx.scene.control.ButtonType;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
-import javafx.scene.layout.HBox;
 import javafx.scene.transform.Scale;
 import javafx.stage.Modality;
 import javafx.stage.Screen;
@@ -19,9 +18,20 @@ import javafx.stage.Stage;
 
 import java.util.Objects;
 
-
+/**
+ * The main application class that extends JavaFX Application.
+ */
 public class Application extends javafx.application.Application {
+    /**
+     * The last transformation scale applied.
+     */
     private static Scale lastTransformation;
+
+    /**
+     * The entry point for the JavaFX application.
+     * Basic setup for Primary Stage.
+     * @param stage The primary stage for the application.
+     */
     @Override
     public void start(Stage stage){
         try {
@@ -47,18 +57,8 @@ public class Application extends javafx.application.Application {
             stage.setForceIntegerRenderScale(true);
             stage.getIcons().add(new Image("/casino-logo.png"));
 
-
-
-
             stage.setFullScreen(true);
             stage.show();
-
-
-
-
-
-
-
 
             scene.widthProperty().addListener((observable, oldValue, newValue) -> {
                 lastTransformation.setX((newValue.doubleValue() / oldValue.doubleValue()) * lastTransformation.getX());
@@ -78,6 +78,10 @@ public class Application extends javafx.application.Application {
         }
     }
 
+    /**
+     * Handles the exit action for the application.
+     * @param stage The primary stage for the application.
+     */
     public void exitCasino(Stage stage){
 
         ImageView imageView = new ImageView(new Image("/casino-logo.png"));
@@ -107,6 +111,9 @@ public class Application extends javafx.application.Application {
         }
     }
 
+    /**
+     * Launches the JavaFX application.
+     */
     public void start() {
         launch();
     }

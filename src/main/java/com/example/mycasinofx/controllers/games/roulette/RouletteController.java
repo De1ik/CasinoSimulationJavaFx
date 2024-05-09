@@ -3,7 +3,9 @@ package com.example.mycasinofx.controllers.games.roulette;
 
 import com.example.mycasinofx.Model.games.Roulette.Roulette;
 import com.example.mycasinofx.Model.games.Roulette.RouletteSetUp;
-import com.example.mycasinofx.Model.player.Player;
+import com.example.mycasinofx.Model.games.strategy_pattern.GameResultStrategy;
+import com.example.mycasinofx.Model.games.strategy_pattern.RouletteResultImpl;
+import com.example.mycasinofx.Model.Player;
 import com.example.mycasinofx.controllers.custom_dialog_stake.SetStakeCustomDialog;
 import com.example.mycasinofx.controllers.switchPage.PageSwitchInterface;
 import com.example.mycasinofx.controllers.switchPage.SwitchPage;
@@ -20,37 +22,151 @@ import javafx.scene.shape.Polygon;
 import java.io.IOException;
 import java.sql.SQLException;
 
-
+/**
+ * Controller class for managing the Roulette game UI.
+ */
 public class RouletteController {
+    /**
+     * The anchor pane containing the main UI elements for the Roulette game.
+     */
     @FXML
     private AnchorPane rouletteAnchor, dialog_window;
+    /**
+     * Label displaying the player's current balance.
+     */
     @FXML
-    private Label balanceLabel, currentStakeLabel, exactNumberLabel, warningsLabel, zeroLabel, amountStake;
+    private Label balanceLabel;
+
+    /**
+     * Label displaying the player's current stake amount.
+     */
     @FXML
-    private Button evenButton, oddButton, redButton, blackButton, greenButton, playRouletteButton;
+    private Label currentStakeLabel;
+
+    /**
+     * Label displaying the exact number chosen by the player.
+     */
+    @FXML
+    private Label exactNumberLabel;
+
+    /**
+     * Label displaying any warnings or messages to the player.
+     */
+    @FXML
+    private Label warningsLabel;
+
+    /**
+     * Label representing the zero number in the roulette grid.
+     */
+    @FXML
+    private Label zeroLabel;
+
+    /**
+     * Label representing the amount of stake in the roulette game.
+     */
+    @FXML
+    private Label amountStake;
+
+    /**
+     * Button for selecting even numbers in the roulette game.
+     */
+    @FXML
+    private Button evenButton;
+
+    /**
+     * Button for selecting odd numbers in the roulette game.
+     */
+    @FXML
+    private Button oddButton;
+
+    /**
+     * Button for selecting red numbers in the roulette game.
+     */
+    @FXML
+    private Button redButton;
+
+    /**
+     * Button for selecting black numbers in the roulette game.
+     */
+    @FXML
+    private Button blackButton;
+
+    /**
+     * Button for selecting green numbers in the roulette game.
+     */
+    @FXML
+    private Button greenButton;
+
+    /**
+     * Button for initiating the roulette game.
+     */
+    @FXML
+    private Button playRouletteButton;
+
+    /**
+     * Grid pane containing the numbers layout in the roulette game.
+     */
     @FXML
     private GridPane gridPaneRoulette;
+
+    /**
+     * Polygon representing the zero number in the roulette grid.
+     */
     @FXML
     private Polygon zeroPolygon;
+
+    /**
+     * Border pane containing the main UI elements for the Roulette game.
+     */
     @FXML
     private BorderPane borderPane;
 
+    /**
+     * The player object associated with the current game session.
+     */
     private final Player player;
+
+    /**
+     * The roulette object representing the game itself.
+     */
     private final Roulette roulette;
+
+    /**
+     * Interface for switching pages in the application.
+     */
     private PageSwitchInterface pageSwitch;
 
+    /**
+     * Strategy for determining game results in the Roulette game.
+     */
+    private GameResultStrategy gameResultStrategy;
+
+    /**
+     * The profit value calculated for the player during the game session.
+     */
     private double profit;
 
+    /**
+     * Constructor for RouletteController.
+     */
     public RouletteController() {
         roulette = Roulette.getRoulette();
         player = Player.getPlayer();
+        gameResultStrategy = new RouletteResultImpl();
     }
 
+    /**
+     * Sets the profit for the player.
+     */
     public void setProfit(){
         profit = player.getBalance();
     }
 
-
+    /**
+     * Initializes the controller after its root element has been completely processed.
+     * This method sets up event handlers for mouse clicks on the roulette grid and initializes
+     * other necessary components.
+     */
     @FXML
     public void initialize() {
         setAmountStake();
@@ -132,15 +248,21 @@ public class RouletteController {
     }
 
 
-    //----------------------------------setting the visibility to the button-------------------------------------------
+    /**
+     * Sets the play button disable state based on the game state.
+     * Disables the play button if the game cannot be started.
+     */
     @FXML
     public void setPlayButtonDisable() {
         if (!roulette.checkStartGame()) playRouletteButton.setDisable(true);
     }
-    //-----------------------------------------------------------------------------------------------------------------
 
-    //--------------------------update the components after clicking on the button-------------------------------------
-
+    /**
+     * Sets the CSS style class for a button to make it non-active.
+     *
+     * @param string The type of bet (e.g., "Red", "Black", "Green").
+     * @param button The button to set as non-active.
+     */
     public void setNonActiveButton(String string, Button button) {
         switch (string){
             case " Red ":
@@ -162,6 +284,12 @@ public class RouletteController {
         }
     }
 
+    /**
+     * Sets the CSS style class for a button to make it active.
+     *
+     * @param string The type of bet (e.g., "Red", "Black", "Green").
+     * @param button The button to set as active.
+     */
     public void setActiveButton(String string, Button button) {
         switch (string){
             case " Red ":
@@ -184,7 +312,15 @@ public class RouletteController {
     }
 
 
-
+    /**
+     * Handles clicking on a betting button to place a stake.
+     * Marks different kinds of bets as already made or as available for selection
+     * @param flag The current state of the button (true for active, false for non-active).
+     * @param button The button being clicked.
+     * @param index The index of the stake.
+     * @param string The type of bet (e.g., "Red", "Black", "Green").
+     * @return The updated state of the button (true for active, false for non-active).
+     */
     @FXML
     public boolean clickButtonStake(boolean flag, Button button, int index, String string) {
         if (flag) {
@@ -213,10 +349,10 @@ public class RouletteController {
         }
         return flag;
     }
-    //-----------------------------------------------------------------------------------------------------------------
 
-
-    //-------------------------------------Stake Button Clicked Action-------------------------------------------------
+    /**
+     * Handles clicking on the "Even" button to place a stake on even numbers.
+     */
     @FXML
     public void even() {
         roulette.setEvenStakeSet(clickButtonStake(roulette.isEvenStakeSet(), evenButton, 0, " Even "));
@@ -224,6 +360,9 @@ public class RouletteController {
         setPlayButtonDisable();
     }
 
+    /**
+     * Handles clicking on the "Odd" button to place a stake on odd numbers.
+     */
     @FXML
     public void odd() {
         roulette.setOddStakeSet(clickButtonStake(roulette.isOddStakeSet(), oddButton, 1, " Odd "));
@@ -231,6 +370,9 @@ public class RouletteController {
         setPlayButtonDisable();
     }
 
+    /**
+     * Handles clicking on the "Red" button to place a stake on red numbers.
+     */
     @FXML
     public void red() {
         roulette.setRedStakeSet(clickButtonStake(roulette.isRedStakeSet(), redButton, 2, " Red "));
@@ -238,6 +380,9 @@ public class RouletteController {
         setPlayButtonDisable();
     }
 
+    /**
+     * Handles clicking on the "Black" button to place a stake on black numbers.
+     */
     @FXML
     public void black() {
         roulette.setBlackStakeSet(clickButtonStake(roulette.isBlackStakeSet(), blackButton, 3, " Black "));
@@ -245,15 +390,19 @@ public class RouletteController {
         setPlayButtonDisable();
     }
 
+    /**
+     * Handles clicking on the "Green" button to place a stake on green number.
+     */
     @FXML
     public void green() {
         roulette.setGreenStakeSet(clickButtonStake(roulette.isGreenStakeSet(), greenButton, 4, " Green "));
         updateLabels();
         setPlayButtonDisable();
     }
-    //-----------------------------------------------------------------------------------------------------------------
 
-    //------------------------------------Set New Info On Labels-----------------------------------------
+    /**
+     * Sets the label displaying the exact number selected by the player.
+     */
     @FXML
     public void setExactNumberLabel() {
         String res = roulette.getStringExactNumber();
@@ -265,16 +414,25 @@ public class RouletteController {
         }
     }
 
+    /**
+     * Sets the label displaying the current balance of the player.
+     */
     @FXML
     public void setBalanceLabel() {
         balanceLabel.setText("Current balance: " + player.getBalance());
     }
 
+    /**
+     * Sets the label displaying the amount of stake selected by the player.
+     */
     @FXML
     public void setAmountStake() {
         amountStake.setText("Amount of Stake: " + player.getCurrentStake());
     }
 
+    /**
+     * Sets the label displaying the current stake of the player.
+     */
     @FXML
     public void setCurrentStakeLabel() {
         String res = "";
@@ -283,8 +441,10 @@ public class RouletteController {
         }
         currentStakeLabel.setText(res);
     }
-    //-----------------------------------------------------------------------------------------------------------------
 
+    /**
+     * Updates all labels in the UI.
+     */
     @FXML
     public void updateLabels() {
         setCurrentStakeLabel();
@@ -292,7 +452,9 @@ public class RouletteController {
         setExactNumberLabel();
     }
 
-
+    /**
+     * Resets the CSS style for all buttons.
+     */
     @FXML
     public void resetButtons(){
         redButton.getStyleClass().clear();
@@ -308,8 +470,11 @@ public class RouletteController {
     }
 
 
-    //----------------------------------------------Reset All Components-----------------------------------------------
-    //It used before calling this scene or before going to main menu from this scene
+
+    /**
+     * Resets all components of the UI and game state.
+     * Used before switching to another scene or returning to the main menu.
+     */
     @FXML
     public void reset() {
         //check if it needed to return money
@@ -326,7 +491,10 @@ public class RouletteController {
 
 
 
-
+    /**
+     * Handles clicking on the "Play" button to start the roulette game.
+     * @throws IOException If an I/O exception occurs.
+     */
     @FXML
     public void playRoulette() throws IOException{
 
@@ -342,6 +510,8 @@ public class RouletteController {
 
             player.setProfit(profit);
 
+            gameResultStrategy.showGameResult(profit);
+
             pageSwitch.goRouletteResult(rouletteAnchor);
 
         } else {
@@ -354,6 +524,12 @@ public class RouletteController {
         }
     }
 
+    /**
+     * Navigates to the main menu.
+     * @throws IOException If an I/O exception occurs.
+     * @throws SQLException If a database access error occurs.
+     * @throws ClassNotFoundException If the class definition is not found.
+     */
     @FXML
     public void goMainMenu() throws IOException, SQLException, ClassNotFoundException {
         reset();
@@ -362,7 +538,10 @@ public class RouletteController {
     }
 
 
-
+    /**
+     * Opens a dialog to allow the player to place a stake.
+     * @throws IOException If an I/O exception occurs.
+     */
     @FXML
     public void doStake() throws IOException {
         reset();

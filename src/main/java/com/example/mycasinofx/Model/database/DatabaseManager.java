@@ -1,15 +1,30 @@
 package com.example.mycasinofx.Model.database;
 
 import com.example.mycasinofx.Model.database.constants.ConstUserTable;
-import com.example.mycasinofx.Model.player.Player;
+import com.example.mycasinofx.Model.Player;
 
 import java.sql.*;
 import java.util.function.Consumer;
 
+
+
+/**
+ * The DatabaseManager class manages database operations and extends the Config class for database configuration.
+ * It implements the Data interface to provide methods for asynchronous database interactions.
+ */
 public class DatabaseManager extends Config implements Data {
-    Connection dbConnection;
+    /**
+     * Represent the database connection.
+     */
+    private Connection dbConnection;
 
 
+    /**
+     * Establishes a database connection.
+     * @return The database connection.
+     * @throws ClassNotFoundException If the database driver class is not found.
+     * @throws SQLException If an SQL exception occurs.
+     */
     public Connection getDbConnection() throws ClassNotFoundException, SQLException {
         String connectionString = "jdbc:mysql://" + DB_HOST + ":" + DB_PORT + "/" + DB_NAME;
 
@@ -19,6 +34,16 @@ public class DatabaseManager extends Config implements Data {
         return dbConnection;
     }
 
+
+    /**
+     * Asynchronously registers a new user.
+     * @param name The name of the user.
+     * @param password The password of the user.
+     * @param email The email of the user.
+     * @param age The age of the user.
+     * @param onSuccess The action to be executed on success (log the name of the function).
+     * @param onError The consumer to handle errors (log text of the error).
+     */
     @Override
     public void registerUserAsync(String name, String password, String email, int age, final Action onSuccess, final Consumer<Exception> onError) {
         String methodName = new Object() {}.getClass().getEnclosingMethod().getName();
@@ -55,6 +80,13 @@ public class DatabaseManager extends Config implements Data {
         thread.start();
     }
 
+    /**
+     * Logs in a user.
+     * @param email The email of the user.
+     * @param password The password of the user.
+     * @param onSuccess The action to be executed on success (log the name of the function).
+     * @param onError The consumer to handle errors (log text of the error).
+     */
     @Override
     public void loginUserDB(String email, String password, final Action onSuccess, final Consumer<Exception> onError) {
         String query = "SELECT * FROM " + ConstUserTable.USER_TABLE +
@@ -86,6 +118,14 @@ public class DatabaseManager extends Config implements Data {
         }
     }
 
+
+    /**
+     * Checks if the provided email is valid.
+     * @param email The email to be checked.
+     * @return 1 if the email is valid, 0 if not, -1 if an error occurs.
+     * @throws SQLException If an SQL exception occurs.
+     * @throws ClassNotFoundException If the database driver class is not found.
+     */
     @Override
     public int checkValidEmail(String email) throws SQLException, ClassNotFoundException {
         String checkEmail = "SELECT COUNT(*) AS email_count FROM " + ConstUserTable.USER_TABLE +
@@ -106,6 +146,14 @@ public class DatabaseManager extends Config implements Data {
         return -1;
     }
 
+    /**
+     * Asynchronously checks if the provided password matches the email.
+     * @param password The password to be checked.
+     * @param email The email associated with the password.
+     * @return 1 if the password is valid, 0 if not, -1 if an error occurs.
+     * @throws SQLException If an SQL exception occurs.
+     * @throws ClassNotFoundException If the database driver class is not found.
+     */
     @Override
     public int checkValidPassword(String password, String email) throws SQLException, ClassNotFoundException {
         String checkPassword = "SELECT COUNT(*) AS password_count FROM " + ConstUserTable.USER_TABLE +
@@ -127,8 +175,19 @@ public class DatabaseManager extends Config implements Data {
         return -1;
     }
 
+
+    /**
+     * Asynchronously votes for a new user.
+     * @param setPlayerId The ID of the player.
+     * @param setCategory The category to be set.
+     * @param tableName The name of the table.
+     * @param usersId The ID of the user.
+     * @param category The category of the game.
+     * @param onSuccess The action to be executed on success (log the name of the function).
+     * @param onError The consumer to handle errors (log text of the error).
+     */
     @Override
-    public void voteNewUser(int setPlayerId, String setCategory, String tableName, String usersId, String category, final Action onSuccess, final Consumer<Exception> onError) {
+    public void voteNewUserAsync(int setPlayerId, String setCategory, String tableName, String usersId, String category, final Action onSuccess, final Consumer<Exception> onError) {
         String methodName = new Object() {}.getClass().getEnclosingMethod().getName();
         Thread thread = new Thread(new Runnable() {
             @Override
@@ -162,6 +221,15 @@ public class DatabaseManager extends Config implements Data {
     }
 
 
+    /**
+     * Checks if a new user has already voted.
+     * @param setPlayerId The ID of the player.
+     * @param tableName The name of the table.
+     * @param usersId The ID of the user.
+     * @return {@code true} if the new user has voted, {@code false} otherwise.
+     * @throws SQLException If an SQL exception occurs.
+     * @throws ClassNotFoundException If the database driver class is not found.
+     */
     @Override
     public boolean voteCheckNewUser(int setPlayerId, String tableName, String usersId) throws SQLException, ClassNotFoundException {
         String query = "SELECT * FROM " + tableName +
@@ -182,7 +250,15 @@ public class DatabaseManager extends Config implements Data {
     }
 
 
-
+    /**
+     * Updates the vote of a user.
+     * @param setCategory The category to be set.
+     * @param tableName The name of the table.
+     * @param category The category of the code.
+     * @param userId The ID of the user.
+     * @param onSuccess The action to be executed on success (log the name of the function).
+     * @param onError The consumer to handle errors (log text of the error).
+     */
     @Override
     public void updateVoteUser(String setCategory, String tableName, String category, int userId, final Action onSuccess, final Consumer<Exception> onError) {
         String insert = "UPDATE " + tableName + " SET " + category + " = ?" + " WHERE " + " idusers " + " = ?";
@@ -201,6 +277,15 @@ public class DatabaseManager extends Config implements Data {
     }
 
 
+    /**
+     * Retrieves the number of votes for a specific category in a table.
+     * @param setCategory The category to be selected.
+     * @param tableName The name of the table.
+     * @param category The category of the user.
+     * @return The number of votes for the specified category of the game.
+     * @throws SQLException If an SQL exception occurs.
+     * @throws ClassNotFoundException If the database driver class is not found.
+     */
     @Override
     public int selectNumberVotes(String setCategory, String tableName, String category) throws SQLException, ClassNotFoundException {
         String query;
@@ -226,7 +311,13 @@ public class DatabaseManager extends Config implements Data {
         }
     }
 
-
+    /**
+     * Asynchronously updates the balance of a user.
+     * @param id The ID of the user.
+     * @param newBalance The new balance to be set.
+     * @param onSuccess The action to be executed on success (log the name of the function).
+     * @param onError The consumer to handle errors (log text of the error).
+     */
     @Override
     public void updateBalanceAsync(int id, double newBalance, final Action onSuccess, final Consumer<Exception> onError) {
         String methodName = new Object() {}.getClass().getEnclosingMethod().getName();

@@ -9,9 +9,24 @@ import javafx.scene.layout.BorderPane;
 
 import java.io.IOException;
 
+/**
+ * Utility class for showing game result dialogs.
+ */
 public class ResultDialog {
 
 
+    /**
+     * Shows the game result dialog window.
+     *
+     * @param mainPane        The main pane of the application.
+     * @param borderPane      The border pane containing the main content.
+     * @param dialog_window   The anchor pane representing the dialog window.
+     * @param currentGameType The type of the current game.
+     * @param botValue        The value of the bot's hand.
+     * @param playerValue     The value of the player's hand.
+     * @param result          The result of the game (1 for player win, 2 for player lose, 0 for draw).
+     * @throws IOException If an I/O error occurs.
+     */
     @FXML
     public static void showGameResultDialog(AnchorPane mainPane, BorderPane borderPane, AnchorPane dialog_window, int currentGameType, int botValue, int playerValue, int result) throws IOException {
 

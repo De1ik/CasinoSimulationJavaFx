@@ -237,7 +237,7 @@
                         </Label>
                         <Label fx:id="messageLabel" alignment="CENTER" contentDisplay="CENTER" prefHeight="21.0" prefWidth="249.0" textFill="WHITE">
                            <font>
-                              <Font name="System Bold" size="15.0" />
+                              <Font name="System Bold" size="9.0" />
                            </font>
                         </Label>
                         <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="21.0" prefWidth="133.0" textFill="WHITE">
