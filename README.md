@@ -1,15 +1,16 @@
-Short Documentation for the first termin 
+<h2>Project description</h2>
+The programme simulates various popular games from casinos: 21, roulette, slots.
+Each game has its own unique logic for its implementation.
+In each game to play the user must make a bet. The user can independently choose what bet on what he wants to make (within the rules: for example, the minimum bet can not be less than 5). Initially each new user is given 50000 game money on the game account. If the user has run out of game money on the game balance, it means he lost and more from this account he can not interact with the games. In this way the player's choice is realised.
 
-Start Class: "Application"
+<br>There are two types of voting in the programme: voting for the best game (which is already present) and voting for the game that players would like to see (thus voting gives the developers an idea how to improve their application and what users want). After voting, users can see the statistics of how other people voted and the number of votes for each category. If a user changes their mind, they can change their vote and vote again. 
 
-!!!Open Application with internet connection!!!
+Games and voting are only available to registered users. Registered users are stored in a database, so if a user already has an account, they can simply log in. 
 
-Inheritance is mainly used in models for games. There is a general abstract class "Games" from which classes of concrete games are inherited: "RouletteSetUp", "SlotsSetUp" and "TwentyOne". Double inheritance is present for classes "Roulette", "Slots", which inherit from "RouletteSetUp", "SlotsSetUp" respectively. 
-It should be noted that at the moment the double inheritance may look a bit unnecessary, but it is necessary in the future possible expansion of the game functionality. Inheritance is also used in the DatabaseManage class, which inherits from the Config class (in this case there was not much point in adding inheritance, we could use a static class, but in any case inheritance is possible here).
+<h2>What was used</h2>
+<b>Technologies used:</b> JavaFx, MySQL, Google Cloud.
+<br><b>Patterns that were used:</b> Singleton, Strategy, Observer, DAO.
 
-Polymorphism is used much more often than inheritance, it is used in game classes ("Model" -> "Games" -> ["roulete", "Slots"]) to implement the interface "GameInterface". Polymorphism is also used to work with database in the DatabaseManager class ("Model" -> "database" -> "DatabaseManager"). In addition, polymorphism is used to implement the "RegistrationWarningsInterface" interface ("Controllers" -> "Registration" -> "Warnings"). Another place where polymorphism is used is the "SwitchPage" class which implements the "PageSwitchInterface" interface ("Controllers" -> "swithcPage" -> "SwithcPage"). These were not all places where polymorphism is used, but only examples.
-
-Aggregation is used very often, so here are just some examples of classes where it is used: 
-Roulette" class has an object of "Player" class inside it.
-class "TwentyOne" has an object of class "Cards" inside it.
-Almost every controller class has an object of class "SwitchPage", which is responsible for changing the scene.
+<h2>Launching the application</h2>
+<b>Start Class:</b> "Application" or "Main".
+<br><b>Note:</b> Open Application with internet connection as there must be an internet connection to connect to the database.
