@@ -3,7 +3,9 @@ package com.example.mycasinofx.Model.games;
 import java.sql.SQLException;
 
 /**
- * This interface represents a generic game interface providing methods for checking the winner and generating results.
+ * This interface represents a generic game
+ * interface providing methods for checking
+ * the winner and generating results.
  */
 public interface GameInterface {
     /**
